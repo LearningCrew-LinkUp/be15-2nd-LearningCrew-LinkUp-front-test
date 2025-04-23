@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>제재 상세 보기</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="sanction-detail-section">
+  <header>
+    <h2>제재 상세 정보</h2>
+    <p class="sub-text">제재 대상과 사유를 확인하고 후속 조치를 진행할 수 있습니다.</p>
+  </header>
+
+  <!-- 사용자 정보 -->
+  <section class="sanction-block">
+    <h3>사용자 정보</h3>
+    <div class="sanction-row"><span class="label">사용자 ID</span><span class="value">53</span></div>
+    <div class="sanction-row"><span class="label">이름</span><span class="value">차민규</span></div>
+  </section>
+
+  <!-- 제재 정보 -->
+  <section class="sanction-block">
+    <h3>제재 정보</h3>
+    <div class="sanction-row"><span class="label">패널티 ID</span><span class="value">8</span></div>
+    <div class="sanction-row"><span class="label">패널티 유형</span><span class="value">댓글(COMMENT)</span></div>
+    <div class="sanction-row"><span class="label">사유</span><span class="value">욕설로 인한 제재 처리</span></div>
+    <div class="sanction-row"><span class="label">상태</span><span class="value">활성</span></div>
+    <div class="sanction-row"><span class="label">제재 일시</span><span class="value">2025-04-18 08:43:44</span></div>
+  </section>
+
+  <!-- 관련 콘텐츠 -->
+  <section class="sanction-block highlight">
+    <h3>관련 콘텐츠</h3>
+    <div class="sanction-row"><span class="label">댓글 ID</span><span class="value">3</span></div>
+  </section>
+
+  <!-- 처리 버튼 -->
+  <div class="sanction-actions">
+    <button class="btn cancel">제재 철회</button>
+    <button class="btn neutral" onclick="history.back()">닫기</button>
+  </div>
+</div>
+
+
+</body>
+</html>

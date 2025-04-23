@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이의 제기 상세 보기</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="objection-card">
+    <h2>이의 제기 상세 정보</h2>
+
+    <div class="objection-info">
+        <div class="row">
+            <div class="label">이의 제기 ID</div>
+            <div class="value">101</div>
+        </div>
+        <div class="row">
+            <div class="label">사용자 ID</div>
+            <div class="value">42</div>
+        </div>
+        <div class="row">
+            <div class="label">사용자 이름</div>
+            <div class="value">김하나</div>
+        </div>
+        <div class="row">
+            <div class="label">제출 일시</div>
+            <div class="value">2025-04-18 11:10</div>
+        </div>
+        <div class="row full">
+            <div class="label">사유</div>
+            <div class="value-box">
+                정당한 사유 없이 제재를 당했습니다. 욕설을 한 적이 없고, 당시 상황에 대한 해명이 제대로 반영되지 않았습니다. 캡처 자료를 통해 반박이 가능합니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="objection-actions">
+        <button class="btn btn-approve">승인</button>
+        <button class="btn btn-reject">거절</button>
+        <button class="btn btn-close" onclick="history.back()">닫기</button>
+    </div>
+</div>
+
+</body>
+</html>

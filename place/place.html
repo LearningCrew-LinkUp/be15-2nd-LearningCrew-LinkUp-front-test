@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장소 등록</title>
+    <!-- Bootstrap CSS & FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background: #f0f2f5; }
+        .header { background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); color: #fff; padding: 1.5rem; }
+        .header h1 { margin: 0; font-size: 1.75rem; }
+        .card-step { border-radius: .75rem; box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+        .dropzone {
+            border: 2px dashed #ced4da;
+            border-radius: .5rem;
+            background: #fafafa;
+            cursor: pointer;
+            overflow: hidden;
+            padding: 2rem;
+            text-align: center;
+            color: #6c757d;
+        }
+        .required::after { content: " *"; color: #dc3545; }
+        .time-input { width: 140px; }
+        .thumb-preview {
+            z-index: 1; /* placeholder 뒤에 보이게 */
+        }
+        #dz-placeholder {
+            pointer-events: none; /* 클릭은 dropzone이 받도록 */
+        }
+        .thumb-preview .thumb-item {
+            position: relative;
+            display: inline-block;
+        }
+        .thumb-preview .thumb-item img {
+            max-width: 120px;
+            max-height: 80px;
+            border-radius: 4px;
+        }
+        .thumb-preview .thumb-item .remove-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            color: #fff;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 12px;
+            line-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .time-input {
+            min-width: 140px;
+        }
+
+    </style>
+</head>
+<body>
+<header class="header text-center">
+    <h1><i class="fa-solid fa-location-dot"></i> 장소 등록하기</h1>
+</header>
+
+<div class="container my-5">
+    <!-- 스텝 진행바 -->
+    <div class="mb-4">
+        <div class="progress" style="height: .75rem;"><div class="progress-bar bg-primary" role="progressbar" style="width: 25%;"></div></div>
+        <div class="d-flex justify-content-between small mt-1"><div>기본정보</div><div>운영정보</div><div>이미지</div><div>완료</div></div>
+    </div>
+
+    <form class="card card-body card-step">
+        <!-- 기본 정보 -->
+        <fieldset class="mb-4">
+            <legend class="h5"><i class="fa-solid fa-info-circle text-primary"></i> 기본 정보</legend>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="name" class="form-label required">장소 이름</label>
+                    <input type="text" id="name" class="form-control" placeholder="예: 신촌 풋살 센터" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="address" class="form-label required">주소</label>
+                    <div class="input-group">
+                        <input type="text" id="address" class="form-control" placeholder="예: 서울시 서대문구 연세로 12" required>
+                        <button class="btn btn-outline-secondary" type="button"><i class="fa-solid fa-map-marker-alt"></i></button>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="description" class="form-label">장소 설명</label>
+                    <textarea id="description" class="form-control" rows="3" placeholder="장소의 특징이나 편의사항을 입력하세요."></textarea>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- 운영 정보 -->
+        <fieldset class="mb-4">
+            <legend class="h5"><i class="fa-solid fa-clock text-primary"></i> 운영 정보</legend>
+            <div class="row gy-3">
+                <div class="col-md-4">
+                    <label for="sport" class="form-label required">운동 종목</label>
+                    <select id="sport" class="form-select" required>
+                        <option value="">선택하세요</option>
+                        <option value="futsal">풋살</option>
+                        <option value="basketball">농구</option>
+                        <option value="tennis">테니스</option>
+                        <option value="badminton">배드민턴</option>
+                        <option value="volleyball">배구</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="unitTime" class="form-label">단위 시간</label>
+                    <input type="text" id="unitTime" class="form-control" placeholder="종목 선택 시 표시" readonly>
+                </div>
+                <div class="col-md-4">
+                    <label for="price" class="form-label">가격 (시간당)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">₩</span>
+                        <input type="number" id="price" class="form-control" placeholder="금액 입력">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 탭 UI -->
+            <div class="mt-4">
+                <label class="form-label">운영 시간</label>
+                <!-- 요일별 시간 입력 영역 -->
+                <div class="d-flex flex-column gap-3">
+
+                    <!-- 월요일 -->
+                    <div class="d-flex align-items-center gap-4">
+                        <div style="min-width: 70px;"><strong class="form-label mb-0">월요일</strong></div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">시작 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">종료 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                    </div>
+
+                    <!-- 화요일 -->
+                    <div class="d-flex align-items-center gap-4">
+                        <div style="min-width: 70px;"><strong class="form-label mb-0">화요일</strong></div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">시작 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">종료 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                    </div>
+
+                    <!-- 수요일 -->
+                    <div class="d-flex align-items-center gap-4">
+                        <div style="min-width: 70px;"><strong class="form-label mb-0">수요일</strong></div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">시작 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">종료 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                    </div>
+
+                    <!-- 목요일 -->
+                    <div class="d-flex align-items-center gap-4">
+                        <div style="min-width: 70px;"><strong class="form-label mb-0">목요일</strong></div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">시작 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">종료 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                    </div>
+
+                    <!-- 금요일 -->
+                    <div class="d-flex align-items-center gap-4">
+                        <div style="min-width: 70px;"><strong class="form-label mb-0">금요일</strong></div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">시작 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">종료 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                    </div>
+
+                    <!-- 토요일 -->
+                    <div class="d-flex align-items-center gap-4">
+                        <div style="min-width: 70px;"><strong class="form-label mb-0">토요일</strong></div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">시작 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">종료 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                    </div>
+
+                    <!-- 일요일 -->
+                    <div class="d-flex align-items-center gap-4">
+                        <div style="min-width: 70px;"><strong class="form-label mb-0">일요일</strong></div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">시작 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label mb-0" style="min-width: 70px;">종료 시간</label>
+                            <input type="time" class="form-control" style="min-width: 130px;">
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+        </fieldset>
+
+        <!-- 이미지 업로드 -->
+        <fieldset class="mb-4">
+            <legend class="h5"><i class="fa-solid fa-image text-primary"></i> 사진 </legend>
+            <div class="dropzone position-relative p-3" id="dropzone" style="min-height:150px;">
+                <!-- ① 숨겨진 파일 입력 -->
+                <input type="file" id="fileInput" multiple accept="image/*" style="display:none;">
+                <!-- ② placeholder 문구 -->
+                <div class="position-absolute top-50 start-50 translate-middle text-muted" id="dz-placeholder">
+                    파일을 드래그하거나 클릭하여 업로드
+                </div>
+                <!-- ③ 실제 썸네일이 들어갈 영역 -->
+                <div class="thumb-preview d-flex flex-wrap gap-2" id="preview"></div>
+            </div>
+        </fieldset>
+
+
+        <button type="submit" class="btn btn-primary w-100 py-2">등록하기</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const sportUnitMap = { futsal: '30분', basketball: '60분', tennis: '45분', badminton: '30분', volleyball: '60분' };
+    const stepMap = { futsal:1800, basketball:3600, tennis:2700, badminton:1800, volleyball:3600 };
+    const sportSelect = document.getElementById('sport');
+    const unitInput = document.getElementById('unitTime');
+    sportSelect.addEventListener('change', () => {
+        const val = sportSelect.value;
+        unitInput.value = sportUnitMap[val] || '';
+        document.querySelectorAll('.time-input').forEach(inp => inp.step = stepMap[val] || 1800);
+    });
+    const dz = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+    const placeholder = document.getElementById('dz-placeholder');
+
+    function handleFiles(files) {
+        placeholder.style.display = 'none';
+        Array.from(files).forEach(file => {
+            if (!file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'thumb-item';
+
+                const img = document.createElement('img');
+                img.src = reader.result;
+                wrapper.appendChild(img);
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'remove-btn';
+                btn.innerHTML = '&times;';
+                btn.onclick = () => {
+                    wrapper.remove();
+                    if (!preview.children.length) placeholder.style.display = '';
+                };
+                wrapper.appendChild(btn);
+
+                preview.appendChild(wrapper);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // 클릭 시 파일 대화상자 열기
+    dz.addEventListener('click', () => fileInput.click());
+
+    // 파일 선택 대화상자에서 선택했을 때
+    fileInput.addEventListener('change', e => {
+        handleFiles(e.target.files);
+        // 선택 후 다시 초기화 (같은 파일 재선택 허용)
+        fileInput.value = '';
+    });
+
+    // 드래그 오버/리브
+    dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('bg-light'); });
+    dz.addEventListener('dragleave', () => dz.classList.remove('bg-light'));
+
+    // 드롭
+    dz.addEventListener('drop', e => {
+        e.preventDefault();
+        dz.classList.remove('bg-light');
+        handleFiles(e.dataTransfer.files);
+    });
+
+
+</script>
+</body>
+</html>

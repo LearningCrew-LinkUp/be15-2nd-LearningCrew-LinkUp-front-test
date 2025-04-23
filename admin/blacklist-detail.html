@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>블랙리스트 상세 보기</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="blacklist-detail-container">
+    <h2 class="blacklist-title">블랙리스트 상세 정보</h2>
+
+    <div class="blacklist-info-box">
+        <div class="blacklist-line"><strong>블랙리스트 ID:</strong> 1</div>
+        <div class="blacklist-line"><strong>사용자 ID:</strong> 53</div>
+        <div class="blacklist-line"><strong>사용자 이름:</strong> 차민규</div>
+        <div class="blacklist-line"><strong>등록 일시:</strong> 2025-04-20 11:00</div>
+    </div>
+
+    <div class="blacklist-reason-section">
+        <div class="label">사유</div>
+        <div class="reason-content">
+            욕설 포함 후기 작성 및 운영진 경고 무시
+        </div>
+    </div>
+
+    <div class="blacklist-actions">
+        <button class="btn btn-unblock">블랙리스트 해제</button>
+        <button class="btn btn-cancel" onclick="window.history.back()">닫기</button>
+    </div>
+</div>
+
+</body>
+</html>

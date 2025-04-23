@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모임 개설</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="form-container">
+    <h2>모임 개설하기</h2>
+    <form>
+        <div class="form-row">
+            <label>모임 제목</label>
+            <input type="text" placeholder="예: 요즘같은 선선한 날에 축구" />
+        </div>
+
+        <div class="form-row">
+            <label>장소</label>
+            <input type="text" placeholder="예: 서울 동작구 장승배기 223" />
+        </div>
+
+        <div class="form-row-inline">
+            <div>
+                <label>날짜</label>
+                <input type="date" />
+            </div>
+            <div>
+                <label>시간</label>
+                <div class="time-range">
+                    <input type="time" /> ~ <input type="time" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row-inline">
+            <div>
+                <label>최소 모집 인원</label>
+                <input type="number" placeholder="예: 10" />
+            </div>
+            <div>
+                <label>최대 모집 인원</label>
+                <input type="number" placeholder="예: 16" />
+            </div>
+        </div>
+
+        <div class="form-row-inline">
+            <div>
+                <label>성별</label>
+                <select>
+                    <option>모두</option>
+                    <option>남자</option>
+                    <option>여자</option>
+                </select>
+            </div>
+            <div>
+                <label>나이대</label>
+                <input type="text" placeholder="예: 20,30" />
+            </div>
+            <div>
+                <label>실력</label>
+                <input type="text" placeholder="예: LV1" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <label>모임 소개</label>
+            <textarea rows="4" placeholder="예: 초보자도 환영입니다! 경기 후 뒤풀이도 가능합니다 :)"></textarea>
+        </div>
+
+        <button type="submit">모임 개설하기</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,958 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* 관리자 헤더 */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #F5F3FA;
+    border-bottom: 1px solid #e3e1ed;
+}
+
+.header-left {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.admin-nav a {
+    margin-left: 24px;
+    text-decoration: none;
+    font-weight: 500;
+    color: #555;
+    padding-bottom: 4px;
+}
+
+.admin-nav a.active {
+    border-bottom: 2px solid #BEB2DD;
+    color: #7D6FB3;
+}
+
+/* 관리자 전체 레이아웃 */
+.admin-container {
+    display: flex;
+    height: calc(100vh - 68px);
+}
+
+/* 사이드바 */
+.admin-sidebar {
+    width: 220px;
+    background-color: #F7F6FC;
+    border-right: 1px solid #e3e1ed;
+    padding: 32px 20px;
+}
+
+.admin-sidebar ul {
+    list-style: none;
+}
+
+.admin-sidebar li {
+    margin-bottom: 16px;
+}
+
+.admin-sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #555;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.admin-sidebar a.active {
+    background-color: #E8E4F7;
+}
+
+/* 메인 */
+.admin-main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.main-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* 필터 박스 전체 */
+/* 필터 박스 전체 */
+.filter-box {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* 두 필터 사이에 12px 간격 */
+}
+
+.filter-box label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.filter-box select {
+    margin-left: 12px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333;
+
+}
+
+.filter-box input {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+
+    font-size: 14px;
+    width: 50px;
+}
+
+.filter-box button {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #B7A6E4;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter-box input.custom-date-input {
+    width: 210px;
+}
+
+
+
+/* 테이블 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+/* 테이블 셀 전체 수직 정렬 */
+table td, table th {
+    vertical-align: middle;
+}
+
+thead th {
+    text-align: left;
+    padding: 14px 12px;
+    background-color: #F5F3FA;
+    border-bottom: 1px solid #e3e1ed;
+    font-weight: 500;
+    color: #444;
+}
+
+tbody td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    background-color: #fff;
+}
+
+/* 테이블 안 select 전용 스타일 */
+table select {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333;
+
+    padding: 2px 4px;
+    font-size: 12px;
+    height: auto; /* 기본 높이 유지 */
+    box-sizing: border-box;
+}
+
+/* admin-authority.html 전용: body에 authority-page 클래스 있을 때만 적용 */
+body.authority-page table th:nth-child(1),
+body.authority-page table td:nth-child(1) {
+    width: 10%;
+}
+
+body.authority-page table th:nth-child(2),
+body.authority-page table td:nth-child(2) {
+    width: 10%;
+}
+
+body.authority-page table th:nth-child(3),
+body.authority-page table td:nth-child(3) {
+    width: 8%;
+}
+
+body.authority-page table th:nth-child(4),
+body.authority-page table td:nth-child(4) {
+    width: 10%;
+}
+
+body.authority-page table th:nth-child(5),
+body.authority-page table td:nth-child(5) {
+    width: 13%;
+}
+
+body.authority-page table th:nth-child(6),
+body.authority-page table td:nth-child(6) {
+    width: 34%;
+}
+
+body.authority-page table th:nth-child(7),
+body.authority-page table td:nth-child(7) {
+    width: 15%;
+}
+
+
+/* 페이징 */
+.pagination {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.page-btn,
+.page-nav {
+    border: none;
+    background-color: #FFFFFF;
+    color: #333;
+    padding: 8px 14px;
+    margin: 0 3px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.page-btn:hover,
+.page-nav:hover {
+    background-color: #DCD5F2;
+}
+
+.page-btn.active {
+    background-color: #B7A6E4;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* 처리 버튼 사이즈 보정용 */
+.action-btn {
+    margin-left: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    background-color: #DDD9F2;
+    color: #333;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background-color: #C8C2E8;
+}
+
+/* 선택 드롭다운 */
+.select-box {
+    padding: 6px 10px;
+    border: 1px solid #dcd8f0;
+    border-radius: 6px;
+    background-color: #f7f5ff;
+
+    font-size: 13px;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* 드롭다운 */
+.select-box {
+    padding: 6px 10px;
+    height: 36px; /* 고정 높이 */
+    line-height: 1;
+    border: 1px solid #dcd8f0;
+    border-radius: 6px;
+    background-color: #f7f5ff;
+
+    font-size: 13px;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* 버튼 */
+.action-btn {
+    margin-left: 6px;
+    padding: 0 14px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    background-color: #DCD6F2;
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    vertical-align: middle;
+}
+
+.action-btn:hover {
+    background-color: #C6BDEB;
+}
+
+/* 처리 완료 텍스트도 높이에 맞춤 */
+td.status-complete {
+    height: 36px;
+    color: #999;
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+/* 모달? 사업자 권한 승인 팝업 */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    width: 720px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.modal-info-wrapper {
+    display: flex;
+    gap: 24px;
+}
+
+.modal-pdf iframe {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 280px;
+    height: 360px;
+}
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 14px;
+}
+
+.modal-info p {
+    margin: 6px 0;
+}
+
+.modal-action {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-action label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.modal-action select,
+.modal-action input {
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 4px;
+}
+
+.modal-buttons {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #B7A6E4;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal-buttons button:hover {
+    background-color: #5c50d0;
+}
+
+
+/* 신고자별 신고 내역 상세 페이지 */
+.report-detail-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+}
+
+.report-detail-container h2 {
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.report-detail-grid {
+    display: flex;
+    gap: 40px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.report-detail-grid div {
+    line-height: 1.5;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.action-buttons button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #888;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-buttons button:hover {
+    background-color: #666;
+}
+
+/* 신고 전체 목록 상세조회 */
+.detail-card {
+    background: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    padding: 36px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 28px;
+}
+
+.info-block {
+    background: #fafafa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.value {
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.reason-box {
+    background: #f3f3f3;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    margin-top: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.action-buttons button {
+    padding: 8px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #7164e2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-buttons button:hover {
+    background-color: #5e52cc;
+}
+
+.action-buttons button:last-child {
+    background-color: #888;
+}
+
+.action-buttons button:last-child:hover {
+    background-color: #666;
+}
+
+@media (max-width: 768px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* 신고자별 신고 내역 상세 페이지 */
+.report-detail-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+}
+
+.report-detail-container h2 {
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.report-detail-grid {
+    display: flex;
+    gap: 40px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.report-detail-grid div {
+    line-height: 1.5;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.action-buttons button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #888;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-buttons button:hover {
+    background-color: #666;
+}
+
+/* 신고 전체 목록 상세조회 */
+.detail-card {
+    background: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    padding: 36px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 28px;
+}
+
+.info-block {
+    background: #fafafa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.value {
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.reason-box {
+    background: #f3f3f3;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    margin-top: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.action-buttons button {
+    padding: 8px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #7164e2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-buttons button:hover {
+    background-color: #5e52cc;
+}
+
+.action-buttons button:last-child {
+    background-color: #888;
+}
+
+.action-buttons button:last-child:hover {
+    background-color: #666;
+}
+
+@media (max-width: 768px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 제재 상세 페이지 */
+.sanction-detail-section {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 36px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.sanction-detail-section header h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.sanction-detail-section .sub-text {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 24px;
+}
+
+.sanction-block {
+    margin-bottom: 28px;
+}
+
+.sanction-block.highlight {
+    background: #f8f8ff;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e0e0ff;
+}
+
+.sanction-block h3 {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 16px;
+}
+
+.sanction-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-weight: 600;
+    color: #555;
+}
+
+.value {
+    color: #222;
+}
+
+.sanction-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.sanction-actions .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn.confirm { background-color: #5b60ec; }
+.btn.confirm:hover { background-color: #464bd4; }
+
+.btn.cancel { background-color: #999; }
+.btn.cancel:hover { background-color: #777; }
+
+.btn.neutral { background-color: #ccc; color: #222; }
+.btn.neutral:hover { background-color: #aaa; }
+
+/* 이의제기 상세 조회*/
+.objection-card {
+    max-width: 720px;
+    margin: 64px auto;
+    background-color: #FFFFFF; /* background.surface */
+    border: 1px solid #E6E6E6; /* border.subtle */
+    border-radius: 12px;
+    padding: 40px;
+
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.objection-card h2 {
+    font-size: 20px;
+    color: #1A1A1A; /* text.default */
+    margin-bottom: 32px;
+}
+
+.objection-info .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.objection-info .label {
+    color: #787A80; /* text.subtle */
+    font-weight: 500;
+    min-width: 140px;
+}
+
+.objection-info .value {
+    color: #1A1A1A;
+    font-weight: 500;
+}
+
+.objection-info .row.full {
+    flex-direction: column;
+    margin-top: 24px;
+}
+
+.value-box {
+    background-color: #F3F3F3;
+    border: 1px solid #E6E6E6;
+    border-radius: 8px;
+    padding: 16px;
+    color: #1A1A1A;
+    line-height: 1.6;
+}
+
+.objection-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 36px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-approve {
+    background-color: #5790FF; /* primary.default */
+    color: #fff;
+}
+.btn-approve:hover {
+    background-color: #88A0FF; /* primary.hover */
+}
+
+.btn-reject {
+    background-color: #FE8A91; /* warning.default */
+    color: #fff;
+}
+.btn-reject:hover {
+    background-color: #E75A61;
+}
+
+.btn-close {
+    background-color: #939DCA; /* secondary.default */
+    color: white;
+}
+.btn-close:hover {
+    background-color: #7C88B5;
+}
+
+/* 블랙리스트 상세 조회 */
+.blacklist-detail-container {
+    max-width: 640px;
+    margin: 64px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #e4e6ec;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+
+}
+
+.blacklist-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 32px;
+}
+
+.blacklist-info-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fafbfe;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+}
+
+.blacklist-line {
+    font-size: 15px;
+    color: #222;
+    margin-bottom: 14px;
+}
+
+.label {
+    font-size: 13px;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.reason-content {
+    background-color: #f7f8fc;
+    border: 1px solid #e1e4ed;
+    border-radius: 8px;
+    padding: 18px;
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.blacklist-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-unblock {
+    background-color: #5b60ec;
+    color: white;
+}
+.btn-unblock:hover {
+    background-color: #4449c7;
+}
+
+.btn-cancel {
+    background-color: #999;
+    color: white;
+}
+.btn-cancel:hover {
+    background-color: #777;
+}
+
