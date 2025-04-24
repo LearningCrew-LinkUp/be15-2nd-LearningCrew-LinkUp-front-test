@@ -242,9 +242,9 @@ a {
 }
 
 .filter-chip.active {
-    background-color: #5c6df9;
+    background-color: #5790FF;
     color: #fff;
-    border-color: #5c6df9;
+    border-color: #5790FF;
 }
 
 .date-input {
@@ -261,7 +261,7 @@ a {
     padding: 10px;
     font-size: 14px;
     font-weight: 500;
-    background-color: #5c6df9;
+    background-color: #5790FF;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -270,7 +270,7 @@ a {
 }
 
 .filter-search-btn:hover {
-    background-color: #3f4ce1;
+    background-color: #5790FF;
 }
 
 /* ---------------- 모임 개설 버튼 ---------------- */
@@ -292,7 +292,7 @@ a {
 }
 
 .floating-add-btn:hover {
-    background-color: #3f4ce1;
+    background-color: #5790FF;
     transform: translateY(-2px);
 }
 
