@@ -298,58 +298,88 @@ a {
 
 .create-modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.modal-box {
-    background: white;
-    padding: 32px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    width: 360px;
-    text-align: center;
-}
-
-.modal-box h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.modal-box button {
+.create-modal .modal-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px 32px;
     width: 100%;
-    padding: 12px;
-    font-size: 15px;
-    font-weight: 500;
+    max-width: 420px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+    font-family: 'Pretendard', sans-serif;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+.create-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.create-modal .modal-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.create-modal .close-btn {
+    background: none;
     border: none;
-    border-radius: 8px;
-    margin-top: 10px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    padding: 4px;
+    font-size: 22px;
+    color: #94a3b8;
+    transition: color 0.2s ease;
 }
 
-.modal-box .place {
-    background-color: #5790FF;
-    color: white;
+.create-modal .close-btn:hover {
+    color: #475569;
 }
 
-.modal-box .custom {
-    background-color: #e1e5f2;
-    color: #333;
+.create-modal .option-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    background-color: #eef2ff;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e40af;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
 }
 
-.modal-box button:hover {
-    opacity: 0.95;
+.create-modal .option-button:hover {
+    background-color: #dbe3ff;
 }
+
+.create-modal .option-button .material-symbols-outlined {
+    font-size: 22px;
+    color: #4f46e5;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+
 
 
 /* 모임 선택 창*/

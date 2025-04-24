@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>모임 목록 조회</title>
+  <link rel="stylesheet" href="meeting-search.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+
+<!-- 헤더 -->
+<header class="main-header">
+  <div class="logo">
+    <img src="../img/learning_crew_logo.webp" alt="로고" />
+  </div>
+  <nav class="nav-menu">
+    <a href="#">커뮤니티</a>
+    <a href="meeting-list.html">모임</a>
+    <a href="../place/place-search.html">장소</a>
+    <a href="#">사용자</a>
+  </nav>
+</header>
+
+<!-- 본문 -->
+<div class="container">
+
+  <!-- 왼쪽: 모임 목록 + 지도 -->
+  <div class="main-content">
+    <!-- 모임 카드 리스트 -->
+    <section class="meeting-list">
+      <div class="filter-toggle-wrap">
+        <button class="filter-toggle-btn">
+          <span class="material-symbols-outlined card" onclick="location.href='meeting-search.html'">tune</span> 필터
+        </button>
+      </div>
+
+      <div class="meeting-card">
+        <img src="../img/place_img1.png" alt="모임 이미지" class="meeting-img" />
+        <div class="meeting-info">
+          <div class="meeting-meta">
+        <span class="date">
+          <span class="material-symbols-outlined card">event</span> 2025.04.23 (화)
+        </span>
+            <button class="bookmark">
+              <span class="material-symbols-outlined filled">favorite</span>
+            </button>
+          </div>
+          <h3 class="title">요즘같은 선선한 날에 축구 한판 어때요!</h3>
+          <p class="location">
+            <span class="material-symbols-outlined card">location_on</span> 서울 도봉구 방학로 223
+          </p>
+          <p class="likes">
+            <span class="material-symbols-outlined card">favorite</span> 32명 찜
+          </p>
+          <p class="price">
+            <span class="material-symbols-outlined card">attach_money</span> <strong>20,000원</strong>
+          </p>
+        </div>
+      </div>
+      <div class="meeting-card">
+        <img src="../img/place_img1.png" alt="모임 이미지" class="meeting-img" />
+        <div class="meeting-info">
+          <div class="meeting-meta">
+        <span class="date">
+          <span class="material-symbols-outlined card">event</span> 2025.04.23 (화)
+        </span>
+            <button class="bookmark">
+              <span class="material-symbols-outlined not-filled">favorite</span>
+            </button>
+          </div>
+          <h3 class="title">요즘같은 선선한 날에 축구 한판 어때요!</h3>
+          <p class="location">
+            <span class="material-symbols-outlined card">location_on</span> 서울 도봉구 방학로 223
+          </p>
+          <p class="likes">
+            <span class="material-symbols-outlined card">favorite</span> 32명 찜
+          </p>
+          <p class="price">
+            <span class="material-symbols-outlined card">attach_money</span> <strong>20,000원</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 지도 -->
+    <main class="map-section">
+      <img src="../img/map_img.png" alt="지도" class="map-image" />
+    </main>
+  </div>
+
+
+  <!-- 왼쪽 플로팅 사이드바 -->
+  <div class="floating-nav">
+    <div class="nav-section">
+      <div class="nav-btn active" title="모임 개설" onclick="location.href='meeting-create-select.html'">
+        <span class="material-symbols-outlined" >edit_note</span>
+      </div>
+    </div>
+    <hr />
+    <div class="nav-section">
+      <div class="nav-btn" title="개설 모임 관리">
+        <span class="material-symbols-outlined">assignment</span>
+      </div>
+      <div class="nav-btn" title="참가 모임 관리">
+        <span class="material-symbols-outlined">emoji_people</span>
+      </div>
+      <div class="nav-btn" title="찜 목록">
+        <span class="material-symbols-outlined">favorite</span>
+      </div>
+    </div>
+    <hr />
+    <div class="nav-section">
+      <div class="nav-btn" title="알림">
+        <span class="material-symbols-outlined">notifications</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 모달 -->
+  <div class="create-modal" id="createModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>모임 개설 유형을 선택해주세요</h2>
+        <button class="close-btn" onclick="document.getElementById('createModal').style.display='none'">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div class="option-button" onclick="location.href='meeting-create-place.html'">
+        <span class="material-symbols-outlined">location_on</span>
+        장소 예약 모임 개설
+      </div>
+
+      <div class="option-button" onclick="location.href='meeting-create-form.html'">
+        <span class="material-symbols-outlined">edit_note</span>
+        지정 주소 모임 개설
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 스크립트 -->
+<script>
+  flatpickr("#dateRange", {
+    mode: "range",
+    dateFormat: "Y-m-d",
+    locale: "ko"
+  });
+
+  // chip 토글 기능
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('active');
+    });
+  });
+
+
+
+</script>
+
+</body>
+</html>
