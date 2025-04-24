@@ -1,0 +1,235 @@
+/* 기본 설정 */
+body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    background: #f0f2fa;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* 상단 헤더 */
+.main-header {
+    height: 60px;
+    background: linear-gradient(to right, #e7f0ff, #f0e7ff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.main-header .logo img {
+    height: 36px;
+}
+
+.nav-menu a {
+    margin-left: 20px;
+    font-size: 15px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+    color: #5865f2;
+}
+
+
+/* 왼쪽 사이드바 */
+.sidebar {
+    width: 420px;
+    background: #ffffff;
+    padding: 24px;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-section {
+    margin-bottom: 24px;
+}
+
+.filter-section h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-buttons button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 18px;
+    background-color: #e0e7ff;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.filter-buttons button.active,
+.filter-buttons button:hover {
+    background-color: #5865f2;
+    color: #fff;
+}
+
+/* 필터 줄 전체 */
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+/* 필터 아이템 (라벨 + 드롭다운) */
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 드롭다운 */
+.filter-item select {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #d4d7e5;
+    border-radius: 8px;
+    background-color: #fff;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+    width:  70px;
+}
+
+/* 검색 버튼 */
+.search-btn {
+    padding: 6px 16px;
+    background-color: #c7baf5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-btn:hover {
+    background-color: #a79ae2;
+}
+
+
+
+.place-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.place-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.place-card img,
+.place-card .placeholder-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #e0e0e0;
+}
+
+.place-card .placeholder-img {
+    background-image: url('https://via.placeholder.com/400x200?text=이미지+없음');
+    background-size: cover;
+    background-position: center;
+}
+
+.place-info {
+    padding: 16px;
+}
+
+.place-info h3 {
+    font-size: 16px;
+    margin: 0 0 6px 0;
+}
+
+.place-info p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.rating {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #f1b500;
+}
+
+.bookmark {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.bookmark.active {
+    color: #e74c3c;
+}
+
+/* 오른쪽 지도 영역 */
+.map-section {
+    flex-grow: 1;
+    position: relative;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 장소 추가 버튼 */
+.floating-add-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background-color: #bbaaf5;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 20;
+}
+
+.floating-add-btn:hover {
+    background-color: #a89be6;
+    transform: translateY(-2px);
+}
