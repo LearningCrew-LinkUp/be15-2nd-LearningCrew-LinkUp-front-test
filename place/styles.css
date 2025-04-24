@@ -73,11 +73,13 @@ a {
     flex-direction: column;
     gap: 16px;
 }
+/* 필터 줄 (이제 최대 3열까지 가능) */
 .filter-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
+
 .filter-item {
     display: flex;
     align-items: center;
@@ -102,6 +104,7 @@ a {
     background-position: right 14px center;
     background-size: 14px 14px;
     color: #333;
+    width: 80px;
 }
 .filter-item input[type="text"] {
     flex: 1;
@@ -122,22 +125,22 @@ a {
 .filter-item.grow {
     flex: 1;
 }
+/* 검색 버튼 위치 자연스럽게 오른쪽으로 */
 .search-btn {
-    padding: 10px 20px;
+    height: 38px;
+    padding: 0 20px;
     font-size: 14px;
     font-weight: 500;
     background-color: #bbaaf5;
     color: white;
     border: none;
     border-radius: 10px;
-    white-space: nowrap;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 .search-btn:hover {
     background-color: #a89be6;
 }
-
 
 /* ---------------- 장소 카드 ---------------- */
 .place-list {
