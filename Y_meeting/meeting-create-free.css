@@ -1,0 +1,86 @@
+/* 폰트 기본 */
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #f4f6fb;
+    color: #333;
+    margin: 0;
+    padding: 40px;
+}
+
+/* 카드 스타일 */
+.form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 640px;
+}
+
+/* 제목 */
+.form-card h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+/* 폼 그룹 단일 줄 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1.5px solid #dcdfe5;
+    border-radius: 10px;
+    background: #fff;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* textarea 스타일 */
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* 가로 정렬 */
+.form-group-row {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.form-group-row .form-group {
+    flex: 1;
+}
+
+/* 검색/등록 버튼 */
+.search-btn {
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #5790FF;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-btn:hover {
+    background-color: #4077e6;
+}
