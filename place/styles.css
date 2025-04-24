@@ -42,7 +42,7 @@ a {
     transition: color 0.2s ease;
 }
 .nav-menu a:hover {
-    color: #5865f2;
+    color: #5790FF;
 }
 
 
@@ -131,7 +131,7 @@ a {
     padding: 0 20px;
     font-size: 14px;
     font-weight: 500;
-    background-color: #bbaaf5;
+    background-color: #5790FF;
     color: white;
     border: none;
     border-radius: 10px;
@@ -139,7 +139,7 @@ a {
     transition: background-color 0.2s ease;
 }
 .search-btn:hover {
-    background-color: #a89be6;
+    background-color: #5790FF;
 }
 
 /* ---------------- 장소 카드 ---------------- */
@@ -221,7 +221,7 @@ a {
     font-size: 14px;
     font-weight: 500;
     color: white;
-    background-color: #bbaaf5;
+    background-color: #5790FF;
     border: none;
     border-radius: 999px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -230,6 +230,6 @@ a {
     z-index: 20;
 }
 .floating-add-btn:hover {
-    background-color: #a89be6;
+    background-color: #5790FF;
     transform: translateY(-2px);
 }
