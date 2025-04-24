@@ -1,0 +1,421 @@
+/* ---------------- 기본 설정 ---------------- */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family:'Pretendard', sans-serif;
+    background: #f4f6fb;
+    height: 100vh;
+    /*overflow: hidden;*/
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ---------------- 헤더 ---------------- */
+
+/* 상단 헤더 */
+.main-header {
+    height: 60px;
+    background: linear-gradient(to right, #e7f0ff, #f0e7ff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.main-header .logo img {
+    height: 36px;
+}
+
+.nav-menu a {
+    margin-left: 20px;
+    font-size: 15px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+    color: #5865f2;
+}
+
+
+
+
+/* ---------------- 전체 레이아웃 ---------------- */
+.container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+
+/* ---------------- 사이드바 ---------------- */
+.sidebar {
+    width: 440px;
+    background: #ffffff;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+    border-right: 1px solid #eee;
+}
+
+
+/* ---------------- 필터 박스 ---------------- */
+.filter-box {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 필터 라인: 2열 */
+.filter-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 16px;
+}
+
+/* 필터 아이템은 그대로 */
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 조회기간 + 검색 줄 */
+.filter-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.filter-item span {
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+/* 조회기간 줄만 다르게 처리 */
+.filter-row.bottom-row {
+    justify-content: space-between;
+}
+
+/* 조회기간 입력창 */
+.filter-item.grow {
+    flex: 1;
+}
+
+/* 공통 select 스타일 */
+.filter-item select {
+    flex: 1;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 999px;
+    border: 1.5px solid #dcdfe5;
+    background-color: #fff;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px 14px;
+    color: #333;
+}
+
+/* 조회기간 입력창 */
+.filter-item input[type="text"] {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1.5px solid #dcdfe5;
+    background-color: #fff;
+    width: 100%;
+}
+
+/* 검색 버튼 */
+.search-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #bbaaf5;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.search-btn:hover {
+    background-color: #a89be6;
+}
+
+
+/* ---------------- 모임 카드 리스트 ---------------- */
+.meeting-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 카드 */
+.meeting-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.meeting-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.meeting-info {
+    padding: 16px;
+}
+
+.meeting-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.meeting-meta .date {
+    font-size: 13px;
+    color: #666;
+}
+
+.bookmark {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 6px 0 10px 0;
+    color: #222;
+}
+
+.location,
+.likes,
+.price {
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0;
+}
+
+.price strong {
+    color: #2d6cdf;
+    font-weight: 600;
+}
+
+
+/* ---------------- 지도 ---------------- */
+.map-section {
+    flex: 1;
+    position: relative;
+    height: 100%;
+}
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ----------------- 모임 개설 --------------- */
+.floating-add-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background-color: #bbaaf5;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 20;
+}
+.floating-add-btn:hover {
+    background-color: #a89be6;
+    transform: translateY(-2px);
+}
+/* 하단 추가 */
+
+/* 모임 상세 페이지 레이아웃 */
+.meeting-detail-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.meeting-image-box img {
+    width: 350px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.meeting-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.meeting-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.meeting-meta {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.meeting-description,
+.meeting-host {
+    margin-top: 24px;
+    padding: 16px;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap; /* 아이템들이 넘어가지 않도록 wrap을 사용 */
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid #eee;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.meeting-description h4,
+.meeting-host h4 {
+    display: block;  /* 한 줄을 차지하게 함 */
+    margin-bottom: 8px; /* 하단 여백 추가 */
+    width: 100%; /* 부모 요소의 너비를 100% 차지 */
+    color: #3f7af0;
+}
+
+.meeting-description .meeting-description-text,
+.meeting-host .meeting-host-text {
+    display: flex; /* 텍스트와 이미지를 가로로 정렬 */
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.applicant-photo {
+    margin-right: 16px; /* 이미지와 텍스트 사이에 여백 추가 */
+    /*flex-shrink: 0;*/
+}
+
+.applicant-photo img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.applicant-info p {
+    margin: 4px 0; /* 각 항목 사이에 여백 추가 */
+}
+
+.join-btn {
+    margin-top: 30px;
+    width: 100%;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #5a67d8;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #434190;
+}
+
+/*!* Main Page *!*/
+/*.main-container {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    padding: 80px 10%;*/
+/*    min-height: calc(100vh - 80px);*/
+/*}*/
+
+/*.intro-text {*/
+/*    max-width: 50%;*/
+/*}*/
+
+/*.intro-text h1 {*/
+/*    font-size: 3rem;*/
+/*    color: #2196f3;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.intro-text p {*/
+/*    font-size: 1.2rem;*/
+/*    line-height: 1.8;*/
+/*    margin-bottom: 30px;*/
+/*}*/
+
+/*.intro-text button {*/
+/*    padding: 12px 24px;*/
+/*    background-color: #2196f3;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    font-size: 1rem;*/
+/*    cursor: pointer;*/
+/*    border-radius: 6px;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+
+/*.intro-text button:hover {*/
+/*    background-color: #1976d2;*/
+/*}*/
+
+/*.banner-img img {*/
+/*    width: 500px;*/
+/*    max-width: 100%;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 8px 16px rgba(0,0,0,0.1);*/
+/*}*/
