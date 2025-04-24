@@ -138,21 +138,27 @@ a {
 }
 
 /* 조회기간 입력창 */
-.filter-item input[type="text"] {
+/* 공통 입력 필드 스타일 */
+input[type="text"],
+#dateRange {
     padding: 8px 14px;
     font-size: 14px;
     border-radius: 10px;
     border: 1.5px solid #dcdfe5;
     background-color: #fff;
+    color: #333;
     width: 100%;
 }
+
+
+
 
 /* 검색 버튼 */
 .search-btn {
     padding: 10px 20px;
     font-size: 14px;
     font-weight: 500;
-    background-color: #bbaaf5;
+    background-color: #5790FF;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -161,7 +167,7 @@ a {
     transition: background-color 0.2s ease;
 }
 .search-btn:hover {
-    background-color: #a89be6;
+    background-color: #5790FF;
 }
 
 
@@ -253,7 +259,7 @@ a {
     font-size: 14px;
     font-weight: 500;
     color: white;
-    background-color: #bbaaf5;
+    background-color: #5790FF;
     border: none;
     border-radius: 999px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -262,6 +268,77 @@ a {
     z-index: 20;
 }
 .floating-add-btn:hover {
-    background-color: #a89be6;
+    background-color: #5790FF;
     transform: translateY(-2px);
+}
+
+/* ---------------- 폼 공통 그룹 ---------------- */
+.form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 640px;
+}
+
+.form-card h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1.5px solid #dcdfe5;
+    border-radius: 10px;
+    background: #fff;
+    color: #333;
+    width: 100%;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* ---------------- 가로 나란히 정렬 ---------------- */
+.form-group-row {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.form-group-row .form-group {
+    flex: 1;
+}
+
+/* ---------------- 체크박스 라벨 ---------------- */
+.form-group input[type="checkbox"] {
+    margin-right: 6px;
+    transform: translateY(1px);
+}
+
+.form-group label input[type="checkbox"] {
+    vertical-align: middle;
 }

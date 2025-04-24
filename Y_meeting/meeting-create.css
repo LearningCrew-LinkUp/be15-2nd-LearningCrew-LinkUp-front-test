@@ -1,0 +1,321 @@
+/* meeting-create.css */
+
+:root {
+    --primary: #4a8af4;
+    --primary-hover: #357ae8;
+    --gray-light: #f4f6fc;
+    --gray-line: #e5e7eb;
+    --gray-text: #6b7280;
+    --gray-dark: #374151;
+    --white: #ffffff;
+    --radius: 12px;
+    --font: 'Pretendard', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 40px;
+    background-color: var(--gray-light);
+    font-family: var(--font);
+    color: var(--gray-dark);
+}
+
+.form-wrapper {
+    background: var(--white);
+    border-radius: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.full-input,
+select,
+textarea {
+    border: 1px solid var(--gray-line);
+    background: var(--white);
+    font-size: 15px;
+    padding: 10px 10px;
+    border-radius: var(--radius);
+    box-sizing: border-box;
+}
+
+select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%236b7280" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+}
+
+.form-section {
+    margin-bottom: 32px;
+}
+
+.place-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.place-btn {
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid var(--gray-line);
+    background: var(--white);
+    color: var(--gray-dark);
+    transition: 0.2s ease;
+}
+
+.place-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    font-weight: 500;
+}
+
+.place-btn:hover:not(.active) {
+    background: var(--gray-line);
+}
+
+.cost-label {
+    margin-left: auto;
+    font-size: 14px;
+    color: var(--gray-text);
+}
+
+.place-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--gray-line);
+    border-radius: var(--radius);
+}
+
+.map-box {
+    margin-top: 10px;
+    background: #e5e7eb;
+    height: 160px;
+    border-radius: var(--radius);
+}
+
+.time-flex {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 2.5fr;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.time-box,
+.count-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.time-box label,
+.count-box label {
+    min-width: 72px;
+    text-align: right;
+}
+
+.form-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--gray-dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.gender-skill-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 60px 1fr;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    padding-left: 4px;
+}
+
+.gender-skill-row select {
+    width: 100%;
+    max-width: 200px;
+    margin-right: 8px;
+}
+
+.age-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 14px;
+    padding-left: 84px;
+}
+
+.age-label {
+    font-size: 14px;
+    padding-left: 8px;
+    margin-bottom: 4px;
+    display: block;
+    text-align: left;
+}
+
+textarea {
+    resize: vertical;
+    line-height: 1.6;
+    width: 100%;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: white;
+    font-size: 15px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.primary-btn:hover {
+    background: var(--primary-hover);
+}
+
+.cancel-btn {
+    background: var(--gray-line);
+    color: var(--gray-text);
+    font-size: 15px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #d1d5db;
+}
+
+.place-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.place-controls {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 12px;
+}
+
+.place-body {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.place-select {
+    flex: 1;
+}
+
+.map-box {
+    flex: 1;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    font-size: 14px;
+    align-items: center;
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.age-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.btn-right {
+    justify-content: flex-end;
+}
+
+.time-flex-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+
+.time-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.time-item label {
+    white-space: nowrap;
+    font-weight: 500;
+    color: var(--gray-dark);
+    min-width: 72px;
+    text-align: left;
+}
+
+.time-range,
+.count-range {
+    display: flex;
+    gap: 8px;
+}
+
+.time-range select,
+.count-range select,
+.time-item select {
+    min-width: 100px;
+    padding: 10px 14px;
+}
+
+/* 날짜 선택 input 스타일 */
+.date-input {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1.5px solid #dcdfe5;
+    background-color: #fff;
+    color: #333;
+    width: 100%;
+    max-width: 150px;
+}
