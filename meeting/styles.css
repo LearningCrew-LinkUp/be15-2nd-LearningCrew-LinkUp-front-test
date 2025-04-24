@@ -243,3 +243,25 @@ a {
     height: 100%;
     object-fit: cover;
 }
+
+/* ----------------- 모임 개설 --------------- */
+.floating-add-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background-color: #bbaaf5;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 20;
+}
+.floating-add-btn:hover {
+    background-color: #a89be6;
+    transform: translateY(-2px);
+}
