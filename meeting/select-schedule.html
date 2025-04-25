@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>예약하기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .progress-container {
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .progress-bar {
+            position: relative;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 999px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            background-color: #2563eb;
+            width: 25%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            padding: 0 4px;
+        }
+
+        .progress-steps div.active {
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .modal {
+            background-color: #fff;
+            width: 420px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .calendar {
+            text-align: center;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .calendar-header button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar-table th,
+        .calendar-table td {
+            width: 14.2%;
+            height: 40px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .calendar-table td {
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .calendar-table td.disabled {
+            color: #ccc;
+            pointer-events: none;
+        }
+
+        .calendar-table td.active {
+            background: linear-gradient(to right, #d5d7f8, #fce4ec);
+            color: #5a3e85;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .time-selector {
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .time-button {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px 16px;
+            border-radius: 8px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .time-button.selected {
+            background: linear-gradient(to right, #d5d7f8, #fce4ec);
+            border: none;
+            color: #5a3e85;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
+        }
+
+        .time-button.selected:hover {
+            transform: translateY(-1px);
+        }
+
+        .time-button.disabled {
+            color: #bbb;
+            background: #f1f1f1;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .next-button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #ccc;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: not-allowed;
+            transition: background-color 0.2s;
+        }
+
+        .next-button.active {
+            background-color: #18a058;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-container">
+    <div class="progress-bar">
+        <div class="progress-bar-inner" id="progress-bar-inner" style="width: 25%;"></div>
+    </div>
+    <div class="progress-steps">
+        <div id="step-0" class="active">시간</div>
+        <div id="step-1">제목 및 내용</div>
+        <div id="step-2">필터</div>
+        <div id="step-3">결제</div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="calendar">
+        <div class="calendar-header">
+            <button id="prevMonth">◀</button>
+            <h2 id="calendar-title">2025.5</h2>
+            <button id="nextMonth">▶</button>
+        </div>
+        <table class="calendar-table">
+            <thead>
+            <tr>
+                <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
+            </tr>
+            </thead>
+            <tbody id="calendar-body"></tbody>
+        </table>
+    </div>
+
+    <div class="time-selector">
+        <div class="section-title">시작 시간</div>
+        <div id="startTime">
+            <button class="time-button">10:00</button>
+            <button class="time-button">10:30</button>
+            <button class="time-button">11:00</button>
+            <button class="time-button">11:30</button>
+            <button class="time-button">12:00</button>
+            <button class="time-button">12:30</button>
+            <button class="time-button">13:00</button>
+            <button class="time-button">13:30</button>
+            <button class="time-button">14:00</button>
+            <button class="time-button">14:30</button>
+            <button class="time-button">15:00</button>
+            <button class="time-button">15:30</button>
+            <button class="time-button">16:00</button>
+            <button class="time-button">16:30</button>
+            <button class="time-button">17:00</button>
+            <button class="time-button">17:30</button>
+            <button class="time-button">18:00</button>
+        </div>
+
+        <div class="section-title" style="margin-top: 16px;">종료 시간</div>
+        <div id="endTime">
+            <<button class="time-button">11:00</button>
+            <button class="time-button">11:30</button>
+            <button class="time-button">12:00</button>
+            <button class="time-button">12:30</button>
+            <button class="time-button">13:00</button>
+            <button class="time-button">13:30</button>
+            <button class="time-button">14:00</button>
+            <button class="time-button">14:30</button>
+            <button class="time-button">15:00</button>
+            <button class="time-button">15:30</button>
+            <button class="time-button">16:00</button>
+            <button class="time-button">16:30</button>
+            <button class="time-button">17:00</button>
+            <button class="time-button">17:30</button>
+            <button class="time-button">18:00</button>
+            <button class="time-button">18:30</button>
+            <button class="time-button">19:00</button>
+        </div>
+    </div>
+
+    <button class="next-button" id="nextBtn" disabled>다음 단계로</button>
+</div>
+
+<script>
+    const today = new Date();
+    const limitDate = new Date(today);
+    limitDate.setDate(today.getDate() + 13);
+
+    let currentYear = today.getFullYear();
+    let currentMonth = today.getMonth();
+
+    let selectedDate = null;
+    let selectedStartTime = null;
+    let selectedEndTime = null;
+
+    const renderCalendar = () => {
+        const title = document.getElementById("calendar-title");
+        const body = document.getElementById("calendar-body");
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
+        title.textContent = `${currentYear}.${currentMonth + 1}`;
+
+        let html = "<tr>";
+        let day = 0;
+
+        for (let i = 0; i < firstDay; i++) {
+            html += "<td></td>";
+            day++;
+        }
+
+        for (let date = 1; date <= lastDate; date++) {
+            const current = new Date(currentYear, currentMonth, date);
+            const isSelectable = current >= today && current <= limitDate;
+            const classes = isSelectable ? "" : "disabled";
+            html += `<td class="${classes}" data-date="${date}">${date}</td>`;
+            day++;
+            if (day % 7 === 0) html += "</tr><tr>";
+        }
+
+        html += "</tr>";
+        body.innerHTML = html;
+
+        document.querySelectorAll(".calendar-table td").forEach(td => {
+            if (!td.classList.contains("disabled") && td.dataset.date) {
+                td.addEventListener("click", () => {
+                    document.querySelectorAll(".calendar-table td").forEach(cell => cell.classList.remove("active"));
+                    td.classList.add("active");
+                    selectedDate = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${td.dataset.date.padStart(2, '0')}`;
+                    updateNextButton();
+                });
+            }
+        });
+    };
+
+    const handleTimeSelection = () => {
+        const startButtons = document.querySelectorAll("#startTime .time-button");
+        const endButtons = document.querySelectorAll("#endTime .time-button");
+
+        startButtons.forEach((btn, idx) => {
+            btn.addEventListener("click", () => {
+                startButtons.forEach(b => b.classList.remove("selected"));
+                btn.classList.add("selected");
+                selectedStartTime = btn.textContent;
+
+                selectedEndTime = null;
+                endButtons.forEach((b, i) => {
+                    b.classList.remove("selected", "disabled");
+                    if (i <= idx) b.classList.add("disabled");
+                });
+                updateNextButton();
+            });
+        });
+
+        endButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (!btn.classList.contains("disabled")) {
+                    endButtons.forEach(b => b.classList.remove("selected"));
+                    btn.classList.add("selected");
+                    selectedEndTime = btn.textContent;
+                    updateNextButton();
+                }
+            });
+        });
+    };
+
+    const updateNextButton = () => {
+        const btn = document.getElementById("nextBtn");
+        if (selectedDate && selectedStartTime && selectedEndTime) {
+            btn.classList.add("active");
+            btn.disabled = false;
+        } else {
+            btn.classList.remove("active");
+            btn.disabled = true;
+        }
+    };
+
+    document.getElementById("prevMonth").addEventListener("click", () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar();
+    });
+
+    document.getElementById("nextMonth").addEventListener("click", () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar();
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+        alert(`예약 날짜: ${selectedDate}, 시작: ${selectedStartTime}, 종료: ${selectedEndTime}`);
+    });
+
+    renderCalendar();
+    handleTimeSelection();
+</script>
+
+</body>
+</html>
