@@ -41,14 +41,13 @@
       <input type="date" class="date-input" />
     </div>
 
-    <div class="time-item">
-      <label>시간대 :</label>
-      <div class="time-range">
-        <select><option>시작 시간</option></select>
-        ~
-        <select><option>종료 시간</option></select>
-      </div>
+    <div class="filter-item time-input time-item">
+      <label>시간대</label>
+      <input type="time" id="start-time" name="startTime" />
+      <span class="time-separator">~</span>
+      <input type="time" id="end-time" name="endTime" />
     </div>
+
 
     <div class="time-item">
       <label>모집 인원 :</label>

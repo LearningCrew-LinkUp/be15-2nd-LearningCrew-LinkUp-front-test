@@ -38,6 +38,10 @@ body {
     gap: 8px;
 }
 
+.full-input {
+    width: 100%;
+}
+
 .full-input,
 select,
 textarea {
@@ -50,6 +54,7 @@ textarea {
 }
 
 select {
+    min-width: 100px;
     appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg fill="%236b7280" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
     background-repeat: no-repeat;
@@ -318,4 +323,28 @@ textarea {
     color: #333;
     width: 100%;
     max-width: 150px;
+}
+
+/* 시간 입력 전용 필터 항목 */
+.filter-item.time-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 30px;
+}
+
+.filter-item.time-input input[type="time"] {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1.5px solid #dcdfe5;
+    background-color: #fff;
+    color: #333;
+    flex: 1;
+}
+
+.time-separator {
+    margin: 0 4px;
+    font-weight: 500;
+    color: #666;
 }
