@@ -93,101 +93,6 @@
     </main>
   </div>
 
-  <!-- 오른쪽: 필터 모달 -->
-  <div class="filter-modal">
-    <div class="filter-modal-inner">
-      <h2 class="filter-title"><span class="material-symbols-outlined">tune</span> 필터</h2>
-
-      <div class="filter-group">
-        <label class="filter-label">지역</label>
-        <select class="region-dropdown">
-          <option>전체</option>
-          <option>서울</option>
-          <option>경기</option>
-          <option>인천</option>
-          <option>부산</option>
-          <option>대전</option>
-          <option>대구</option>
-          <option>기타</option>
-        </select>
-      </div>
-
-
-      <!-- 운동 종류 -->
-      <div class="filter-group">
-        <label class="filter-label">운동 종류</label>
-        <div class="filter-chip-group">
-          <button class="filter-chip active">전체</button>
-          <button class="filter-chip">풋볼</button>
-          <button class="filter-chip">테니스</button>
-          <button class="filter-chip">볼링</button>
-          <button class="filter-chip">탁구</button>
-          <button class="filter-chip">농구</button>
-          <button class="filter-chip">골프</button>
-          <button class="filter-chip">배드민턴</button>
-          <button class="filter-chip">기타</button>
-        </div>
-      </div>
-
-      <!-- 성별 -->
-      <div class="filter-group">
-        <label class="filter-label">성별</label>
-        <div class="filter-chip-group">
-          <button class="filter-chip active">전체</button>
-          <button class="filter-chip">남성</button>
-          <button class="filter-chip">여성</button>
-        </div>
-      </div>
-
-      <!-- 나이대 -->
-      <div class="filter-group">
-        <label class="filter-label">나이대</label>
-        <div class="filter-chip-group">
-          <button class="filter-chip active">전체</button>
-          <button class="filter-chip">10대</button>
-          <button class="filter-chip">20대</button>
-          <button class="filter-chip">30대</button>
-          <button class="filter-chip">40대</button>
-          <button class="filter-chip">50대</button>
-          <button class="filter-chip">60대</button>
-          <button class="filter-chip">70대+</button>
-        </div>
-      </div>
-
-      <!-- 실력 -->
-      <div class="filter-group">
-        <label class="filter-label">실력</label>
-        <div class="filter-chip-group">
-          <button class="filter-chip active">전체</button>
-          <button class="filter-chip">Lv.1</button>
-          <button class="filter-chip">Lv.2</button>
-          <button class="filter-chip">Lv.3</button>
-        </div>
-      </div>
-
-      <!-- 상태 -->
-      <div class="filter-group">
-        <label class="filter-label">상태</label>
-        <div class="filter-chip-group">
-          <button class="filter-chip active">전체</button>
-          <button class="filter-chip">모집중</button>
-          <button class="filter-chip">최소 모집완료</button>
-          <button class="filter-chip">모집완료</button>
-          <button class="filter-chip">진행 완료</button>
-        </div>
-      </div>
-
-      <!-- 날짜 -->
-      <div class="filter-group">
-        <label class="filter-label">조회 기간</label>
-        <input type="text" id="dateRange" class="date-input" placeholder="날짜 범위 선택" />
-      </div>
-
-      <!-- 검색 -->
-      <button class="filter-search-btn" >검색</button>
-    </div>
-  </div>
-
   <!-- 왼쪽 플로팅 사이드바 -->
   <div class="floating-nav">
     <div class="nav-section">
@@ -214,6 +119,15 @@
       </div>
     </div>
   </div>
+
+  <!-- 개설 완료 팝업 -->
+  <div class="success-box">
+    <span class="material-symbols-outlined">check_circle</span>
+    <h2>모임 개설이 완료되었습니다!</h2>
+    <p>알림에서 모임 상태를 확인할 수 있습니다.</p>
+    <a  onclick="location.href='meeting_assignment.html'">내 모임 관리로 이동</a>
+  </div>
+
 </div>
 
 
@@ -233,6 +147,12 @@
     });
   });
 
+  let popupAlreadyShown = false;
+
+  document.querySelector('.search-btn').addEventListener('click', function (e) {
+    e.preventDefault(); // 폼 제출 방지
+    window.location.href = 'meeting-create-success.html';
+  });
 
 
 </script>

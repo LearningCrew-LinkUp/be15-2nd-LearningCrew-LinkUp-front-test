@@ -3,163 +3,268 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>지정 주소 모임 개설</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css" />
+  <title>모임 목록 조회</title>
+  <link rel="stylesheet" href="meeting-search.css" />
   <link rel="stylesheet" href="meeting-create-free.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY&libraries=services"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
-<body style="background:#f4f6fb; font-family: Pretendard, sans-serif; margin:0; padding:40px; display:flex; justify-content:center;">
+<body>
 
-<div class="form-card">
-  <h2><span class="material-symbols-outlined">edit</span>지정 주소 모임 개설</h2>
-
-  <!-- 기본 정보 -->
-  <h3 class="section-title"><span class="material-symbols-outlined">event_note</span>기본 정보</h3>
-  <div class="section-box">
-    <div class="form-group">
-      <label for="title">모임 제목</label>
-      <input type="text" id="title" placeholder="모임 제목을 입력하세요" />
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="date">날짜</label>
-        <input type="date" id="date" />
-      </div>
-      <div class="form-group">
-        <label for="startTime">시작 시간</label>
-        <input type="time" id="startTime" />
-      </div>
-      <div class="form-group">
-        <label for="endTime">종료 시간</label>
-        <input type="time" id="endTime" />
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="minCapacity">최소 인원</label>
-        <input type="number" id="minCapacity" placeholder="예: 4" />
-      </div>
-      <div class="form-group">
-        <label for="maxCapacity">최대 인원</label>
-        <input type="number" id="maxCapacity" placeholder="예: 8" />
-      </div>
-    </div>
+<!-- 헤더 -->
+<header class="main-header">
+  <div class="logo">
+    <img src="../img/learning_crew_logo.webp" alt="로고" />
   </div>
+  <nav class="nav-menu">
+    <a href="#">커뮤니티</a>
+    <a href="meeting-search.html">모임</a>
+    <a href="../place/place-search.html">장소</a>
+    <a href="#">사용자</a>
+  </nav>
+</header>
 
-  <!-- 주소 선택 -->
-  <h3 class="section-title"><span class="material-symbols-outlined">map</span>위치 선택</h3>
-  <div class="section-box">
-    <div class="form-group">
-      <label>모임 위치</label>
-      <div class="map-box">
-        <div id="map"></div>
-        <button class="map-select-btn" onclick="alert('지도를 클릭해 위치를 선택하세요')">
-          <span class="material-symbols-outlined">map</span>위치 선택
+<!-- 본문 -->
+<div class="container">
+
+  <!-- 왼쪽: 모임 목록 + 지도 -->
+  <div class="main-content">
+    <!-- 모임 카드 리스트 -->
+    <section class="meeting-list">
+      <div class="filter-toggle-wrap">
+        <button class="filter-toggle-btn" onclick="location.href='meeting-search.html'">
+          <span class="material-symbols-outlined card">tune</span> 필터
         </button>
       </div>
-      <input type="text" id="address" placeholder="지도에서 위치를 선택하세요" readonly />
+
+      <div class="meeting-card">
+        <img src="../img/place_img1.png" alt="모임 이미지" class="meeting-img" />
+        <div class="meeting-info">
+          <div class="meeting-meta">
+        <span class="date">
+          <span class="material-symbols-outlined card">event</span> 2025.04.23 (화)
+        </span>
+            <button class="bookmark">
+              <span class="material-symbols-outlined filled">favorite</span>
+            </button>
+          </div>
+          <h3 class="title">요즘같은 선선한 날에 축구 한판 어때요!</h3>
+          <p class="location">
+            <span class="material-symbols-outlined card">location_on</span> 서울 도봉구 방학로 223
+          </p>
+          <p class="likes">
+            <span class="material-symbols-outlined card">favorite</span> 32명 찜
+          </p>
+          <p class="price">
+            <span class="material-symbols-outlined card">attach_money</span> <strong>20,000원</strong>
+          </p>
+        </div>
+      </div>
+      <div class="meeting-card">
+        <img src="../img/place_img1.png" alt="모임 이미지" class="meeting-img" />
+        <div class="meeting-info">
+          <div class="meeting-meta">
+        <span class="date">
+          <span class="material-symbols-outlined card">event</span> 2025.04.23 (화)
+        </span>
+            <button class="bookmark">
+              <span class="material-symbols-outlined not-filled">favorite</span>
+            </button>
+          </div>
+          <h3 class="title">요즘같은 선선한 날에 축구 한판 어때요!</h3>
+          <p class="location">
+            <span class="material-symbols-outlined card">location_on</span> 서울 도봉구 방학로 223
+          </p>
+          <p class="likes">
+            <span class="material-symbols-outlined card">favorite</span> 32명 찜
+          </p>
+          <p class="price">
+            <span class="material-symbols-outlined card">attach_money</span> <strong>20,000원</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 지도 -->
+    <main class="map-section">
+      <img src="../img/map_img.png" alt="지도" class="map-image" />
+    </main>
+  </div>
+
+  <!-- 왼쪽 플로팅 사이드바 -->
+  <div class="floating-nav">
+    <div class="nav-section">
+      <div class="nav-btn active" title="모임 개설" onclick="location.href='meeting-create-select.html'">
+        <span class="material-symbols-outlined" >edit_note</span>
+      </div>
+    </div>
+    <hr />
+    <div class="nav-section">
+      <div class="nav-btn" title="개설 모임 관리" onclick="location.href='meeting_assignment.html'">
+        <span class="material-symbols-outlined">assignment</span>
+      </div>
+      <div class="nav-btn" title="참가 모임 관리">
+        <span class="material-symbols-outlined" onclick="location.href='meeting-emoji_people.html'">emoji_people</span>
+      </div>
+      <div class="nav-btn" title="찜 목록">
+        <span class="material-symbols-outlined" onclick="location.href='meeting-favorite.html'">favorite</span>
+      </div>
+    </div>
+    <hr />
+    <div class="nav-section">
+      <div class="nav-btn" title="알림">
+        <span class="material-symbols-outlined">notifications</span>
+      </div>
+    </div>
+  </div>
+  <!-- 모임 개설 오버레이 -->
+  <div class="meeting-overlay">
+    <div class="meeting-overlay-inner">
+      <div class="form-card">
+        <h2><span class="material-symbols-outlined">edit</span>지정 주소 모임 개설</h2>
+
+        <!-- 기본 정보 -->
+        <h3 class="section-title"><span class="material-symbols-outlined">event_note</span>기본 정보</h3>
+        <div class="section-box">
+          <div class="form-group">
+            <label for="title">모임 제목</label>
+            <input type="text" id="title" placeholder="모임 제목을 입력하세요" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">날짜</label>
+              <input type="date" id="date" />
+            </div>
+            <div class="form-group">
+              <label for="startTime">시작 시간</label>
+              <input type="time" id="startTime" />
+            </div>
+            <div class="form-group">
+              <label for="endTime">종료 시간</label>
+              <input type="time" id="endTime" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="minCapacity">최소 인원</label>
+              <input type="number" id="minCapacity" placeholder="예: 4" />
+            </div>
+            <div class="form-group">
+              <label for="maxCapacity">최대 인원</label>
+              <input type="number" id="maxCapacity" placeholder="예: 8" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 위치 선택 -->
+        <h3 class="section-title"><span class="material-symbols-outlined">map</span>위치 선택</h3>
+        <div class="section-box">
+          <div class="form-group">
+            <label>모임 위치</label>
+            <div class="map-box">
+              <div id="map" style="width: 100%; height: 100%;"></div>
+              <button class="map-select-btn" onclick="alert('지도를 클릭해 위치를 선택하세요')">
+                <span class="material-symbols-outlined">location_on</span> 위치 선택
+              </button>
+            </div>
+            <input type="text" id="address" placeholder="지도에서 위치를 선택하세요" readonly />
+          </div>
+        </div>
+
+        <!-- 필터 조건 -->
+        <h3 class="section-title"><span class="material-symbols-outlined">tune</span>필터 조건</h3>
+        <div class="section-box">
+          <div class="form-group">
+            <label>운동 종류</label>
+            <div class="btn-group">
+              <button type="button" class="btn-select active">전체</button>
+              <button type="button" class="btn-select">풋볼</button>
+              <button type="button" class="btn-select">테니스</button>
+              <button type="button" class="btn-select">볼링</button>
+              <button type="button" class="btn-select">탁구</button>
+              <button type="button" class="btn-select">농구</button>
+              <button type="button" class="btn-select">골프</button>
+              <button type="button" class="btn-select">배드민턴</button>
+              <button type="button" class="btn-select">기타</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>성별</label>
+            <div class="btn-group">
+              <button type="button" class="btn-select active">전체</button>
+              <button type="button" class="btn-select">남성</button>
+              <button type="button" class="btn-select">여성</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>나이대</label>
+            <div class="btn-group">
+              <button type="button" class="btn-select active">전체</button>
+              <button type="button" class="btn-select">10대</button>
+              <button type="button" class="btn-select">20대</button>
+              <button type="button" class="btn-select">30대</button>
+              <button type="button" class="btn-select">40대</button>
+              <button type="button" class="btn-select">50대</button>
+              <button type="button" class="btn-select">60대</button>
+              <button type="button" class="btn-select">70대+</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>실력</label>
+            <div class="btn-group">
+              <button type="button" class="btn-select active">전체</button>
+              <button type="button" class="btn-select">Lv.1</button>
+              <button type="button" class="btn-select">Lv.2</button>
+              <button type="button" class="btn-select">Lv.3</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 설명 -->
+        <h3 class="section-title"><span class="material-symbols-outlined">description</span>모임 설명</h3>
+        <div class="section-box">
+          <div class="form-group">
+            <label for="description">모임 설명</label>
+            <textarea id="description" placeholder="모임에 대한 설명을 작성해주세요"></textarea>
+          </div>
+        </div>
+
+        <!-- 액션 버튼 -->
+        <div class="form-actions">
+          <button class="search-btn" type="submit"onclick="location.href='meeting-create-success.html'">모임 개설하기</button>
+          <button class="close-btn" type="button"onclick="location.href='meeting-search.html'">닫기</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- 필터 조건 -->
-  <h3 class="section-title"><span class="material-symbols-outlined">tune</span>필터 조건</h3>
-  <div class="section-box">
-    <div class="form-group">
-      <label>운동 종류</label>
-      <div class="btn-group">
-        <button type="button" class="btn-select active">전체</button>
-        <button type="button" class="btn-select">풋볼</button>
-        <button type="button" class="btn-select">테니스</button>
-        <button type="button" class="btn-select">볼링</button>
-        <button type="button" class="btn-select">탁구</button>
-        <button type="button" class="btn-select">농구</button>
-        <button type="button" class="btn-select">골프</button>
-        <button type="button" class="btn-select">배드민턴</button>
-        <button type="button" class="btn-select">기타</button>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>성별</label>
-      <div class="btn-group">
-        <button type="button" class="btn-select active">전체</button>
-        <button type="button" class="btn-select">남성</button>
-        <button type="button" class="btn-select">여성</button>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>나이대</label>
-      <div class="btn-group">
-        <button type="button" class="btn-select active">전체</button>
-        <button type="button" class="btn-select">10대</button>
-        <button type="button" class="btn-select">20대</button>
-        <button type="button" class="btn-select">30대</button>
-        <button type="button" class="btn-select">40대</button>
-        <button type="button" class="btn-select">50대</button>
-        <button type="button" class="btn-select">60대</button>
-        <button type="button" class="btn-select">70대+</button>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>실력</label>
-      <div class="btn-group">
-        <button type="button" class="btn-select active">전체</button>
-        <button type="button" class="btn-select">Lv.1</button>
-        <button type="button" class="btn-select">Lv.2</button>
-        <button type="button" class="btn-select">Lv.3</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 설명 -->
-  <h3 class="section-title"><span class="material-symbols-outlined">description</span>모임 설명</h3>
-  <div class="section-box">
-    <div class="form-group">
-      <label for="description">모임 설명</label>
-      <textarea id="description" placeholder="모임에 대한 설명을 작성해주세요"></textarea>
-    </div>
-  </div>
-
-  <button class="search-btn">모임 개설하기</button>
 </div>
 
-<!-- 선택 토글 + 지도 스크립트 -->
+
+
+<!-- 스크립트 -->
 <script>
-  // 버튼 그룹 액티브 처리
-  document.querySelectorAll('.btn-group').forEach(group => {
-    group.querySelectorAll('.btn-select').forEach(button => {
-      button.addEventListener('click', () => {
-        group.querySelectorAll('.btn-select').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-      });
+  flatpickr("#dateRange", {
+    mode: "range",
+    dateFormat: "Y-m-d",
+    locale: "ko"
+  });
+
+  // chip 토글 기능
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('active');
     });
   });
 
-  // 지도 초기화
-  window.onload = function () {
-    const mapContainer = document.getElementById('map');
-    const mapOption = {
-      center: new kakao.maps.LatLng(37.5665, 126.9780), // 서울 중심
-      level: 3
-    };
-    const map = new kakao.maps.Map(mapContainer, mapOption);
-    const geocoder = new kakao.maps.services.Geocoder();
-    const marker = new kakao.maps.Marker({ map: map });
 
-    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-      const latlng = mouseEvent.latLng;
-      marker.setPosition(latlng);
-      geocoder.coord2Address(latlng.getLng(), latlng.getLat(), function(result, status) {
-        if (status === kakao.maps.services.Status.OK) {
-          const address = result[0].address.address_name;
-          document.getElementById('address').value = address;
-        }
-      });
-    });
-  };
+
 </script>
 
 </body>
