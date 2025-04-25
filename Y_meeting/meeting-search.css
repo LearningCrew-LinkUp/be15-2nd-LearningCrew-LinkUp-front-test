@@ -375,7 +375,7 @@ a {
 
 
 
-/* ---------------- 개설한 모임 목록 모달 ---------------- */
+/* ---------------- 모임 목록 모달 ---------------- */
 .assignment-modal {
     position: fixed;
     top: 160px; /* 정확히 두 번째 버튼과 정렬 */
@@ -458,6 +458,25 @@ a {
 .assignment-status.진행완료 {
     color: #7c3aed;
 }
+
+.modal-title-with-emoji {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-title-with-emoji .emoji {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.modal-title-with-emoji h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
 
 /* ---------------- 플로팅 네비게이션 ---------------- */
 .floating-nav {
