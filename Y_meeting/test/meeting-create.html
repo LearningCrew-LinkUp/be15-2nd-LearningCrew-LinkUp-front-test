@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>모임 개설하기</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="meeting-create.css" />
+</head>
+<body>
+<div class="form-wrapper">
+  <h2 class="form-title">📝 모임 개설하기</h2>
+
+  <!-- 모임 제목 -->
+  <div class="form-section">
+    <input type="text" placeholder="모임 제목" class="full-input" />
+  </div>
+
+  <!-- 장소 선택 -->
+  <div class="form-section">
+    <div class="place-header">
+      <span>📍 장소 선택</span>
+      <div class="place-controls">
+        <button type="button" class="place-btn active">예약된 장소</button>
+        <button type="button" class="place-btn">기타 장소 입력</button>
+      </div>
+      <span class="cost-label">비용 : ₩ 30,000 / ₩ 3,000</span>
+    </div>
+    <div class="place-body">
+      <select class="place-select">
+        <option>예약 장소 선택</option>
+      </select>
+      <div class="map-box"></div>
+    </div>
+  </div>
+
+  <!-- 날짜, 시간, 인원 -->
+  <div class="form-section time-flex-row">
+    <div class="time-item">
+      <label>날짜</label>
+      <input type="date" class="date-input" />
+    </div>
+
+    <div class="filter-item time-input time-item">
+      <label>시간대</label>
+      <input type="time" id="start-time" name="startTime" />
+      <span class="time-separator">~</span>
+      <input type="time" id="end-time" name="endTime" />
+    </div>
+
+
+    <div class="time-item">
+      <label>모집 인원 :</label>
+      <div class="count-range">
+        <select><option>최소</option></select>
+        <select><option>최대</option></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 모집 조건 -->
+  <div class="form-section">
+    <h3 class="form-subtitle">👥 모집 조건</h3>
+    <div class="form-grid-3">
+      <div class="form-inline">
+        성별 :
+        <select><option>전체</option></select>
+      </div>
+      <div class="form-inline">
+        실력 :
+        <label><input type="checkbox" /> LV1</label>
+        <label><input type="checkbox" /> LV2</label>
+        <label><input type="checkbox" /> LV3</label>
+      </div>
+    </div>
+    <div class="age-group">
+      나이대:
+      <label><input type="checkbox" /> 10대</label>
+      <label><input type="checkbox" /> 20대</label>
+      <label><input type="checkbox" /> 30대</label>
+      <label><input type="checkbox" /> 40대</label>
+      <label><input type="checkbox" /> 50대</label>
+      <label><input type="checkbox" /> 60대</label>
+      <label><input type="checkbox" /> 70대 이상</label>
+    </div>
+  </div>
+
+  <!-- 소개 -->
+  <div class="form-section">
+    <h3 class="form-subtitle">📝 모임 소개</h3>
+    <textarea rows="4" placeholder="예: 초보자도 환영입니다! 경기 후 뒤풀이도 가능합니다 :)"></textarea>
+  </div>
+
+  <!-- 버튼 -->
+  <div class="form-footer btn-right">
+    <button type="submit" class="primary-btn">모임 개설하기</button>
+    <button type="button" class="cancel-btn" onclick="location.href='meeting-list.html'">닫기</button>
+  </div>
+</div>
+
+</body>
+</html>
