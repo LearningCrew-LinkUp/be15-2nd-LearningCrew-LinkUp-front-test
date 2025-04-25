@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>사업자 마이페이지</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f1f3fc;
+        }
+
+        .mypage-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .mypage-sidebar {
+            width: 280px;
+            background-color: #ffffff;
+            border-right: 1px solid #e6e6e6;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .badge {
+            display: block;
+            background-color: #365ec9;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .edit-profile-btn {
+            background-color: #5790ff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .mypage-nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 32px;
+        }
+
+        .mypage-nav li {
+            margin-bottom: 16px;
+        }
+
+        .mypage-nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mypage-nav a:hover {
+            color: #5790ff;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #feb5a1;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #ff9280;
+        }
+
+        .mypage-content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="mypage-container">
+    <!-- Sidebar -->
+    <aside class="mypage-sidebar">
+        <div class="profile-section">
+            <img src="https://cdn.pixabay.com/photo/2024/12/24/10/04/kitchen-9288111_1280.jpg" alt="프로필 이미지" class="profile-img" />
+            <div class="profile-name">홍길동</div>
+            <div>
+                <button class="edit-profile-btn">프로필 수정</button>
+            </div>
+        </div>
+
+        <nav class="mypage-nav">
+            <ul>
+                <li><a href="#">월별 정산 대금 조회</a></li>
+                <li><a href="#">정산 내역 조회</a></li>
+                <li><a href="#">운영 중인 장소 목록</a></li>
+                <li><a href="#">비밀번호 변경</a></li>
+                <li><a href="#">프로필 조회</a></li>
+            </ul>
+        </nav>
+
+        <button class="logout-btn">로그아웃</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="mypage-content">
+        <h2 class="section-title">사업자 마이페이지</h2>
+        <p>정산 내역, 운영 장소를 확인하거나 계정 정보를 수정할 수 있습니다.</p>
+    </main>
+</div>
+</body>
+</html>
