@@ -33,7 +33,7 @@
     <!-- 모임 카드 리스트 -->
     <section class="meeting-list">
       <div class="filter-toggle-wrap">
-        <button class="filter-toggle-btn">
+        <button class="filter-toggle-btn" onclick="location.href='meeting-search.html'">
           <span class="material-symbols-outlined card">tune</span> 필터
         </button>
       </div>
@@ -63,7 +63,7 @@
       <img src="../img/map_img.png" alt="지도" class="map-image" />
 
       <!-- 개설한 모임 목록 모달 -->
-      <div class="assignment-modal" id="assignmentModal" style="display: none;">
+      <div class="assignment-modal" id="assignmentModal">
         <div class="assignment-header">
           <h2>개설한 모임 목록</h2>
           <button class="assignment-close" onclick="closeAssignmentModal()">
@@ -87,7 +87,7 @@
               <div class="assignment-title">여의도 러닝크루</div>
               <div class="assignment-address">서울 영등포구 여의서로 36</div>
             </div>
-            <div class="assignment-status 진행완료">진행 완료</div>
+            <div class="assignment-status 진행완료">최소 모집 완료</div>
           </div>
         </div>
       </div>
@@ -103,14 +103,14 @@
     </div>
     <hr />
     <div class="nav-section">
-      <div class="nav-btn" title="개설 모임 관리" onclick="openAssignmentModal()">
+      <div class="nav-btn" title="개설 모임 관리" onclick="location.href='meeting_assignment.html'">
         <span class="material-symbols-outlined">assignment</span>
       </div>
       <div class="nav-btn" title="참가 모임 관리">
-        <span class="material-symbols-outlined">emoji_people</span>
+        <span class="material-symbols-outlined" onclick="location.href='meeting-emoji_people.html'">emoji_people</span>
       </div>
       <div class="nav-btn" title="찜 목록">
-        <span class="material-symbols-outlined">favorite</span>
+        <span class="material-symbols-outlined" onclick="location.href='meeting-favorite.html'">favorite</span>
       </div>
     </div>
     <hr />

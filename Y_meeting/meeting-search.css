@@ -378,14 +378,15 @@ a {
 /* ---------------- 개설한 모임 목록 모달 ---------------- */
 .assignment-modal {
     position: fixed;
-    top: 80px;
-    left: 24px;
-    width: 340px;
-    background: #fff;
+    top: 160px; /* 정확히 두 번째 버튼과 정렬 */
+    right: 84px; /* 버튼 오른쪽 여백 기준 */
+    width: 320px;
+    background: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     padding: 24px 20px 20px;
     z-index: 1100;
+    font-family: 'Pretendard', sans-serif;
 }
 .assignment-header {
     display: flex;
@@ -394,7 +395,7 @@ a {
     margin-bottom: 16px;
 }
 .assignment-header h2 {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     color: #1f2937;
     margin: 0;
@@ -403,7 +404,7 @@ a {
     background: none;
     border: none;
     font-size: 20px;
-    color: #9ca3af;
+    color: #94a3b8;
     cursor: pointer;
 }
 .assignment-list {
@@ -417,7 +418,6 @@ a {
     padding: 12px 14px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 12px;
 }
 .assignment-thumb {
