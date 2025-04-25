@@ -1,0 +1,592 @@
+/* ---------------- 기본 설정 ---------------- */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    background: #f4f6fb;
+    height: 100vh;
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---------------- 헤더 ---------------- */
+.main-header {
+    height: 60px;
+    background: linear-gradient(to right, #e7f0ff, #f0e7ff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.main-header .logo img {
+    height: 36px;
+}
+.nav-menu a {
+    margin-left: 20px;
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.nav-menu a:hover {
+    color: #5b71f2;
+}
+
+/* ---------------- 레이아웃 ---------------- */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: #f4f6fb;
+}
+.main-content {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+.map-section {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ---------------- 모임 목록 ---------------- */
+.meeting-list {
+    width: 440px;
+    height: 100%;
+    background-color: #fff;
+    overflow-y: auto;
+    padding: 24px;
+    box-shadow: inset -1px 0 0 #e0e0e0;
+    z-index: 2;
+}
+.filter-toggle-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+.filter-toggle-btn {
+    background-color: #f1f3f7;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #333;
+    cursor: pointer;
+}
+.filter-toggle-btn:hover {
+    background-color: #dde4f3;
+}
+.meeting-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.meeting-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.meeting-info {
+    padding: 16px;
+}
+.meeting-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.meeting-meta .date {
+    font-size: 13px;
+    color: #666;
+}
+.bookmark {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 6px 0 10px;
+    color: #222;
+}
+.location, .likes, .price {
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0;
+}
+.price strong {
+    color: #3366ff;
+    font-weight: 600;
+}
+
+/* ---------------- 필터 모달 ---------------- */
+.filter-modal {
+    position: absolute;
+    top: 80px;
+    left: 464px;
+    width: 320px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    z-index: 100;
+}
+.filter-modal-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.filter-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.region-dropdown {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1.5px solid #dcdfe5;
+    border-radius: 10px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px 14px;
+    appearance: none;
+    color: #333;
+    cursor: pointer;
+}
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.filter-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+}
+.filter-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.filter-chip {
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.filter-chip.active {
+    background-color: #5790FF;
+    color: #fff;
+    border-color: #5790FF;
+}
+.date-input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 10px;
+    border: 1.5px solid #dcdfe5;
+    background-color: #fff;
+    color: #333;
+}
+.filter-search-btn {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #5790FF;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* ---------------- 모임 개설 선택 모달 ---------------- */
+.create-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-modal .modal-box {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    font-family: 'Pretendard', sans-serif;
+    position: relative;
+}
+
+.create-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.create-modal .modal-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.create-modal .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: #94a3b8;
+}
+
+/* 모임 선택 창*/
+.map-settings {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.settings-toggle {
+    background-color: #5790FF;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: default;
+    padding: 0;
+}
+
+.settings-toggle img {
+    width: 22px;
+    height: 22px;
+}
+
+.settings-dropdown {
+    position: absolute;
+    top: 54px;
+    right: 0;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.settings-dropdown button {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    font-size: 13px;
+    text-align: left;
+    color: #222;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.settings-dropdown button:hover {
+    background-color: #eef0ff;
+    color: #5790FF;
+}
+
+
+.option-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    background-color: #f5f8ff;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.1s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.option-card:hover {
+    background-color: #e8f0ff;
+    transform: translateY(-2px);
+}
+
+.option-icon .material-symbols-outlined {
+    font-size: 28px;
+    color: #4f46e5;
+    margin-top: 2px;
+}
+
+.option-text .option-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.option-text .option-sub {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+
+
+/* ---------------- 모임 목록 모달 ---------------- */
+.assignment-modal {
+    position: fixed;
+    top: 160px; /* 정확히 두 번째 버튼과 정렬 */
+    right: 84px; /* 버튼 오른쪽 여백 기준 */
+    width: 320px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    padding: 24px 20px 20px;
+    z-index: 1100;
+    font-family: 'Pretendard', sans-serif;
+}
+.assignment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.assignment-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+.assignment-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #94a3b8;
+    cursor: pointer;
+}
+.assignment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.assignment-card {
+    background-color: #f4f6fb;
+    border-radius: 16px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.assignment-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+.assignment-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.assignment-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.assignment-address {
+    font-size: 12px;
+    color: #6b7280;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.assignment-status {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.assignment-status.모집중 {
+    color: #3b82f6;
+}
+.assignment-status.진행완료 {
+    color: #7c3aed;
+}
+
+.modal-title-with-emoji {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-title-with-emoji .emoji {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.modal-title-with-emoji h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+
+/* ---------------- 플로팅 네비게이션 ---------------- */
+.floating-nav {
+    position: fixed;
+    top: 80px;
+    right: 24px;
+    background: #F3F6FF;
+    border-radius: 40px;
+    padding: 16px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+.nav-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+}
+.nav-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.nav-btn:hover,
+.nav-btn.active {
+    background-color: #D4E5FF;
+}
+.floating-nav hr {
+    width: 60%;
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+/* ---------------- 아이콘 스타일 ---------------- */
+.material-symbols-outlined {
+    font-size: 24px;
+    vertical-align: middle;
+    color: #5790FF;
+}
+.material-symbols-outlined.card {
+    font-size: 16px !important;
+}
+.material-symbols-outlined.filled {
+    font-variation-settings: 'FILL' 1;
+    color: #E64980;
+}
+.material-symbols-outlined.not-filled {
+    font-variation-settings: 'FILL' 0;
+    color: #FF8FA3;
+}
+.bookmark .material-symbols-outlined {
+    font-size: 20px;
+}
+
+
+/* ---------------- 팝업 스타일 ---------------- */
+.success-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 40px 32px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    max-width: 400px;
+    z-index: 2000;
+}
+
+
+.success-box .material-symbols-outlined {
+    font-size: 64px;
+    color: #4caf50;
+    margin-bottom: 16px;
+}
+
+.success-box h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.success-box p {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+.success-box a {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #4a6cf7;
+    color: white;
+    border-radius: 999px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.success-box a:hover {
+    background: #3a59c4;
+}

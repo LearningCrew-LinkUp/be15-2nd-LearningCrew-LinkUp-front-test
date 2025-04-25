@@ -1,0 +1,255 @@
+/* ---------------- 기본 설정 ---------------- */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #f4f6fb;
+    font-family: 'Pretendard', sans-serif;
+    color: #333;
+}
+
+/* ---------------- 오버레이 ---------------- */
+.meeting-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3000;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    backdrop-filter: blur(2px);
+}
+.meeting-overlay-inner {
+    max-height: 95vh;
+    overflow-y: auto;
+    border-radius: 20px;
+}
+
+/* ---------------- 카드 전체 ---------------- */
+.form-card {
+    background: #fff;
+    padding: 40px 32px;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    width: 720px;
+    max-width: 90vw;
+}
+
+/* ---------------- 헤더 ---------------- */
+h2 {
+    font-size: 26px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+.material-symbols-outlined {
+    font-size: 28px;
+    color: #4a6cf7;
+}
+
+/* ---------------- 섹션 타이틀 ---------------- */
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 40px 0 16px;
+    color: #1f1f1f;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.section-title .material-symbols-outlined {
+    font-size: 20px;
+    color: #4a6cf7;
+}
+
+/* ---------------- 섹션 박스 ---------------- */
+.section-box {
+    background: #f9fbff;
+    border: 1px solid #e3eaf5;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+/* ---------------- 폼 그룹 ---------------- */
+.form-group {
+    margin-bottom: 24px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dce3ea;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus,
+textarea:focus {
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ---------------- 폼 행 ---------------- */
+.form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.form-row .form-group {
+    flex: 1;
+    min-width: 140px;
+}
+
+/* ---------------- 버튼 그룹 ---------------- */
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.btn-select {
+    padding: 6px 16px;
+    font-size: 13px;
+    border-radius: 999px;
+    background-color: #e3eaf5;
+    color: #4a6cf7;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+.btn-select:hover {
+    opacity: 0.95;
+}
+.btn-select.active {
+    background-color: #4a6cf7;
+    color: white;
+}
+
+/* ---------------- 지도 박스 ---------------- */
+.map-box {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    height: 280px;
+    border: 1px solid #dce3ea;
+}
+#map {
+    width: 100%;
+    height: 100%;
+}
+.map-select-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    border: 1px solid #e3eaf5;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.map-select-btn:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+.map-select-btn .material-symbols-outlined {
+    font-size: 20px;
+    color: #4a6cf7;
+}
+
+/* ---------------- 액션 버튼 ---------------- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+.search-btn,
+.close-btn {
+    height: 52px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 28px;
+    white-space: nowrap;
+}
+.search-btn {
+    background: #4a6cf7;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 85%;
+}
+.search-btn:hover {
+    background: #3a59c4;
+}
+.close-btn {
+    background: #f0f2f6;
+    color: #4a4a4a;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.close-btn:hover {
+    background: #e0e4ea;
+}
+
+/* ---------------- 스크롤바 커스터마이징 ---------------- */
+.meeting-overlay-inner::-webkit-scrollbar {
+    width: 8px;
+}
+.meeting-overlay-inner::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+.meeting-overlay-inner::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.meeting-overlay-inner::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Firefox */
+.meeting-overlay-inner {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
