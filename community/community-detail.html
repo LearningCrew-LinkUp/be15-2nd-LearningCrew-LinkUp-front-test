@@ -9,12 +9,10 @@
       font-family: 'Apple SD Gothic Neo', sans-serif;
       background-color: #f7f8fa;
     }
-
     .page {
       max-width: 1920px;
       margin: 0 auto;
     }
-
     .header {
       background: linear-gradient(to right, #d2e1ff, #e2d1ff);
       display: flex;
@@ -23,16 +21,13 @@
       padding: 20px 60px;
       height: 100px;
     }
-
     .linkup-logo {
       height: 40px;
     }
-
     .nav-list {
       display: flex;
       gap: 30px;
     }
-
     .nav-list .item-link {
       display: flex;
       align-items: center;
@@ -42,7 +37,6 @@
       color: #333;
       cursor: pointer;
     }
-
     .detail-container {
       max-width: 960px;
       margin: 40px auto;
@@ -51,23 +45,46 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       overflow: hidden;
     }
-
+    .back-button-container {
+      margin-bottom: 20px;
+    }
+    .back-button {
+      background: none;
+      border: 1px solid #ccc;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #333;
+    }
+    .back-button:hover {
+      background-color: #f0f0f0;
+    }
     .content {
       padding: 32px;
     }
-
     .title-section {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
     .title {
       font-size: 26px;
       font-weight: bold;
       margin-bottom: 8px;
     }
-
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+    .button-group button {
+      background: none;
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
     .report-btn, .comment-report-btn {
       background: none;
       border: none;
@@ -77,11 +94,9 @@
       text-decoration: underline;
       padding: 0;
     }
-
     .report-btn:hover, .comment-report-btn:hover {
       color: #f33;
     }
-
     .author-info {
       display: flex;
       align-items: center;
@@ -90,14 +105,12 @@
       font-size: 14px;
       color: #888;
     }
-
     .profile-img {
       width: 36px;
       height: 36px;
       border-radius: 50%;
       object-fit: cover;
     }
-
     .body {
       font-size: 16px;
       color: #444;
@@ -105,7 +118,6 @@
       line-height: 1.7;
       margin-bottom: 40px;
     }
-
     .footer {
       display: flex;
       justify-content: space-between;
@@ -114,41 +126,24 @@
       border-top: 1px solid #eee;
       padding-top: 16px;
     }
-
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      margin: 40px 0 20px;
-      padding: 0 32px;
-    }
-
-    .nav-buttons button {
-      padding: 10px 20px;
-      background: #eef1f4;
-      border: none;
-      border-radius: 8px;
+    .likes {
       cursor: pointer;
-      font-size: 14px;
     }
-
     .comments {
       padding: 32px;
       border-top: 1px solid #eee;
     }
-
     .comments h3 {
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 16px;
     }
-
     .comment {
       display: flex;
-      align-items: center; /* ✅ 수직 중앙 정렬 */
+      align-items: center;
       gap: 10px;
       margin-bottom: 16px;
     }
-
     .comment .profile-img {
       width: 28px;
       height: 28px;
@@ -156,36 +151,30 @@
       object-fit: cover;
       flex-shrink: 0;
     }
-
     .comment-content {
       flex: 1;
     }
-
     .comment-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 4px;
     }
-
     .comment-content .author {
       font-weight: 600;
       font-size: 14px;
     }
-
     .text {
       font-size: 14px;
       color: #555;
       line-height: 1.5;
     }
-
     .comment-form {
       display: flex;
       flex-direction: column;
       gap: 10px;
       margin-top: 20px;
     }
-
     .comment-form textarea {
       padding: 12px;
       font-size: 14px;
@@ -194,7 +183,6 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
-
     .comment-form button {
       align-self: flex-end;
       background-color: #4763f3;
@@ -205,7 +193,6 @@
       font-size: 14px;
       cursor: pointer;
     }
-
     .modal-backdrop {
       position: fixed;
       top: 0; left: 0;
@@ -216,7 +203,6 @@
       align-items: center;
       z-index: 1000;
     }
-
     .modal {
       background: white;
       border-radius: 12px;
@@ -225,17 +211,14 @@
       max-width: 90%;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
-
     .modal h2 {
       font-size: 20px;
       margin-bottom: 16px;
     }
-
     .modal label {
       font-size: 14px;
       font-weight: bold;
     }
-
     .modal select, .modal textarea {
       width: 100%;
       margin: 10px 0 20px;
@@ -244,13 +227,11 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
-
     .modal-footer {
       display: flex;
       justify-content: flex-end;
       gap: 10px;
     }
-
     .modal-footer button {
       padding: 8px 14px;
       border-radius: 6px;
@@ -258,11 +239,9 @@
       cursor: pointer;
       font-size: 14px;
     }
-
     .btn-cancel {
       background: #ddd;
     }
-
     .btn-submit {
       background: #4763f3;
       color: white;
@@ -271,8 +250,6 @@
 </head>
 <body>
 <div class="page">
-
-  <!-- 헤더 -->
   <div class="header">
     <img class="linkup-logo" src="img/linkup-logo.png" alt="LinkUp Logo" />
     <div class="nav-list">
@@ -283,39 +260,42 @@
     </div>
   </div>
 
-  <!-- 게시글 상세 -->
   <div class="detail-container">
     <div class="content">
+      <div class="back-button-container">
+        <!-- onclick 이벤트 수정 할 것 -->
+        <button class="back-button" onclick="location.href=''">← 목록으로</button>
+      </div>
       <div class="title-section">
         <div class="title">하늘을 보며 잠깐 멈추었던 순간</div>
-        <button class="report-btn" onclick="openReportModal('게시글')">신고</button>
+        <div class="button-group">
+          <button onclick="editPost()">수정</button>
+          <button onclick="deletePost()">삭제</button>
+          <button class="report-btn" onclick="openReportModal('게시글')">신고</button>
+        </div>
       </div>
       <div class="author-info">
         <img class="profile-img" src="https://cdn.pixabay.com/photo/2021/01/01/12/59/whale-5878491_640.jpg" alt="프로필 사진" />
         <span>작성자: 유진 | 2025.04.22</span>
       </div>
 
-      <div style="margin-bottom: 24px; width: 100%; aspect-ratio: 16 / 9; background-color: #eee; border-radius: 12px; overflow: hidden;">
+      <div style="margin-bottom: 24px; width: 100%; aspect-ratio: 16/9; background-color: #eee; border-radius: 12px; overflow: hidden;">
         <img src="https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg" alt="본문 이미지" style="width: 100%; height: 100%; object-fit: cover;" />
       </div>
 
       <div class="body">
-        하루종일 정신없이 바쁘다가
-        퇴근길에 우연히 올려다본 하늘이 너무 예뻐서
-        그 자리에 멈춰 한참을 서 있었어요.
+        하루종일 정신없이 바쁘다가 퇴근길에 우연히 올려다본 하늘이 너무 예뻐서 그 자리에 멈춰 한참을 서 있었어요.
         이런 작은 순간이 참 소중하다는 걸 새삼 느꼈던 날이었어요.
       </div>
 
       <div class="footer">
         <span>조회수 132</span>
-        <span>❤️ 23</span>
+        <span class="likes" onclick="toggleLike()">❤️ <span id="likeCount">23</span></span>
       </div>
     </div>
 
-    <!-- 댓글 -->
     <div class="comments">
       <h3>댓글</h3>
-
       <div class="comment">
         <img class="profile-img" src="https://cdn.pixabay.com/photo/2021/01/01/12/59/whale-5878491_640.jpg" alt="하린" />
         <div class="comment-content">
@@ -345,7 +325,6 @@
     </div>
   </div>
 
-  <!-- 신고 모달 -->
   <div id="modalBackdrop" class="modal-backdrop">
     <div class="modal">
       <h2 id="modalTitle">신고하기</h2>
@@ -387,9 +366,23 @@
         alert("신고 사유를 선택해주세요.");
         return;
       }
-
       alert(`${currentTargetType}이(가) 신고되었습니다.\n사유: ${reason}`);
       closeReportModal();
+    }
+
+    function toggleLike() {
+      const likeCount = document.getElementById("likeCount");
+      likeCount.innerText = parseInt(likeCount.innerText) + 1;
+    }
+
+    function editPost() {
+      alert("게시글 수정 화면으로 이동합니다.");
+    }
+
+    function deletePost() {
+      if (confirm("정말 삭제하시겠습니까?")) {
+        alert("게시글이 삭제되었습니다.");
+      }
     }
   </script>
 </div>
