@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모임 전체 조회</title>
+  <link rel="stylesheet" href="admin-styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="header-left">서비스 관리</div>
+  <nav class="admin-nav">
+    <a href="user-member.html" class="nav-link">회원 관리</a>
+    <a href="point-point.html" class="nav-link">포인트 관리</a>
+    <a href="meeting-meeting.html" class="nav-link active">모임 관리</a>
+    <a href="place-place.html" class="nav-link">장소 관리</a>
+    <a href="report-report.html" class="nav-link">신고 관리</a>
+    <a href="user-sanction.html" class="nav-link">제재 관리</a>
+  </nav>
+</header>
+
+<div class="admin-container">
+  <aside class="admin-sidebar">
+    <ul>
+      <li><a href="meeting-meeting.html" class="sidebar-link active">모임 전체 조회</a></li>
+      <li><a href="meeting-review.html" class="sidebar-link">참가자 평가 내역</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <div class="main-header">
+      <h1 class="page-title">모임 전체 조회</h1>
+      <div class="filter-box">
+        <label class="filter-label meeting-filter-label">성별 :
+          <select class="select-box meeting-gender-select">
+            <option value="">전체</option>
+            <option value="남성">남성</option>
+            <option value="여성">여성</option>
+            <option value="혼성">혼성</option>
+          </select>
+        </label>
+        <label class="filter-label meeting-filter-label">나이대 :
+          <select class="select-box meeting-age-select">
+            <option value="">전체</option>
+            <option value="20">20대</option>
+            <option value="30">30대</option>
+            <option value="40">40대</option>
+          </select>
+        </label>
+        <label class="filter-label meeting-filter-label">레벨 :
+          <select class="select-box meeting-level-select">
+            <option value="">전체</option>
+            <option value="LV1">LV1</option>
+            <option value="LV2">LV2</option>
+            <option value="LV3">LV3</option>
+          </select>
+        </label>
+        <label class="filter-label meeting-filter-label">운동 종목 :
+          <select class="select-box meeting-sport-select">
+            <option value="">전체</option>
+            <option value="테니스">테니스</option>
+            <option value="볼링">볼링</option>
+          </select>
+        </label>
+        <label class="filter-label meeting-filter-label">상태 :
+          <select class="select-box meeting-status-select">
+            <option value="">전체</option>
+            <option value="모집중">모집중</option>
+            <option value="모집 완료">모집 완료</option>
+            <option value="최소 모집 완료">최소 모집 완료</option>
+            <option value="진행 완료">진행 완료</option>
+          </select>
+        </label>
+        <label class="filter-label meeting-filter-label">조회 기간 :
+          <input type="date" class="select-box meeting-start-date"> ~
+          <input type="date" class="select-box meeting-end-date">
+        </label>
+        <button class="btn btn-primary meeting-search-btn">검색</button>
+      </div>
+    </div>
+
+    <table class="table meeting-meeting">
+      <thead>
+      <tr>
+        <th class="table-cell meeting-id">ID</th>
+        <th class="table-cell meeting-title">제목</th>
+        <th class="table-cell meeting-leader">리더</th>
+        <th class="table-cell meeting-sport">운동</th>
+        <th class="table-cell meeting-date">날짜</th>
+        <th class="table-cell meeting-time">시간</th>
+        <th class="table-cell meeting-gender">성별</th>
+        <th class="table-cell meeting-age">나이대</th>
+        <th class="table-cell meeting-level">레벨</th>
+        <th class="table-cell meeting-place">장소명</th>
+        <th class="table-cell meeting-participants">참여 인원</th>
+        <th class="table-cell meeting-status">상태</th>
+        <th class="table-cell meeting-detail-view">상세 보기</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>중급 테니스 번개</td><td>에이스정</td><td>테니스</td><td>2025-04-10</td><td>11:00 ~ 13:00</td><td>여성</td><td>30,40</td><td>LV3</td><td>대전 테니스센터</td><td>2 ~ 6</td><td>모집중</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>2</td><td>불꽃 볼링 번개</td><td>볼볼이</td><td>볼링</td><td>2025-04-13</td><td>15:00 ~ 17:00</td><td>혼성</td><td>20,30</td><td>LV2</td><td>광주 볼링존</td><td>2 ~ 6</td><td>최소 모집완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>3</td><td>초보 테니스 모임</td><td>테잘알</td><td>테니스</td><td>2025-04-21</td><td>10:00 ~ 12:00</td><td>혼성</td><td>30</td><td>LV2</td><td>울산 스포츠파크</td><td>2 ~ 4</td><td>모집완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>4</td><td>불꽃 볼링 정기전</td><td>타마스터</td><td>볼링</td><td>2025-04-22</td><td>18:00 ~ 20:00</td><td>남성</td><td>20</td><td>LV2</td><td>수지 볼링센터</td><td>2 ~ 6</td><td>진행 완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>5</td><td>주말 테니스 한판</td><td>정팀장</td><td>테니스</td><td>2025-04-20</td><td>14:00 ~ 16:00</td><td>혼성</td><td>30</td><td>LV1</td><td>용산 스포츠코트</td><td>2 ~ 8</td><td>모집중</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>6</td><td>볼링 스트라이크 클럽</td><td>명중이</td><td>볼링</td><td>2025-04-15</td><td>19:00 ~ 21:00</td><td>여성</td><td>20</td><td>LV2</td><td>대구 볼링존</td><td>2 ~ 4</td><td>모집완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>7</td><td>직장인 테니스 팀</td><td>사무장</td><td>테니스</td><td>2025-04-18</td><td>06:30 ~ 08:00</td><td>남성</td><td>30</td><td>LV2</td><td>송파 테니스장</td><td>4 ~ 6</td><td>진행 완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>8</td><td>볼링 저녁 번개</td><td>밤볼이</td><td>볼링</td><td>2025-04-23</td><td>20:00 ~ 22:00</td><td>여성</td><td>30</td><td>LV1</td><td>천호 볼링장</td><td>2 ~ 6</td><td>모집중</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>9</td><td>테니스 주말 조기</td><td>이른이</td><td>테니스</td><td>2025-04-25</td><td>07:00 ~ 09:00</td><td>혼성</td><td>20</td><td>LV2</td><td>수원 테니스코트</td><td>4 ~ 10</td><td>최소 모집완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>10</td><td>볼링 마스터즈</td><td>핀왕</td><td>볼링</td><td>2025-04-19</td><td>16:00 ~ 18:00</td><td>남성</td><td>30,40</td><td>LV3</td><td>부천 볼링존</td><td>3 ~ 5</td><td>모집완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>11</td><td>테니스 여성 팀</td><td>쏘녀</td><td>테니스</td><td>2025-04-24</td><td>13:00 ~ 15:00</td><td>여성</td><td>30</td><td>LV1</td><td>부산 테니스장</td><td>3 ~ 6</td><td>진행 완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>12</td><td>볼링 직장 동호회</td><td>사볼이</td><td>볼링</td><td>2025-04-27</td><td>18:00 ~ 20:00</td><td>혼성</td><td>20,30</td><td>LV2</td><td>광진 볼링센터</td><td>5 ~ 10</td><td>모집중</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>13</td><td>토요 테니스 매치</td><td>선수출신</td><td>테니스</td><td>2025-04-29</td><td>08:00 ~ 10:00</td><td>남성</td><td>40</td><td>LV3</td><td>양재 시민체육공원</td><td>2 ~ 4</td><td>모집완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>14</td><td>볼링 신규 환영</td><td>웰컴볼</td><td>볼링</td><td>2025-04-30</td><td>17:00 ~ 19:00</td><td>여성</td><td>20</td><td>LV1</td><td>의정부 볼링장</td><td>2 ~ 6</td><td>진행 완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>15</td><td>테니스 스파링 매치</td><td>스파링맨</td><td>테니스</td><td>2025-05-01</td><td>09:00 ~ 11:00</td><td>혼성</td><td>30</td><td>LV2</td><td>천안 테니스코트</td><td>3 ~ 6</td><td>모집중</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>16</td><td>볼링 대결의 밤</td><td>결의형</td><td>볼링</td><td>2025-05-03</td><td>20:00 ~ 22:00</td><td>남성</td><td>30</td><td>LV2</td><td>노원 볼링존</td><td>4 ~ 6</td><td>최소 모집완료</td><td><a href="#">보기</a> </td></tr>
+        <tr><td>17</td><td>테니스 초보 모집</td><td>테니입문</td><td>테니스</td><td>2025-05-04</td><td>14:00 ~ 16:00</td><td>여성</td><td>20</td><td>LV1</td><td>인천 테니스장</td><td>2 ~ 4</td><td>모집완료</td><td><a href="#">보기</a> </td></tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button class="page-nav">&laquo;</button>
+      <button class="page-nav">&lt;</button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <button class="page-btn">5</button>
+      <button class="page-btn">6</button>
+      <button class="page-btn">7</button>
+      <button class="page-btn">8</button>
+      <button class="page-btn">9</button>
+      <button class="page-btn">10</button>
+      <button class="page-nav">&gt;</button>
+      <button class="page-nav">&raquo;</button>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

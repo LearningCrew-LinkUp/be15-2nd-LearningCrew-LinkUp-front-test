@@ -136,7 +136,9 @@ body {
     background-color: #a494d4;
 }
 .user-post-writer-id-input,
-.user-comment-writer-id-input {
+.user-comment-writer-id-input,
+.point-user-id-input,
+.meeting-review-search-input {
     width: 50px;
 }
 
