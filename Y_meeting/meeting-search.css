@@ -185,11 +185,13 @@ a {
 .filter-group {
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 20px;
     gap: 8px;
 }
 .filter-label {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     color: #333;
 }
 .filter-chip-group {
@@ -470,22 +472,25 @@ a {
     position: fixed;
     top: 160px; /* 정확히 두 번째 버튼과 정렬 */
     right: 84px; /* 버튼 오른쪽 여백 기준 */
-    width: 320px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    padding: 24px 20px 20px;
-    z-index: 1100;
-    font-family: 'Pretendard', sans-serif;
+    width: 30%; /* 모달 너비 확장 */
+    max-width: 800px; /* 최대 너비 설정 */
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 .assignment-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    font-size: 22px; /* 헤더 폰트 크기 증가 */
+    font-weight: 700;
+    color: #111827;
 }
 .assignment-header h2 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     color: #1f2937;
     margin: 0;
@@ -500,19 +505,21 @@ a {
 .assignment-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
 }
+/* 개설 모임 카드 */
 .assignment-card {
     background-color: #f4f6fb;
     border-radius: 16px;
     padding: 12px 14px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 .assignment-thumb {
-    width: 44px;
-    height: 44px;
+    width: 60px;
+    height: 60px;
     border-radius: 12px;
     object-fit: cover;
 }
@@ -520,10 +527,11 @@ a {
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 8px;
     overflow: hidden;
 }
 .assignment-title {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: #111827;
     white-space: nowrap;
@@ -531,14 +539,14 @@ a {
     text-overflow: ellipsis;
 }
 .assignment-address {
-    font-size: 12px;
+    font-size: 14px;
     color: #6b7280;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .assignment-status {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     white-space: nowrap;
 }
@@ -556,12 +564,12 @@ a {
 }
 
 .modal-title-with-emoji .emoji {
-    font-size: 18px;
+    font-size: 22px;
     line-height: 1;
 }
 
 .modal-title-with-emoji h2 {
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 700;
     color: #1f2937;
     margin: 0;
