@@ -38,67 +38,38 @@
         </button>
       </div>
 
+      <!-- 예시 카드 -->
       <div class="meeting-card">
         <img src="../img/place_img1.png" alt="모임 이미지" class="meeting-img" />
         <div class="meeting-info">
           <div class="meeting-meta">
-        <span class="date">
-          <span class="material-symbols-outlined card">event</span> 2025.04.23 (화)
-        </span>
+            <span class="date">
+              <span class="material-symbols-outlined card">event</span> 2025.04.23 (화)
+            </span>
             <button class="bookmark">
               <span class="material-symbols-outlined filled">favorite</span>
             </button>
           </div>
           <h3 class="title">요즘같은 선선한 날에 축구 한판 어때요!</h3>
-          <p class="location">
-            <span class="material-symbols-outlined card">location_on</span> 서울 도봉구 방학로 223
-          </p>
-          <p class="likes">
-            <span class="material-symbols-outlined card">favorite</span> 32명 찜
-          </p>
-          <p class="price">
-            <span class="material-symbols-outlined card">attach_money</span> <strong>20,000원</strong>
-          </p>
-        </div>
-      </div>
-      <div class="meeting-card">
-        <img src="../img/place_img1.png" alt="모임 이미지" class="meeting-img" />
-        <div class="meeting-info">
-          <div class="meeting-meta">
-        <span class="date">
-          <span class="material-symbols-outlined card">event</span> 2025.04.23 (화)
-        </span>
-            <button class="bookmark">
-              <span class="material-symbols-outlined not-filled">favorite</span>
-            </button>
-          </div>
-          <h3 class="title">요즘같은 선선한 날에 축구 한판 어때요!</h3>
-          <p class="location">
-            <span class="material-symbols-outlined card">location_on</span> 서울 도봉구 방학로 223
-          </p>
-          <p class="likes">
-            <span class="material-symbols-outlined card">favorite</span> 32명 찜
-          </p>
-          <p class="price">
-            <span class="material-symbols-outlined card">attach_money</span> <strong>20,000원</strong>
-          </p>
+          <p class="location"><span class="material-symbols-outlined card">location_on</span> 서울 도봉구 방학로 223</p>
+          <p class="likes"><span class="material-symbols-outlined card">favorite</span> 32명 찜</p>
+          <p class="price"><span class="material-symbols-outlined card">attach_money</span> <strong>20,000원</strong></p>
         </div>
       </div>
     </section>
 
-
     <!-- 지도 -->
     <main class="map-section">
       <img src="../img/map_img.png" alt="지도" class="map-image" />
+
     </main>
   </div>
-
 
   <!-- 왼쪽 플로팅 사이드바 -->
   <div class="floating-nav">
     <div class="nav-section">
       <div class="nav-btn" title="모임 개설" onclick="location.href='meeting-create-select.html'">
-        <span class="material-symbols-outlined active">edit_note</span>
+        <span class="material-symbols-outlined">edit_note</span>
       </div>
     </div>
     <hr />
@@ -120,46 +91,9 @@
       </div>
     </div>
   </div>
-  </div>
-
-  <!-- 모달 -->
-  <div class="create-modal" id="createModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h2>모임 개설 유형을 선택해주세요</h2>
-        <button class="close-btn" onclick="document.getElementById('createModal').style.display='none'">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-
-      <div class="option-card" onclick="location.href='meeting-create-place.html'">
-        <div class="option-icon">
-          <span class="material-symbols-outlined">location_on</span>
-        </div>
-        <div class="option-text">
-          <div class="option-title">장소 예약 모임 개설</div>
-          <div class="option-sub">예약할 장소를 먼저 선택한 후 모임을 개설합니다.</div>
-        </div>
-      </div>
-
-      <div class="option-card" onclick="location.href='meeting-create-form.html'">
-        <div class="option-icon">
-          <span class="material-symbols-outlined">edit_note</span>
-        </div>
-        <div class="option-text">
-          <div class="option-title">지정 주소 모임 개설</div>
-          <div class="option-sub">직접 입력한 주소로 모임을 개설할 수 있습니다.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-
-
-
-  <!-- 스크립트 -->
+<!-- 스크립트 -->
 <script>
   flatpickr("#dateRange", {
     mode: "range",
@@ -167,15 +101,19 @@
     locale: "ko"
   });
 
-  // chip 토글 기능
   document.querySelectorAll('.filter-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       chip.classList.toggle('active');
     });
   });
 
+  function openAssignmentModal() {
+    document.getElementById('assignmentModal').style.display = 'block';
+  }
 
-
+  function closeAssignmentModal() {
+    document.getElementById('assignmentModal').style.display = 'none';
+  }
 </script>
 
 </body>

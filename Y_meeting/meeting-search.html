@@ -100,16 +100,26 @@
 
       <div class="filter-group">
         <label class="filter-label">지역</label>
-        <select class="region-dropdown">
-          <option>전체</option>
-          <option>서울</option>
-          <option>경기</option>
-          <option>인천</option>
-          <option>부산</option>
-          <option>대전</option>
-          <option>대구</option>
-          <option>기타</option>
-        </select>
+        <div class="region-selector">
+          <div class="region-buttons">
+            <button class="region-btn main-region-btn">전체</button>
+            <button class="region-btn sub-region-btn">전체</button>
+          </div>
+
+          <div class="region-dropdown" style="display: none;">
+            <div class="region-category-list">
+              <ul>
+                <!-- JS로 대분류 채워짐 -->
+              </ul>
+            </div>
+            <div class="region-subcategory-list">
+              <ul>
+                <!-- JS로 소분류 채워짐 -->
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
 
 
@@ -179,8 +189,11 @@
 
       <!-- 날짜 -->
       <div class="filter-group">
-        <label class="filter-label">조회 기간</label>
-        <input type="text" id="dateRange" class="date-input" placeholder="날짜 범위 선택" />
+        <label class="filter-label meeting-filter-label">조회 기간 :</label>
+        <div class="meeting-filter-date">
+          <input type="date" class="select-box meeting-start-date"> ~
+          <input type="date" class="select-box meeting-end-date">
+        </div>
       </div>
 
       <!-- 검색 -->
@@ -189,28 +202,10 @@
   </div>
 
   <!-- 왼쪽 플로팅 사이드바 -->
-  <div class="floating-nav">
+  <div class="floating-nav min">
     <div class="nav-section">
-      <div class="nav-btn active" title="모임 개설" onclick="location.href='meeting-create-select.html'">
-        <span class="material-symbols-outlined" >edit_note</span>
-      </div>
-    </div>
-    <hr />
-    <div class="nav-section">
-      <div class="nav-btn" title="개설 모임 관리" onclick="location.href='meeting_assignment.html'">
-        <span class="material-symbols-outlined">assignment</span>
-      </div>
-      <div class="nav-btn" title="참가 모임 관리">
-        <span class="material-symbols-outlined" onclick="location.href='meeting-emoji_people.html'">emoji_people</span>
-      </div>
-      <div class="nav-btn" title="찜 목록">
-        <span class="material-symbols-outlined" onclick="location.href='meeting-favorite.html'">favorite</span>
-      </div>
-    </div>
-    <hr />
-    <div class="nav-section">
-      <div class="nav-btn" title="알림">
-        <span class="material-symbols-outlined">notifications</span>
+      <div class="nav-btn" title="설정">
+        <span class="material-symbols-outlined" onclick="location.href='meeting_float_bar.html'">settings</span>
       </div>
     </div>
   </div>
@@ -233,6 +228,66 @@
     });
   });
 
+  const areas = {
+    "서울": ["강남", "건대입구", "가양", "노원", "도곡", "신림", "영등포"],
+    "경기/인천": ["수원", "성남", "고양", "인천", "부천"],
+    "충청/대전": ["대전", "천안", "청주"],
+    "전라/광주": ["광주", "전주", "목포"],
+    "경북/대구": ["대구", "구미", "포항"],
+    "경남/부산/울산": ["부산", "울산", "창원"],
+    "강원": ["춘천", "강릉"],
+    "제주": ["제주시", "서귀포시"]
+  };
+
+  const mainBtn = document.querySelector('.main-region-btn');
+  const subBtn = document.querySelector('.sub-region-btn');
+  const dropdown = document.querySelector('.region-dropdown');
+  const categoryList = document.querySelector('.region-category-list ul');
+  const subcategoryList = document.querySelector('.region-subcategory-list ul');
+
+  // 버튼 클릭하면 드롭다운 열기/닫기
+  mainBtn.addEventListener('click', () => {
+    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  function renderCategory() {
+    categoryList.innerHTML =
+            Object.keys(areas).map(area => `<li>${area}</li>`).join('');
+  }
+
+  function renderSubcategory(selectedArea) {
+    const subs = areas[selectedArea] || [];
+    subcategoryList.innerHTML =
+            subs.map(sub => `<li>${sub}</li>`).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCategory();
+    renderSubcategory(Object.keys(areas)[0]);
+
+    categoryList.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        document.querySelectorAll('.region-category-list li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const selectedMain = e.target.textContent.trim();
+        mainBtn.textContent = selectedMain; // 왼쪽 버튼 텍스트 변경
+        renderSubcategory(selectedMain);
+        subBtn.textContent = '전체'; // 소분류 다시 전체로 초기화
+      }
+    });
+
+    subcategoryList.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        document.querySelectorAll('.region-subcategory-list li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const selectedSub = e.target.textContent.trim();
+        subBtn.textContent = selectedSub; // 오른쪽 버튼 텍스트 변경
+        dropdown.style.display = 'none'; // 선택하면 드롭다운 닫기
+      }
+    });
+  });
 
 
 </script>
