@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>게시글 상세</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Apple SD Gothic Neo', sans-serif;
+      background-color: #f7f8fa;
+    }
+
+    .page {
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(to right, #d2e1ff, #e2d1ff);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      height: 100px;
+    }
+
+    .linkup-logo {
+      height: 40px;
+    }
+
+    .nav-list {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-list .item-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .detail-container {
+      max-width: 960px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .content {
+      padding: 32px;
+    }
+
+    .title-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .report-btn, .comment-report-btn {
+      background: none;
+      border: none;
+      color: #999;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+    }
+
+    .report-btn:hover, .comment-report-btn:hover {
+      color: #f33;
+    }
+
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 30px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .profile-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .body {
+      font-size: 16px;
+      color: #444;
+      white-space: pre-wrap;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #777;
+      border-top: 1px solid #eee;
+      padding-top: 16px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0 20px;
+      padding: 0 32px;
+    }
+
+    .nav-buttons button {
+      padding: 10px 20px;
+      background: #eef1f4;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .comments {
+      padding: 32px;
+      border-top: 1px solid #eee;
+    }
+
+    .comments h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .comment {
+      display: flex;
+      align-items: center; /* ✅ 수직 중앙 정렬 */
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .comment .profile-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .comment-content {
+      flex: 1;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .comment-content .author {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .text {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .comment-form textarea {
+      padding: 12px;
+      font-size: 14px;
+      resize: vertical;
+      height: 80px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .comment-form button {
+      align-self: flex-end;
+      background-color: #4763f3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      width: 400px;
+      max-width: 90%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .modal label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .modal select, .modal textarea {
+      width: 100%;
+      margin: 10px 0 20px;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .modal-footer button {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-cancel {
+      background: #ddd;
+    }
+
+    .btn-submit {
+      background: #4763f3;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <img class="linkup-logo" src="img/linkup-logo.png" alt="LinkUp Logo" />
+    <div class="nav-list">
+      <div class="item-link">커뮤니티</div>
+      <div class="item-link">모임</div>
+      <div class="item-link">장소</div>
+      <div class="item-link">사용자</div>
+    </div>
+  </div>
+
+  <!-- 게시글 상세 -->
+  <div class="detail-container">
+    <div class="content">
+      <div class="title-section">
+        <div class="title">하늘을 보며 잠깐 멈추었던 순간</div>
+        <button class="report-btn" onclick="openReportModal('게시글')">신고</button>
+      </div>
+      <div class="author-info">
+        <img class="profile-img" src="https://cdn.pixabay.com/photo/2021/01/01/12/59/whale-5878491_640.jpg" alt="프로필 사진" />
+        <span>작성자: 유진 | 2025.04.22</span>
+      </div>
+
+      <div style="margin-bottom: 24px; width: 100%; aspect-ratio: 16 / 9; background-color: #eee; border-radius: 12px; overflow: hidden;">
+        <img src="https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg" alt="본문 이미지" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+
+      <div class="body">
+        하루종일 정신없이 바쁘다가
+        퇴근길에 우연히 올려다본 하늘이 너무 예뻐서
+        그 자리에 멈춰 한참을 서 있었어요.
+        이런 작은 순간이 참 소중하다는 걸 새삼 느꼈던 날이었어요.
+      </div>
+
+      <div class="footer">
+        <span>조회수 132</span>
+        <span>❤️ 23</span>
+      </div>
+    </div>
+
+    <!-- 댓글 -->
+    <div class="comments">
+      <h3>댓글</h3>
+
+      <div class="comment">
+        <img class="profile-img" src="https://cdn.pixabay.com/photo/2021/01/01/12/59/whale-5878491_640.jpg" alt="하린" />
+        <div class="comment-content">
+          <div class="comment-header">
+            <span class="author">하린</span>
+            <button class="comment-report-btn" onclick="openReportModal('댓글')">신고</button>
+          </div>
+          <div class="text">글 너무 공감돼요. 요즘 저도 그런 기분 자주 느껴요.</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img class="profile-img" src="https://cdn.pixabay.com/photo/2021/01/01/12/59/whale-5878491_640.jpg" alt="민수" />
+        <div class="comment-content">
+          <div class="comment-header">
+            <span class="author">민수</span>
+            <button class="comment-report-btn" onclick="openReportModal('댓글')">신고</button>
+          </div>
+          <div class="text">하늘이 감정을 정리해주는 것 같죠. 잘 보고 갑니다 😊</div>
+        </div>
+      </div>
+
+      <form class="comment-form" onsubmit="event.preventDefault(); alert('댓글이 등록되었습니다!');">
+        <textarea placeholder="댓글을 입력하세요..."></textarea>
+        <button type="submit">댓글 등록</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 신고 모달 -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <h2 id="modalTitle">신고하기</h2>
+      <label for="reason">신고 사유</label>
+      <select id="reason">
+        <option value="">-- 사유를 선택하세요 --</option>
+        <option value="욕설/비방">욕설/비방</option>
+        <option value="음란물">음란물</option>
+        <option value="광고/도배">광고/도배</option>
+        <option value="기타">기타</option>
+      </select>
+      <label for="detail">상세 설명 (선택)</label>
+      <textarea id="detail" placeholder="자세한 내용을 적어주세요..."></textarea>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeReportModal()">취소</button>
+        <button class="btn-submit" onclick="submitReport()">신고하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentTargetType = "";
+
+    function openReportModal(type) {
+      currentTargetType = type;
+      document.getElementById("modalTitle").innerText = `${type} 신고하기`;
+      document.getElementById("modalBackdrop").style.display = "flex";
+    }
+
+    function closeReportModal() {
+      document.getElementById("modalBackdrop").style.display = "none";
+      document.getElementById("reason").value = "";
+      document.getElementById("detail").value = "";
+    }
+
+    function submitReport() {
+      const reason = document.getElementById("reason").value;
+      if (!reason) {
+        alert("신고 사유를 선택해주세요.");
+        return;
+      }
+
+      alert(`${currentTargetType}이(가) 신고되었습니다.\n사유: ${reason}`);
+      closeReportModal();
+    }
+  </script>
+</div>
+</body>
+</html>

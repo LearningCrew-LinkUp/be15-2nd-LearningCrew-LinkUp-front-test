@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Apple SD Gothic Neo', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .page {
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(to right, #d2e1ff, #e2d1ff);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            height: 80px;
+        }
+        .linkup-logo {
+            height: 40px;
+        }
+        .nav-list {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-list .item-link {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* 검색 + 글쓰기 같이 정렬 */
+        .search-write-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-container select,
+        .search-container input {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .search-container button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #4763f3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .write-button {
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #4763f3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .community-container {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .notice-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .notice-post {
+            background-color: #e9efff;
+            border-left: 6px solid #4763f3;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .notice-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1c2e5c;
+            margin-bottom: 8px;
+        }
+
+        .notice-text {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .notice-label {
+            display: inline-block;
+            background-color: #4763f3;
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .post {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 16px;
+            transition: 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .post:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .thumbnail {
+            flex-shrink: 0;
+            width: 120px;
+            height: 90px;
+            border-radius: 12px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .post-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .post-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 6px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .post-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            max-height: 42px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .likes {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .load-more {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+<div class="page">
+
+    <!-- 헤더 -->
+    <div class="header">
+        <img class="linkup-logo" src="https://raw.githubusercontent.com/LearningCrew-LinkUp/be15-2nd-LearningCrew-LinkUp-front-test/refs/heads/main/img/learning_crew_logo.webp" alt="LinkUp 로고" />
+        <div class="nav-list">
+            <div class="item-link">커뮤니티</div>
+            <div class="item-link">모임</div>
+            <div class="item-link">장소</div>
+            <div class="item-link">사용자</div>
+        </div>
+    </div>
+
+    <!-- 검색창 + 글쓰기 버튼 한 줄 -->
+    <div class="search-write-container">
+        <div class="search-container">
+            <select>
+                <option value="all">제목+본문</option>
+                <option value="title">제목</option>
+                <option value="content">본문</option>
+            </select>
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </div>
+        <button class="write-button" onclick="location.href='write.html'">✏️ 글쓰기</button>
+    </div>
+
+    <!-- 공지사항 -->
+    <div class="community-container notice-section">
+        <div class="notice-post">
+            <div class="notice-title">
+                <span class="notice-label">공지</span> 커뮤니티 이용 수칙 안내
+            </div>
+            <div class="notice-text">
+                안녕하세요, LinkUp 운영팀입니다.<br />
+                커뮤니티는 모두가 함께 사용하는 공간이니, 욕설, 비방, 광고성 글은 삼가주세요.<br />
+                위반 시 경고 없이 삭제될 수 있습니다. 모두 함께 즐거운 커뮤니티를 만들어가요! 😊
+            </div>
+        </div>
+        <div class="notice-post">
+            <div class="notice-title">
+                <span class="notice-label">공지</span> 서버 점검 안내
+            </div>
+            <div class="notice-text">
+                2025년 5월 1일 02:00~04:00까지 서버 점검이 예정되어 있습니다.<br />
+                이 시간 동안 일부 서비스 이용이 제한될 수 있습니다.
+            </div>
+        </div>
+    </div>
+
+    <!-- 게시글 목록 -->
+    <div class="community-container" id="postContainer">
+        <a class="post">
+            <img src="https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg" class="thumbnail" alt="썸네일">
+            <div class="post-content">
+                <div>
+                    <div class="post-title">혼자 있는 시간이 너무 좋다</div>
+                    <div class="post-text">요즘은 사람 많은 곳보다 조용한 카페에 앉아서 노트북 두드리는 게 제일 행복하다. 바람 살랑살랑 부는 날이면 더더욱.</div>
+                </div>
+                <div class="post-footer">
+                    <span>2025.04.22</span>
+                    <div class="likes">❤️ <span>21</span></div>
+                </div>
+            </div>
+        </a>
+
+        <a class="post">
+            <img src="https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg" class="thumbnail" alt="썸네일">
+            <div class="post-content">
+                <div>
+                    <div class="post-title">요즘 읽는 책</div>
+                    <div class="post-text">‘죽음에 관하여’라는 책을 읽고 있는데, 생각보다 너무 무겁지 않아서 놀랐다. 잔잔하게 사색할 수 있는 문장이 많아서 좋다.</div>
+                </div>
+                <div class="post-footer">
+                    <span>2025.04.21</span>
+                    <div class="likes">❤️ <span>12</span></div>
+                </div>
+            </div>
+        </a>
+
+        <a class="post">
+            <img src="https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg" class="thumbnail" alt="썸네일">
+            <div class="post-content">
+                <div>
+                    <div class="post-title">도심 야경 산책 추천</div>
+                    <div class="post-text">한강도 좋지만, 난 잠실 석촌호수에서 보는 야경이 진짜 좋더라. 특히 평일 밤 10시쯤 조용한 산책하면 최고!</div>
+                </div>
+                <div class="post-footer">
+                    <span>2025.04.20</span>
+                    <div class="likes">❤️ <span>17</span></div>
+                </div>
+            </div>
+        </a>
+
+        <a class="post">
+            <img src="https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg" class="thumbnail" alt="썸네일">
+            <div class="post-content">
+                <div>
+                    <div class="post-title">강아지랑 산책 중</div>
+                    <div class="post-text">오늘은 우리 집 강아지가 처음으로 혼자서 횡단보도 기다렸다가 건넜다. 대견하고 귀여워서 하루 종일 웃고 있음ㅋㅋ</div>
+                </div>
+                <div class="post-footer">
+                    <span>2025.04.19</span>
+                    <div class="likes">❤️ <span>29</span></div>
+                </div>
+            </div>
+        </a>
+
+        <a class="post">
+            <img src="https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg" class="thumbnail" alt="썸네일">
+            <div class="post-content">
+                <div>
+                    <div class="post-title">감자전 성공 후기</div>
+                    <div class="post-text">처음으로 감자전을 만들었는데, 겉은 바삭하고 안은 촉촉한 게 완벽했다! 비 오는 날 감자전+막걸리는 진리..</div>
+                </div>
+                <div class="post-footer">
+                    <span>2025.04.18</span>
+                    <div class="likes">❤️ <span>35</span></div>
+                </div>
+            </div>
+        </a>
+
+        <div class="load-more">스크롤을 내려 더 많은 글을 확인하세요...</div>
+
+    </div>
+</body>
+</html>
