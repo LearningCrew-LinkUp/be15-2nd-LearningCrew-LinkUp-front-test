@@ -17,7 +17,7 @@
     <a href="meeting-meeting.html" class="nav-link">모임 관리</a>
     <a href="place-place.html" class="nav-link">장소 관리</a>
     <a href="report-report.html" class="nav-link active">신고 관리</a>
-    <a href="user-sanction.html" class="nav-link">제재 관리</a>
+    <a href="penalty-penalty.html" class="nav-link">제재 관리</a>
   </nav>
 </header>
 
@@ -145,13 +145,14 @@
       </div>
     </div>
 
-    <div class="modal-buttons">
-      <button class="btn btn-danger" onclick="alert('허위 신고 처리')">허위 신고</button>
-      <button class="btn btn-primary" onclick="alert('신고 처리 완료')">처리 완료</button>
+    <div class="modal-buttons report-buttons">
+      <button class="btn btn-reject" onclick="alert('허위 신고 처리')">허위 신고</button>
+      <button class="btn btn-approve" onclick="alert('신고 처리 완료')">처리 완료</button>
       <button class="btn btn-secondary" onclick="closeReportModal()">닫기</button>
     </div>
   </div>
 </div>
+
 
 
 <script>

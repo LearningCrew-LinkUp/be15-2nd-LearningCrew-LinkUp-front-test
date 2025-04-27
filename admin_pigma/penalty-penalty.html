@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제재 내역 조회</title>
+  <link rel="stylesheet" href="admin-styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="header-left">서비스 관리</div>
+  <nav class="admin-nav">
+    <a href="user-member.html" class="nav-link">회원 관리</a>
+    <a href="point-point.html" class="nav-link">포인트 관리</a>
+    <a href="meeting-meeting.html" class="nav-link">모임 관리</a>
+    <a href="place-place.html" class="nav-link">장소 관리</a>
+    <a href="report-report.html" class="nav-link">신고 관리</a>
+    <a href="penalty-penalty.html" class="nav-link active">제재 관리</a>
+  </nav>
+</header>
+
+<div class="admin-container">
+  <aside class="admin-sidebar">
+    <ul>
+      <li><a href="penalty-penalty-place.html" class="sidebar-link active">제재 내역 조회</a></li>
+      <li><a href="penalty-objection.html" class="sidebar-link">이의 제기 내역 조회</a></li>
+      <li><a href="penalty-blacklist.html" class="sidebar-link">블랙리스트 조회</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <div class="main-header">
+      <h1 class="page-title">제재 내역 조회</h1>
+      <div class="filter-box">
+        <label class="filter-label penalty-filter-label">상태:
+          <select t id="penalty" name="penalty" class="select-box penalty-penalty-select">
+            <option value="">전체</option>
+            <option value="active">활성</option>
+            <option value="inactive">비활성</option>
+          </select>
+        </label>
+        <label class="filter-label penalty-filter-label">사용자 ID:
+          <input type="text" class="select-box id-input" placeholder="ID">
+        </label>
+        <label class="filter-label penalty-filter-label">패널티 유형:
+          <select class="select-box">
+            <option value="">전체</option>
+            <option value="POST">POST</option>
+            <option value="COMMENT">COMMENT</option>
+            <option value="REVIEW">REVIEW</option>
+          </select>
+        </label>
+        <button class="btn btn-primary">검색</button>
+      </div>
+    </div>
+
+    <table class="table penalty">
+      <thead>
+      <tr>
+        <th>패널티 ID</th>
+        <th>사용자 ID</th>
+        <th>사용자 이름</th>
+        <th>유형</th>
+        <th>사유</th>
+        <th>일시</th>
+        <th>상태</th>
+        <th>상세</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>42</td><td>김하나</td><td>COMMENT</td><td>욕설 사용</td><td>2025-04-01 10:30</td><td>활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>2</td><td>43</td><td>이도현</td><td>POST</td><td>허위 게시물</td><td>2025-04-02 11:15</td><td>비활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>3</td><td>44</td><td>박서준</td><td>REVIEW</td><td>비방 후기 작성</td><td>2025-04-03 14:00</td><td>활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>4</td><td>45</td><td>정예린</td><td>COMMENT</td><td>도배</td><td>2025-04-04 09:00</td><td>비활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>5</td><td>46</td><td>홍길동</td><td>REVIEW</td><td>광고성 후기</td><td>2025-04-05 12:20</td><td>비활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>6</td><td>47</td><td>김지우</td><td>POST</td><td>부적절한 이미지</td><td>2025-04-06 16:45</td><td>활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>7</td><td>48</td><td>최윤서</td><td>COMMENT</td><td>욕설 포함</td><td>2025-04-07 08:10</td><td>활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>8</td><td>49</td><td>백승우</td><td>POST</td><td>도배성 홍보</td><td>2025-04-08 10:30</td><td>비활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>9</td><td>50</td><td>조은비</td><td>REVIEW</td><td>도용 이미지 사용</td><td>2025-04-09 17:50</td><td>활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>10</td><td>51</td><td>임채영</td><td>COMMENT</td><td>스팸 댓글</td><td>2025-04-10 13:00</td><td>비활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>11</td><td>52</td><td>한지민</td><td>POST</td><td>허위 정보 제공</td><td>2025-04-11 10:00</td><td>활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>12</td><td>53</td><td>차민규</td><td>COMMENT</td><td>욕설로 인한 제재 처리</td><td>2025-04-12 09:45</td><td>활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>13</td><td>54</td><td>서하늘</td><td>REVIEW</td><td>거짓 후기 작성</td><td>2025-04-13 11:30</td><td>비활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>14</td><td>55</td><td>김세연</td><td>POST</td><td>중복 게시물</td><td>2025-04-14 15:15</td><td>비활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+        <tr><td>15</td><td>56</td><td>이서진</td><td>COMMENT</td><td>욕설 포함</td><td>2025-04-15 18:20</td><td>활성</td><td><a href="#" onclick="openPenaltyModal()">보기</a></td></tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button class="page-nav">&laquo;</button>
+      <button class="page-nav">&lt;</button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <button class="page-btn">5</button>
+      <button class="page-btn">6</button>
+      <button class="page-btn">7</button>
+      <button class="page-btn">8</button>
+      <button class="page-btn">9</button>
+      <button class="page-btn">10</button>
+      <button class="page-nav">&gt;</button>
+      <button class="page-nav">&raquo;</button>
+    </div>
+
+  </main>
+</div>
+
+<!-- 제재 상세 모달 -->
+<div id="penaltyModal" class="modal" style="display: flex;">
+  <div class="modal-report penalty-detail-section">
+    <div>
+      <h2 class="modal-report-title">제재 상세 정보</h2>
+      <p class="sub-text">제재 대상과 사유를 확인하고 후속 조치를 진행할 수 있습니다.</p>
+    </div>
+
+    <!-- 사용자 정보 -->
+    <div class="modal-report-section">
+      <div class="section-title">사용자 정보</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">사용자 ID</div>
+          <div class="value">53</div>
+        </div>
+        <div class="info-item">
+          <div class="label">이름</div>
+          <div class="value">차민규</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 제재 정보 -->
+    <div class="modal-report-section">
+      <div class="section-title">제재 정보</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">패널티 ID</div>
+          <div class="value">8</div>
+        </div>
+        <div class="info-item">
+          <div class="label">사유</div>
+          <div class="value">욕설로 인한 제재 처리</div>
+        </div>
+        <div class="info-item">
+          <div class="label">상태</div>
+          <div class="value">활성</div>
+        </div>
+        <div class="info-item">
+          <div class="label">제재 일시</div>
+          <div class="value">2025-04-18 08:43:44</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 관련 콘텐츠 -->
+    <div class="modal-report-section">
+      <div class="section-title">관련 콘텐츠</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">패널티 유형</div>
+          <div class="value">댓글(COMMENT)</div>
+        </div>
+        <div class="info-item">
+          <div class="label">댓글 ID</div>
+          <div class="value">3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 처리 버튼 -->
+    <div class="modal-buttons penalty-actions">
+      <button class="btn btn-reject">제재 철회</button>
+      <button class="btn btn-secondary" onclick="closePenaltyModal()">닫기</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function openPenaltyModal() {
+    document.getElementById('penaltyModal').style.display = 'flex';
+  }
+
+  function closePenaltyModal() {
+    document.getElementById('penaltyModal').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
