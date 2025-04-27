@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사용자 신고</title>
+  <link rel="stylesheet" href="report-styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- 헤더 -->
+<header class="main-header">
+  <div class="logo">
+    <img src="../../img/learning_crew_logo.webp" alt="로고" />
+  </div>
+  <nav class="nav-menu">
+    <a href="#">커뮤니티</a>
+    <a href="#">모임</a>
+    <a href="#">장소</a>
+    <a href="#">사용자</a>
+  </nav>
+</header>
+
+<!-- 본문 -->
+<div class="container">
+
+  <div class="modal-report">
+    <!-- 모달 타이틀 -->
+    <h2 class="modal-report-title">사용자 신고</h2>
+
+    <!-- 신고자 정보 섹션 -->
+    <div class="modal-report-section">
+      <div class="info-grid-user">
+        <div class="section-title">신고자 정보</div>
+        <div class="info-item info-item-user">
+          <div class="label">신고자 닉네임</div>
+          <div class="value">길동이</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 신고 내용 섹션 -->
+    <div class="modal-report-section">
+      <div class="section-title">신고 내용</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">신고 유형</div>
+          <div class="value">
+            <select>
+              <option value="spam">스팸</option>
+              <option value="inappropriate">부적절한 콘텐츠</option>
+              <option value="abusive">욕설/폭언</option>
+              <option value="other">기타</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 신고 사유 입력 필드 -->
+    <div class="modal-report-section">
+      <div class="section-title">신고 사유</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="value">
+            <textarea rows="4" placeholder="신고 내용을 작성해 주세요."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 하단 버튼들 -->
+    <div class="modal-buttons">
+      <button class="btn btn-approve">제출</button>
+      <button class="btn btn-secondary">취소</button>
+    </div>
+  </div>
+
+
+
+</div>
+</body>
+</html>

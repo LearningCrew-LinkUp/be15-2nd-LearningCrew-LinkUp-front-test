@@ -12,6 +12,11 @@ body {
     background-color: #fff;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* ---------------- 헤더 ---------------- */
 .admin-header {
     display: flex;
@@ -25,13 +30,11 @@ body {
 .header-left {
     font-size: 18px;
     font-weight: 600;
-    color: #333;
 }
 
 .admin-nav a {
     margin-left: 24px;
     font-weight: 500;
-    text-decoration: none;
     color: #555;
     padding-bottom: 4px;
 }
@@ -64,11 +67,10 @@ body {
 
 .admin-sidebar a {
     display: block;
-    text-decoration: none;
+    font-weight: 500;
     color: #555;
     padding: 10px 14px;
     border-radius: 8px;
-    font-weight: 500;
 }
 
 .admin-sidebar a.active {
@@ -119,204 +121,17 @@ body {
     color: #333;
 }
 
+/* ---------------- 버튼 ---------------- */
 .btn {
     padding: 6px 16px;
     font-size: 14px;
     border: none;
     border-radius: 6px;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: #b7a6e4;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #a494d4;
-}
-.id-input { width: 50px; }
-
-/* ---------------- 테이블 ---------------- */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    margin-bottom: 32px;
-}
-
-.table th,
-.table td {
-    padding: 14px 12px;
-    text-align: left;
-    vertical-align: middle;
-}
-
-.table thead th {
-    background-color: #f5f3fa;
-    border-bottom: 1px solid #e3e1ed;
-    font-weight: 500;
-    color: #444;
-}
-
-.table tbody td {
-    background-color: #fff;
-    border-bottom: 1px solid #f0f0f0;
-}
-.user-authority-reason,
-.user-comment-content {
-    width: 42%;
-}
-.place-address {
-    width: 32%;
-}
-
-/* ---------------- 페이지네이션 ---------------- */
-.pagination {
-    text-align: center;
-    margin-top: 8px;
-}
-
-.page-btn,
-.page-nav {
-    border: none;
-    background-color: #fff;
-    color: #333;
-    padding: 8px 14px;
-    margin: 0 3px;
-    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-.page-btn:hover,
-.page-nav:hover {
-    background-color: #dcd5f2;
-}
-
-.page-btn.active {
-    background-color: #b7a6e4;
-    color: #fff;
-    font-weight: 600;
-}
-
-
-/* ---------------- 기본 설정 ---------------- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 14px;
-    color: #333;
-    background-color: #fff;
-}
-
-/* ---------------- 헤더 ---------------- */
-.admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #f5f3fa;
-    border-bottom: 1px solid #e3e1ed;
-}
-
-.header-left {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-}
-
-.admin-nav a {
-    margin-left: 24px;
-    font-weight: 500;
-    text-decoration: none;
-    color: #555;
-    padding-bottom: 4px;
-}
-
-.admin-nav a.active {
-    color: #7d6fb3;
-    border-bottom: 2px solid #beb2dd;
-}
-
-/* ---------------- 전체 레이아웃 ---------------- */
-.admin-container {
-    display: flex;
-    height: calc(100vh - 68px);
-}
-
-.admin-sidebar {
-    width: 220px;
-    padding: 32px 20px;
-    background-color: #f7f6fc;
-    border-right: 1px solid #e3e1ed;
-}
-
-.admin-sidebar ul {
-    list-style: none;
-}
-
-.admin-sidebar li {
-    margin-bottom: 16px;
-}
-
-.admin-sidebar a {
-    display: block;
-    text-decoration: none;
-    color: #555;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-weight: 500;
-}
-
-.admin-sidebar a.active {
-    background-color: #e8e4f7;
-}
-
-/* ---------------- 메인 ---------------- */
-.admin-main {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
-}
-
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.page-title {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-/* ---------------- 필터 ---------------- */
-.filter-box {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 15px;
-}
-
-.filter-label {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    gap: 6px;
-}
-
-.btn {
-    padding: 6px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 6px;
+.btn:hover {
     cursor: pointer;
 }
 
@@ -328,11 +143,35 @@ body {
 .btn-primary:hover {
     background-color: #a494d4;
 }
-.id-input,
-.id-input,
-.id-input,
-.id-input,
-.id-input,
+
+.btn-secondary {
+    background-color: #f1f1f1;
+    color: #222;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-approve {
+    background-color: #5790FF;
+    color: #fff;
+}
+
+.btn-approve:hover {
+    background-color: #88A0FF;
+}
+
+.btn-reject {
+    background-color: #FE8A91;
+    color: #fff;
+}
+
+.btn-reject:hover {
+    background-color: #E75A61;
+}
+
+/* ---------------- ID 입력칸 ---------------- */
 .id-input,
 .user-reporter-id-input,
 .penalty-objection-id-input {
@@ -365,10 +204,13 @@ body {
     background-color: #fff;
     border-bottom: 1px solid #f0f0f0;
 }
+
+/* 테이블 특정 컬럼 넓이 */
 .user-authority-reason,
 .user-comment-content {
     width: 42%;
 }
+
 .place-address {
     width: 32%;
 }
@@ -402,7 +244,6 @@ body {
     font-weight: 600;
 }
 
-
 /* ---------------- 모달 ---------------- */
 .modal {
     position: fixed;
@@ -427,8 +268,8 @@ body {
 }
 
 .modal-content img {
-    width: 100%; /* 가로를 부모 영역에 딱 맞춘다 */
-    height: auto; /* 세로는 비율 유지 */
+    width: 100%;
+    height: auto;
     border-radius: 8px;
 }
 
@@ -438,9 +279,13 @@ body {
     margin-top: 20px;
 }
 
-.modal-left {
+.modal-left,
+.modal-right {
     flex: 1;
     display: flex;
+}
+
+.modal-left {
     justify-content: center;
     align-items: center;
 }
@@ -453,8 +298,6 @@ body {
 }
 
 .modal-right {
-    flex: 1;
-    display: flex;
     flex-direction: column;
     gap: 12px;
     padding-top: 10px;
@@ -475,24 +318,17 @@ body {
     width: 100%;
 }
 
-.modal-footer {
+.modal-footer,
+.modal-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 12px;
     margin-top: 24px;
 }
 
-.btn-secondary {
-    background-color: #bbb;
-    color: #fff;
-}
-
-.btn-secondary:hover {
-    background-color: #aaa;
-}
-
-/* ---------------- 신고 상세 모달 전용 ---------------- */
-.modal-report {
+/* ---------------- 신고 상세 모달 ---------------- */
+.modal-report,
+.penalty-detail-section {
     background: #fff;
     padding: 40px;
     border-radius: 12px;
@@ -509,28 +345,34 @@ body {
     color: #1a1a1a;
 }
 
+.sub-text {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}
+
 .modal-report-section {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid #f0f0f0; /* 구분선 추가 */
     padding-bottom: 20px;
     gap: 16px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .modal-report-section:last-child {
-    border-bottom: none; /* 마지막 섹션은 구분선 없애기 */
+    border-bottom: none;
 }
 
 .section-title {
     font-size: 18px;
     font-weight: 600;
     color: #7d6fb3;
-    margin-bottom: 12px;
+    margin: 20px 0 12px;
     padding-left: 10px;
     border-left: 4px solid #7d6fb3;
-    margin-top: 20px;
 }
 
+/* 신고 상세 info grid */
 .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -564,14 +406,7 @@ body {
     line-height: 1.6;
 }
 
-.modal-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-}
-
-/* ---------------- 모달 테이블 스타일 수정 ---------------- */
-/* 신고자별 신고 내역 상세 페이지 */
+/* ---------------- 신고 상세 테이블 페이지 ---------------- */
 .report-detail-container {
     max-width: 960px;
     min-width: 850px;
@@ -598,109 +433,4 @@ body {
 
 .report-detail-grid div {
     line-height: 1.5;
-}
-
-/* ---------------- 모달 공통 스타일 ---------------- */
-.modal-report, .penalty-detail-section {
-    background: #fff;
-    padding: 40px;
-    border-radius: 12px;
-    width: 700px;
-    max-width: 90%;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-}
-
-.modal-report-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1a1a1a;
-}
-
-.sub-text {
-    font-size: 14px;
-    color: #777;
-    margin-top: 10px;
-}
-
-.modal-report-section {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #f0f0f0; /* 구분선 추가 */
-    padding-bottom: 20px;
-    gap: 16px;
-}
-
-.modal-report-section:last-child {
-    border-bottom: none; /* 마지막 섹션은 구분선 없애기 */
-}
-
-.section-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #7d6fb3;
-    margin-bottom: 12px;
-    padding-left: 10px;
-    border-left: 4px solid #7d6fb3;
-    margin-top: 20px;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px 32px;
-}
-
-.info-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.info-item .label {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 4px;
-}
-
-.info-item .value {
-    font-size: 15px;
-    font-weight: 500;
-    color: #222;
-}
-
-.modal-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-}
-
-.penalty-actions .btn, .report-buttons .btn {
-    font-size: 14px;
-    padding: 10px 20px;
-}
-
-.btn:hover {
-    cursor: pointer;
-}
-
-.btn-secondary {
-    background-color: #f1f1f1;
-    color: #222;
-}
-
-.btn-approve {
-    background-color: #5790FF; /* primary.default */
-    color: #fff;
-}
-.btn-approve:hover {
-    background-color: #88A0FF; /* primary.hover */
-}
-
-.btn-reject {
-    background-color: #FE8A91; /* warning.default */
-    color: #fff;
-}
-.btn-reject:hover {
-    background-color: #E75A61;
 }
