@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장소 후기 내역 조회</title>
+  <link rel="stylesheet" href="admin-styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="header-left">서비스 관리</div>
+  <nav class="admin-nav">
+    <a href="user-member.html" class="nav-link">회원 관리</a>
+    <a href="point-point.html" class="nav-link">포인트 관리</a>
+    <a href="meeting-meeting.html" class="nav-link">모임 관리</a>
+    <a href="place-place.html" class="nav-link active">장소 관리</a>
+    <a href="report-report.html" class="nav-link">신고 관리</a>
+    <a href="user-sanction.html" class="nav-link">제재 관리</a>
+  </nav>
+</header>
+
+<div class="admin-container">
+  <aside class="admin-sidebar">
+    <ul>
+      <li><a href="place-place.html" class="sidebar-link">장소 목록 조회</a></li>
+      <li><a href="place-review.html" class="sidebar-link active">장소 후기 내역 조회</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <div class="main-header">
+      <h1 class="page-title">장소 후기 내역 조회</h1>
+      <div class="filter-box">
+        <label class="filter-label place-review-filter-label">검색 기준 :
+          <select class="select-box place-review-search-standard">
+            <option value="writerId">작성자 ID</option>
+            <option value="placeId">장소 ID</option>
+          </select>
+        </label>
+        <input type="text" class="select-box place-review-search-input" placeholder="ID">
+        <button class="btn btn-primary place-review-search-btn">검색</button>
+      </div>
+    </div>
+
+    <table class="table place-review">
+      <thead>
+      <tr>
+        <th class="table-cell place-review-id">후기 ID</th>
+        <th class="table-cell place-review-writer-id">작성자 ID</th>
+        <th class="table-cell place-review-writer-name">작성자</th>
+        <th class="table-cell place-review-place-id">장소 ID</th>
+        <th class="table-cell place-review-place-name">장소 이름</th>
+        <th class="table-cell place-review-rating">평점</th>
+        <th class="table-cell place-review-content">후기 내용</th>
+        <th class="table-cell place-review-image">이미지</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td><td>31</td><td>풋살마스터</td><td>24</td><td>배드존 신대방</td><td>5</td><td class="review-text">풋살장 넓고 공도 깨끗했어요. 다시 방문하고 싶어요.</td><td>-</td></tr>
+        <tr><td>102</td><td>32</td><td>볼링왕자</td><td>27</td><td>푸릇 볼링장</td><td>4</td><td class="review-text">조금 좁긴 하지만 가격대비 만족했어요.</td><td><a href="#" onclick="openModal()">보기</a></td></tr>
+        <tr><td>103</td><td>33</td><td>런너짱</td><td>26</td><td>러닝스팟 한강</td><td>3</td><td class="review-text">경치 좋고 사람 많지 않아서 좋았어요.</td><td>-</td></tr>
+        <tr><td>104</td><td>34</td><td>배드프로</td><td>24</td><td>배드존 신대방</td><td>5</td><td class="review-text">바닥 상태 좋고 예약도 간편했어요.</td><td>-</td></tr>
+        <tr><td>105</td><td>35</td><td>테니스러버</td><td>25</td><td>테니스파크 강남</td><td>4</td><td class="review-text">코트 관리 잘 되어 있고 조용해서 좋아요.</td><td><a href="#" onclick="openModal()">보기</a></td></tr>
+        <tr><td>106</td><td>36</td><td>강슛가이</td><td>28</td><td>마포 풋살경기장</td><td>5</td><td class="review-text">야간 조명이 밝아서 경기하기 좋았음.</td><td>-</td></tr>
+        <tr><td>107</td><td>37</td><td>공쎄기</td><td>27</td><td>푸릇 볼링장</td><td>3</td><td class="review-text">공 상태가 아쉬웠어요. 조금 낡은 느낌.</td><td>-</td></tr>
+        <tr><td>108</td><td>38</td><td>미스터서브</td><td>25</td><td>테니스파크 강남</td><td>4</td><td class="review-text">접근성 좋고 직원 친절했습니다.</td><td><a href="#" onclick="openModal()">보기</a></td></tr>
+        <tr><td>109</td><td>39</td><td>달리는여자</td><td>29</td><td>종로 런센터</td><td>4</td><td class="review-text">트랙 상태 양호, 샤워실도 있음.</td><td>-</td></tr>
+        <tr><td>110</td><td>40</td><td>핑퐁왕</td><td>30</td><td>수지 배드민턴장</td><td>3</td><td class="review-text">조금 붐비지만 가성비 좋아요.</td><td>-</td></tr>
+        <tr><td>111</td><td>41</td><td>하늘볼러</td><td>33</td><td>불암산 볼링센터</td><td>4</td><td class="review-text">시설 전반적으로 깔끔했어요.</td><td><a href="#" onclick="openModal()">보기</a></td></tr>
+        <tr><td>112</td><td>42</td><td>테니스초보</td><td>31</td><td>테니스하우스 홍대</td><td>5</td><td class="review-text">입문자에게도 추천할만한 곳!</td><td>-</td></tr>
+        <tr><td>113</td><td>43</td><td>런런런</td><td>26</td><td>러닝스팟 한강</td><td>2</td><td class="review-text">조명 약하고 주변이 어두웠어요.</td><td>-</td></tr>
+        <tr><td>114</td><td>44</td><td>핀하트</td><td>33</td><td>불암산 볼링센터</td><td>5</td><td class="review-text">단골입니다. 역시 만족!</td><td><a href="#" onclick="openModal()">보기</a></td></tr>
+        <tr><td>115</td><td>45</td><td>공의달인</td><td>34</td><td>해피풋살 송파</td><td>4</td><td class="review-text">잔디 관리가 꽤 괜찮았어요.</td><td>-</td></tr>
+        <tr><td>116</td><td>46</td><td>조용한서브</td><td>25</td><td>테니스파크 강남</td><td>3</td><td class="review-text">사람이 많아서 대기 있었음.</td><td>-</td></tr>
+        <tr><td>117</td><td>47</td><td>배드킹</td><td>30</td><td>수지 배드민턴장</td><td>4</td><td class="review-text">복층 구조가 마음에 들었어요.</td><td>-</td></tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button class="page-nav">&laquo;</button>
+      <button class="page-nav">&lt;</button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <button class="page-btn">5</button>
+      <button class="page-btn">6</button>
+      <button class="page-btn">7</button>
+      <button class="page-btn">8</button>
+      <button class="page-btn">9</button>
+      <button class="page-btn">10</button>
+      <button class="page-nav">&gt;</button>
+      <button class="page-nav">&raquo;</button>
+    </div>
+
+    <!-- 모달 -->
+    <div id="imageModal" class="modal" style="display: flex;">
+      <div class="modal-content">
+        <h2 class="modal-title">장소 후기 사진</h2>
+        <div class="modal-body">
+          <img id="previewImage" src="../img/place_img1.png" alt="이미지 미리보기" />
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="closeModal()">닫기</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+  <script>
+    function openModal() {
+      const modal = document.getElementById('imageModal'); // 이 줄 추가
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
