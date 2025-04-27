@@ -33,39 +33,65 @@
 
       <!-- 1열: 지역 + 운동 + 검색 버튼 -->
       <div class="filter-row">
-        <div class="filter-item"><span>지역:</span><select><option>전체</option></select></div>
+        <div class="filter-item"><span>
+          <label class="filter-label">지역 :</label></span>
+          <div class="region-selector">
+            <div class="region-buttons">
+              <button class="region-btn main-region-btn">전체</button>
+              <button class="region-btn sub-region-btn">전체</button>
+            </div>
 
-        <div class="filter-item"><span>운동:</span><select><option>전체</option></select></div>
+            <div class="region-dropdown" style="display: none;">
+              <div class="region-category-list">
+                <ul>
+                  <!-- JS로 대분류 채워짐 -->
+                </ul>
+              </div>
+              <div class="region-subcategory-list">
+                <ul>
+                  <!-- JS로 소분류 채워짐 -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-item"><span>운동:</span>
+          <select>
+            <option>전체</option>
+            <option>풋볼</option>
+            <option>배드민턴</option>
+          </select></div>
 
         <button class="search-btn">검색</button>
       </div>
     </div>
 
-    <!-- ️ 장소 카드 리스트 -->
-    <div class="place-list">
-      <div class="place-card">
-        <img src="../img/place_img1.png" alt="신촌 풋살 센터" />
-        <div class="place-info">
-          <h3>신촌 풋살 센터</h3>
-          <p>📍 서울 서대문구 연세로 12</p>
-          <p>💰 40,000원/시간</p>
-          <div class="rating">⭐ 4.5</div>
-        </div>
-        <div class="bookmark active">❤️</div>
+  <!-- ️ 장소 카드 리스트 -->
+  <div class="place-list">
+    <div class="place-card">
+      <img src="../img/place_img1.png" alt="신촌 풋살 센터" />
+      <div class="place-info">
+        <h3>신촌 풋살 센터</h3>
+        <p>📍 서울 서대문구 연세로 12</p>
+        <p>💰 40,000원/시간</p>
+        <div class="rating">⭐ 4.5</div>
       </div>
-
-      <div class="place-card">
-        <div class="placeholder-img"></div>
-        <div class="place-info">
-          <h3>신촌 볼링장</h3>
-          <p>📍 서울 서대문구 20</p>
-          <p>💰 40,000원/시간</p>
-          <div class="rating">⭐ 4.5</div>
-        </div>
-        <div class="bookmark">🤍</div>
-      </div>
+      <div class="bookmark active">❤️</div>
     </div>
-  </aside>
+
+    <div class="place-card">
+      <div class="placeholder-img"></div>
+      <div class="place-info">
+        <h3>신촌 볼링장</h3>
+        <p>📍 서울 서대문구 20</p>
+        <p>💰 40,000원/시간</p>
+        <div class="rating">⭐ 4.5</div>
+      </div>
+      <div class="bookmark">🤍</div>
+    </div>
+  </div>
+</aside>
 
   <!--  오른쪽 지도 -->
   <main class="map-section">
@@ -77,5 +103,78 @@
 
 </div>
 
+<!-- 스크립트 -->
+<script>
+
+  // chip 토글 기능
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('active');
+    });
+  });
+
+  const areas = {
+    "서울": ["강남", "건대입구", "가양", "노원", "도곡", "신림", "영등포"],
+    "경기/인천": ["수원", "성남", "고양", "인천", "부천"],
+    "충청/대전": ["대전", "천안", "청주"],
+    "전라/광주": ["광주", "전주", "목포"],
+    "경북/대구": ["대구", "구미", "포항"],
+    "경남/부산/울산": ["부산", "울산", "창원"],
+    "강원": ["춘천", "강릉"],
+    "제주": ["제주시", "서귀포시"]
+  };
+
+  const mainBtn = document.querySelector('.main-region-btn');
+  const subBtn = document.querySelector('.sub-region-btn');
+  const dropdown = document.querySelector('.region-dropdown');
+  const categoryList = document.querySelector('.region-category-list ul');
+  const subcategoryList = document.querySelector('.region-subcategory-list ul');
+
+  // 버튼 클릭하면 드롭다운 열기/닫기
+  mainBtn.addEventListener('click', () => {
+    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  function renderCategory() {
+    categoryList.innerHTML =
+            Object.keys(areas).map(area => `<li>${area}</li>`).join('');
+  }
+
+  function renderSubcategory(selectedArea) {
+    const subs = areas[selectedArea] || [];
+    subcategoryList.innerHTML =
+            subs.map(sub => `<li>${sub}</li>`).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCategory();
+    renderSubcategory(Object.keys(areas)[0]);
+
+    categoryList.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        document.querySelectorAll('.region-category-list li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const selectedMain = e.target.textContent.trim();
+        mainBtn.textContent = selectedMain; // 왼쪽 버튼 텍스트 변경
+        renderSubcategory(selectedMain);
+        subBtn.textContent = '전체'; // 소분류 다시 전체로 초기화
+      }
+    });
+
+    subcategoryList.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        document.querySelectorAll('.region-subcategory-list li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const selectedSub = e.target.textContent.trim();
+        subBtn.textContent = selectedSub; // 오른쪽 버튼 텍스트 변경
+        dropdown.style.display = 'none'; // 선택하면 드롭다운 닫기
+      }
+    });
+  });
+
+
+</script>
 </body>
 </html>

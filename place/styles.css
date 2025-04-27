@@ -67,7 +67,7 @@ a {
 .filter-box {
     background-color: #fff;
     border-radius: 12px;
-    padding: 20px;
+    padding: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
@@ -83,7 +83,7 @@ a {
 .filter-item {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-size: 14px;
     color: #333;
 }
@@ -91,20 +91,17 @@ a {
     font-weight: 500;
     white-space: nowrap;
 }
-.filter-item select {
-    flex: 1;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 999px;
+.filter-item select,
+.region-btn {
+    padding: 6px 12px; /* 일관된 패딩 */
+    font-size: 14px; /* 일관된 폰트 크기 */
+    border-radius: 12px; /* 둥근 버튼 */
     border: 1.5px solid #dcdfe5;
     background-color: #fff;
-    appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    background-size: 14px 14px;
     color: #333;
-    width: 80px;
+    width: 80px; /* 일관된 너비 */
+    text-align: center; /* 버튼 내 텍스트 가운데 정렬 */
+    box-sizing: border-box; /* 패딩이 너비에 영향을 미치지 않게 설정 */
 }
 .filter-item input[type="text"] {
     flex: 1;
@@ -114,6 +111,90 @@ a {
     border: 1.5px solid #dcdfe5;
     background-color: #fff;
 }
+
+/* ---------------- 지역 필터 ---------------- */
+.region-selector {
+    position: relative;
+    align-items: center;
+    width: 100%;
+}
+
+.region-buttons {
+    display: flex;
+}
+
+.region-btn {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.region-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.region-btn.active {
+    background-color: #5790FF;
+    color: #fff;
+    border-color: #5790FF;
+}
+
+.region-dropdown {
+    position: absolute;
+    top: 50px; /* 버튼 아래에 나오게 */
+    display: flex;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.region-dropdown.show {
+    display: flex; /* 드롭다운이 열릴 때 */
+    flex-direction: column;
+    gap: 12px;
+}
+
+.region-category-list, .region-subcategory-list {
+    width: 160px;
+    background: #fafafa;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.region-category-list ul, .region-subcategory-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.region-category-list li, .region-subcategory-list li {
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.region-category-list li.active, .region-subcategory-list li.active {
+    background-color: #3461F6;
+    color: white;
+    font-weight: bold;
+}
+
+.region-category-list li.active::after {
+    content: "✔";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+}
+
+
 
 /* 조회기간 + 검색 버튼 줄 */
 .filter-bottom {
@@ -127,16 +208,15 @@ a {
 }
 /* 검색 버튼 위치 자연스럽게 오른쪽으로 */
 .search-btn {
-    height: 38px;
-    padding: 0 20px;
+    padding: 8px 16px; /* 검색 버튼 패딩 일관성 있게 조정 */
     font-size: 14px;
-    font-weight: 500;
     background-color: #5790FF;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    min-width: 60px; /* 검색 버튼 최소 너비 설정 */
 }
 .search-btn:hover {
     background-color: #5790FF;
