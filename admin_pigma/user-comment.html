@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>댓글 내역 조회</title>
+  <link rel="stylesheet" href="admin-styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="header-left">회원 관리</div>
+  <nav class="admin-nav">
+    <a href="user-member.html" class="nav-link active">회원 관리</a>
+    <a href="point-point.html" class="nav-link">포인트 관리</a>
+    <a href="meeting-meeting.html" class="nav-link">모임 관리</a>
+    <a href="place-place.html" class="nav-link">장소 관리</a>
+    <a href="report-report.html" class="nav-link">신고 관리</a>
+    <a href="user-sanction.html" class="nav-link">제재 관리</a>
+  </nav>
+</header>
+
+<div class="admin-container">
+  <aside class="admin-sidebar">
+    <ul>
+      <li><a href="user-member.html" class="sidebar-link">전체 회원 조회</a></li>
+      <li><a href="user-authority.html" class="sidebar-link">권한 관리</a></li>
+      <li><a href="user-post.html" class="sidebar-link">게시글 내역 조회</a></li>
+      <li><a href="user-comment.html" class="sidebar-link active">댓글 내역 조회</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <div class="main-header">
+      <h1 class="page-title">댓글 내역 조회</h1>
+      <div class="filter-box">
+        <label class="filter-label user-comment-filter-label">작성자 ID :
+          <input type="text" class="select-box user-comment-writer-id-input" placeholder="ID">
+        </label>
+        <button class="btn btn-primary user-comment-search-btn">검색</button>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="table-cell user-comment-id">댓글 ID</th>
+        <th class="table-cell user-post-id">게시글 ID</th>
+        <th class="table-cell user-comment-writer-id">작성자 ID</th>
+        <th class="table-cell user-comment-writer-name">작성자 이름</th>
+        <th class="table-cell user-comment-content">내용</th>
+        <th class="table-cell user-comment-created-at">작성일</th>
+        <th class="table-cell user-comment-public">공개 여부</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr><td>201</td><td>101</td><td>user_01</td><td>김진수</td><td>좋은 정보 감사합니다!</td><td>2025-04-21</td><td>공개</td></tr>
+        <tr><td>202</td><td>103</td><td>user_03</td><td>박현우</td><td>저도 그렇게 생각해요</td><td>2025-04-21</td><td>공개</td></tr>
+        <tr><td>203</td><td>104</td><td>user_07</td><td>한지민</td><td>문의는 어디로 하나요?</td><td>2025-04-22</td><td>비공개</td></tr>
+        <tr><td>204</td><td>105</td><td>user_02</td><td>이민지</td><td>후기 잘 봤어요!</td><td>2025-04-22</td><td>공개</td></tr>
+        <tr><td>205</td><td>106</td><td>user_05</td><td>윤서진</td><td>이번 주말 좋아요~</td><td>2025-04-23</td><td>공개</td></tr>
+        <tr><td>206</td><td>101</td><td>user_09</td><td>김유정</td><td>저도 참여할게요!</td><td>2025-04-23</td><td>비공개</td></tr>
+        <tr><td>207</td><td>108</td><td>user_08</td><td>이상훈</td><td>추천 감사합니다.</td><td>2025-04-24</td><td>공개</td></tr>
+        <tr><td>208</td><td>110</td><td>user_10</td><td>정해인</td><td>저도 외롭습니다 ㅠㅠ</td><td>2025-04-24</td><td>공개</td></tr>
+        <tr><td>209</td><td>112</td><td>user_11</td><td>최수민</td><td>이 루틴 좋아보여요</td><td>2025-04-25</td><td>비공개</td></tr>
+        <tr><td>210</td><td>113</td><td>user_13</td><td>강예린</td><td>식단 공유 감사합니다</td><td>2025-04-25</td><td>공개</td></tr>
+        <tr><td>211</td><td>115</td><td>user_15</td><td>배지훈</td><td>날씨 좋죠~ 운동각!</td><td>2025-04-25</td><td>공개</td></tr>
+        <tr><td>212</td><td>101</td><td>user_14</td><td>김태현</td><td>공감합니다!</td><td>2025-04-25</td><td>공개</td></tr>
+        <tr><td>213</td><td>102</td><td>user_06</td><td>배민호</td><td>좋은 아이디어네요</td><td>2025-04-25</td><td>공개</td></tr>
+        <tr><td>214</td><td>107</td><td>user_12</td><td>오세훈</td><td>후기 고마워요~</td><td>2025-04-25</td><td>공개</td></tr>
+        <tr><td>215</td><td>109</td><td>user_04</td><td>정다은</td><td>참여 신청 완료했습니다!</td><td>2025-04-25</td><td>비공개</td></tr>
+      </tbody>
+    </table>
+
+    <div class="pagination user-comment-pagination">
+      <button class="page-nav user-comment-page-nav">&laquo;</button>
+      <button class="page-nav user-comment-page-nav">&lt;</button>
+      <button class="page-btn active user-comment-page-btn">1</button>
+      <button class="page-btn user-comment-page-btn">2</button>
+      <button class="page-btn user-comment-page-btn">3</button>
+      <button class="page-btn user-comment-page-btn">4</button>
+      <button class="page-btn user-comment-page-btn">5</button>
+      <button class="page-btn user-comment-page-btn">6</button>
+      <button class="page-btn user-comment-page-btn">7</button>
+      <button class="page-btn user-comment-page-btn">8</button>
+      <button class="page-btn user-comment-page-btn">9</button>
+      <button class="page-btn user-comment-page-btn">10</button>
+      <button class="page-nav user-comment-page-nav">&gt;</button>
+      <button class="page-nav user-comment-page-nav">&raquo;</button>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
