@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1_full-screen</title>
+    <style>
+        :root {
+            --header-height: 100px;
+        }
+
+
+        @CHARSET "UTF-8"; /* 인코딩 문자 깨짐 방지 */
+        /* 1. 박스 모델 설정 */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* 2. 기본 여백 제거 */
+        body, h1, h2, h3, h4, h5, h6, p, ul, ol, figure {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 3. 리스트 스타일 제거 */
+        ul, ol {
+            list-style: none;
+        }
+
+        /* 4. 링크 기본 스타일 제거 */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 5. 버튼 기본 스타일 제거 */
+        button {
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        /* 6. 이미지 반응형 처리 */
+        img, picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 7. HTML 기본 폰트 설정 */
+        html {
+            font-size: 16px; /* rem 기준 */
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* 브라우저 화면 전체 */
+        }
+
+        body, .layout{
+            background-color: #fbfbfb;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            height: var(--header-height);
+            flex-shrink: 0;
+        }
+
+        .page-header {
+            background-color: white;
+            padding: 12px 32px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-inner {
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #3c3c3c;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s;
+            transition-timing-function: ease-in-out;
+        }
+
+        .main-nav a:hover {
+            color: #0071e3;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%) scaleY(0);
+            transform-origin: bottom;
+            width: 100%;
+            height: 2px;
+            background: #0071e3;
+            transition: transform 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+
+        .main-nav a:hover::after {
+            transform: translateX(-50%) scaleY(1);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            height: calc(100vh - var(--header-height));
+        }
+
+        .main-inner {
+            display: flex;
+            height: 100%;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        .card-area {
+            flex-shrink: 0;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            gap: 16px;
+            height: 100%;
+        }
+
+        .search-bar {
+            height: 120px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+        }
+
+
+        .card-list {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* 개별 카드 */
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 16px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-image img {
+            display: block;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: red;
+        }
+
+        .card-content {
+            padding: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #222;
+            margin: 0;
+        }
+
+        .card-location {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .card-like {
+            font-size: 0.9rem;
+            color: #e74c3c;
+        }
+
+        .card-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0071e3;
+            margin-top: 8px;
+        }
+
+
+        /* WebKit 기반 */
+        .card-list::-webkit-scrollbar {
+            display: none;
+        }
+        /* Firefox 기반 */
+        .card-list {
+            scrollbar-width: none; /* Firefox */
+        }
+        /* 모바일 ios 스크롤 반응 향상 */
+        .card-list {
+            -webkit-overflow-scrolling: touch; /* iOS에서 부드럽게 */
+        }
+
+        .map-area {
+            flex: 1;
+            height: 100%;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .small{
+            font-size: 0.8em;
+        }
+
+    </style>
+</head>
+<body>
+<div class="layout">
+    <header class="page-header wrapper">
+        <div class="header-inner">
+            <h1 class="logo-container">
+                <a href="1_full-screen.html">
+                    <img class="logo" src="../resources/images/linkup_logo.png" alt="linkup">
+                </a>
+            </h1>
+            <nav class="main-nav">
+                <ul class="main-nav">
+                    <li><a href="2_column.html">모임찜</a></li>
+                    <li><a href="#">게시판</a></li>
+                    <li><a href="#">개설하기</a></li>
+                    <li><a href="#">로그인/회원가입</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main-inner">
+            <!-- 좌측: 검색창 + 카드 리스트 -->
+            <section class="card-area">
+                <!-- 검색창 -->
+                <div class="search-bar">
+                    <input type="text" placeholder="지역, 센터, 선생님 검색" />
+                    <button type="submit">🔍</button>
+                </div>
+
+                <!-- 카드 리스트 -->
+                <div class="card-list">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://cdn.pixabay.com/photo/2023/06/08/13/31/balls-8049598_1280.jpg" alt="모임 이미지" />
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">📅 2025.04.23 (화)</div>
+                            <h3 class="card-title">요즘같은 선선한 날에 축구 한판 어때요!</h3>
+                            <p class="card-location">📍서울 도봉구 방학로 223</p>
+                            <div class="card-like">
+                                ❤️ <span class="like-count">32</span>명 찜
+                            </div>
+                            <div class="card-price">💰 20,000원</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://media.istockphoto.com/id/2002620668/ko/%EC%82%AC%EC%A7%84/%EC%97%AC%EC%84%B1-%EC%A3%BC%EC%9E%90-%EC%97%90%EC%84%9C-a-%EA%B3%B5%EC%9B%90-%EC%8A%A4%ED%86%A1-%EC%82%AC%EC%A7%84.jpg?s=1024x1024&w=is&k=20&c=bkqCWdaI7z-NjqqYwqk30NzWtGaPUmi8KfVxJUkuPOk=" alt="모임 이미지" />
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">📅 2025.04.23 (화)</div>
+                            <h3 class="card-title">러닝한번 하시죠~~!!</h3>
+                            <p class="card-location">📍 여의도 이랜드 크루즈 근처</p>
+                            <div class="card-like">
+                                ❤️ <span class="like-count">82</span>명 찜
+                            </div>
+                            <div class="card-price">💰 5,000원</div>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- 우측: 지도 영역 -->
+            <section class="map-area">
+                <!-- 지도 API 또는 iframe 들어가는 공간 -->
+                <div class="map-placeholder">
+                    지도 영역입니다.
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+</body>
+</html>

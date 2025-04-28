@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>마이페이지</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f1f3fc;
+        }
+
+        .mypage-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .mypage-sidebar {
+            width: 350px;
+            background-color: #ffffff;
+            border-right: 1px solid #e6e6e6;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .edit-profile-btn {
+            background-color: #5790ff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .status-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        /* 공통 카드 스타일 */
+        .status-card {
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-card .label {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .status-card .value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a1a1a;
+        }
+
+        .status-card.manner {
+            background-color: #f3f3f3;
+        }
+
+        .status-card.manner .icon {
+            font-size: 1.6rem;
+        }
+
+        /* 포인트 카드 */
+        .status-card.point {
+            background-color: #fff5f2;
+        }
+
+        .charge-btn {
+            margin-top: 8px;
+            padding: 10px 16px;
+            background-color: #ffdd00;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            min-width: 200px;
+        }
+
+        .charge-btn:hover {
+            background-color: #fcd800;
+        }
+
+        .mypage-nav ul {
+            list-style: none;
+            padding: 12px;
+            margin-top: 32px;
+        }
+
+        .mypage-nav li {
+            margin-bottom: 16px;
+        }
+
+        .mypage-nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mypage-nav a:hover {
+            color: #5790ff;
+        }
+
+        /* 로그아웃 버튼 */
+        .logout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #feb5a1; /* warning.default */
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .logout-btn:hover {
+            background-color: #ff9280;
+        }
+
+        /* Main Content */
+        .mypage-content {
+            flex: 1;
+            padding: 40px;
+        }
+        .profile-edit-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .layout__main {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        .main__wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Mypage History */
+        .mypage-history {}
+
+        .mypage-history__tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        .mypage-history__tab {
+            flex: 1;
+            padding: 12px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+        .mypage-history__tab.is-active {
+            background: #222;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .mypage-history__content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .mypage-history__section {}
+        .mypage-history__list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        .mypage-history__item {}
+
+        .history-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .history-card__image-wrapper {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+        .history-card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .history-card__body {
+            padding: 20px;
+        }
+        .history-card__title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .history-card__date,
+        .history-card__location {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .history-card__badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #007bff;
+            background-color: #e6f0ff;
+            border-radius: 4px;
+        }
+        .history-card__badge.is-completed {
+            color: #28a745;
+            background-color: #e9f7ef;
+        }
+        .history-card__badge.is-cancelled {
+            color: #dc3545;
+            background-color: #f8d7da;
+        }
+
+        /* Empty state */
+        .mypage-history__empty {
+            text-align: center;
+            font-size: 18px;
+            color: #999;
+            padding: 60px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .layout__main {
+                padding: 20px;
+            }
+        }
+
+
+
+
+
+
+
+        @media (max-width: 480px) {
+            .mypage-container {
+                flex-direction: column;
+            }
+
+            .mypage-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e6e6e6;
+                padding: 24px 16px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .mypage-nav {
+                margin-top: 24px;
+            }
+
+            .mypage-nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .mypage-nav li {
+                margin-bottom: 0;
+            }
+
+            .mypage-nav a {
+                padding: 8px 16px;
+            }
+
+            .status-boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .status-card {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .charge-btn {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .logout-btn {
+                margin-top: 24px;
+            }
+
+            .mypage-content {
+                padding: 24px 16px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="mypage-container">
+    <!-- Sidebar -->
+    <aside class="mypage-sidebar">
+        <div class="profile-section">
+            <img src="https://cdn.pixabay.com/photo/2014/08/29/03/02/horses-430441_1280.jpg" alt="프로필 이미지" class="profile-img" />
+            <div class="profile-name">홍길동</div>
+            <button class="edit-profile-btn">프로필 수정</button>
+
+            <div class="status-boxes">
+                <!-- 매너온도 -->
+                <div class="status-card manner">
+                    <div class="label">매너 온도</div>
+                    <div class="value">
+                        <span class="icon">😎</span> <span class="number">93.5°</span>
+                    </div>
+                </div>
+
+                <!-- 포인트 -->
+                <div class="status-card point">
+                    <div class="label">나의 포인트</div>
+                    <div class="value">12,500P</div>
+                    <button class="charge-btn">충전하기</button>
+                </div>
+            </div>
+        </div>
+        <nav class="mypage-nav">
+            <ul>
+                <li><a href="#">프로필 조회</a></li>
+                <li><a href="#">참가 모임 이력</a></li>
+                <li><a href="#">개설 모임 이력</a></li>
+                <li><a href="#">포인트 내역</a></li>
+                <li><a href="#">작성한 게시글</a></li>
+                <li><a href="#">작성한 댓글</a></li>
+                <li><a href="#">친구 목록</a></li>
+                <li><a href="#">친구 개설 모임</a></li>
+                <li><a href="#">사업자로 변환</a></li>
+                <li><a href="#">비밀번호 변경</a></li>
+            </ul>
+        </nav>
+        <button class="logout-btn">로그아웃</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="mypage-content">
+        <div class="profile-edit-wrapper">
+            <main class="layout__main">
+                <div class="main__wrapper">
+                    <section class="mypage-history">
+
+                        <!-- 이용 예정 -->
+                        <section class="mypage-history__group">
+                            <h2 class="mypage-history__title">이용 예정</h2>
+                            <ul class="mypage-history__list">
+                                <li class="mypage-history__item">
+                                    <article class="history-card">
+                                        <div class="history-card__image-wrapper">
+                                            <img src="https://cdn.pixabay.com/photo/2014/10/14/20/24/football-488714_1280.jpg" alt="모임 이미지" class="history-card__image">
+                                        </div>
+                                        <div class="history-card__body">
+                                            <h3 class="history-card__title">한강 러닝 모임</h3>
+                                            <p class="history-card__date">2025.06.10 (월) 19:00</p>
+                                            <p class="history-card__location">서울 한강공원</p>
+                                            <span class="history-card__badge">예약 확정</span>
+                                        </div>
+                                    </article>
+                                </li>
+                                <!-- 추가 모임 카드 반복 -->
+                            </ul>
+                        </section>
+
+                        <!-- 이용 완료 -->
+                        <section class="mypage-history__group">
+                            <h2 class="mypage-history__title">이용 완료</h2>
+                            <ul class="mypage-history__list">
+                                <li class="mypage-history__item">
+                                    <article class="history-card">
+                                        <div class="history-card__image-wrapper">
+                                            <img src="https://cdn.pixabay.com/photo/2014/10/14/20/24/football-488714_1280.jpg" alt="모임 이미지" class="history-card__image">
+                                        </div>
+                                        <div class="history-card__body">
+                                            <h3 class="history-card__title">제주도 힐링 여행</h3>
+                                            <p class="history-card__date">2025.04.05 (토) 14:00</p>
+                                            <p class="history-card__location">제주 서귀포시</p>
+                                            <span class="history-card__badge is-completed">이용 완료</span>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <!-- 취소된 예약 -->
+                        <section class="mypage-history__group">
+                            <h2 class="mypage-history__title">취소된 예약</h2>
+                            <ul class="mypage-history__list">
+                                <li class="mypage-history__item">
+                                    <article class="history-card">
+                                        <div class="history-card__image-wrapper">
+                                            <img src="https://cdn.pixabay.com/photo/2014/10/14/20/24/football-488714_1280.jpg" alt="모임 이미지" class="history-card__image">
+                                        </div>
+                                        <div class="history-card__body">
+                                            <h3 class="history-card__title">독서 모임 (취소)</h3>
+                                            <p class="history-card__date">2025.03.01 (금) 18:00</p>
+                                            <p class="history-card__location">서울 성수동</p>
+                                            <span class="history-card__badge is-cancelled">예약 취소</span>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                        </section>
+
+                    </section>
+                </div>
+            </main>
+
+
+
+
+        </div>
+    </main>
+</div>
+</body>
+</html>

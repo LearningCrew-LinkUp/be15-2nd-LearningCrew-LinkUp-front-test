@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>운영 중인 장소 목록</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f1f3fc;
+        }
+
+        .mypage-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .mypage-sidebar {
+            width: 280px;
+            background-color: #ffffff;
+            border-right: 1px solid #e6e6e6;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .edit-profile-btn {
+            background-color: #5790ff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .mypage-nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 32px;
+        }
+
+        .mypage-nav li {
+            margin-bottom: 16px;
+        }
+
+        .mypage-nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mypage-nav a:hover {
+            color: #5790ff;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #feb5a1;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #ff9280;
+        }
+
+        /* Main Content */
+        .mypage-content {
+            flex: 1;
+            padding: 40px;
+        }
+        .main-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .place-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .place-card {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .place-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .place-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .place-address {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        .place-meta {
+            font-size: 0.9rem;
+            color: #5790ff;
+            font-weight: 600;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .manage-button {
+            padding: 10px 12px;
+            background-color: #5790ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .manage-button:hover {
+            background-color: #365ec9;
+        }
+    </style>
+</head>
+<body>
+<div class="mypage-container">
+    <!-- Sidebar -->
+    <aside class="mypage-sidebar">
+        <div class="profile-section">
+            <img src="https://cdn.pixabay.com/photo/2024/12/24/10/04/kitchen-9288111_1280.jpg" alt="프로필 이미지" class="profile-img" />
+            <div class="profile-name">홍길동</div>
+            <button class="edit-profile-btn">프로필 수정</button>
+        </div>
+
+        <nav class="mypage-nav">
+            <ul>
+                <li><a href="#">월별 정산 대금 조회</a></li>
+                <li><a href="#">정산 내역 조회</a></li>
+                <li><a href="#">운영 중인 장소 목록</a></li>
+                <li><a href="#">비밀번호 변경</a></li>
+                <li><a href="#">프로필 조회</a></li>
+            </ul>
+        </nav>
+
+        <button class="logout-btn">로그아웃</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="mypage-content">
+        <div class="main-wrapper">
+        <h2 class="section-title">운영 중인 장소 목록</h2>
+
+        <div class="place-list">
+            <!-- 장소 카드 1 -->
+            <div class="place-card">
+                <div class="place-info">
+                    <div class="place-name">신촌 풋살 센터</div>
+                    <div class="place-address">서울 서대문구 연세로 12</div>
+                    <div class="place-meta">₩130,000 / 최대 10명</div>
+                </div>
+                <div class="button-group">
+                    <button class="manage-button">기본 정보 수정</button>
+                    <button class="manage-button">운영 정보 수정</button>
+                </div>
+            </div>
+
+            <!-- 장소 카드 2 -->
+            <div class="place-card">
+                <div class="place-info">
+                    <div class="place-name">여의도 러닝 트랙</div>
+                    <div class="place-address">서울 영등포구 여의도공원로</div>
+                    <div class="place-meta">₩50,000 / 최대 20명</div>
+                </div>
+                <div class="button-group">
+                    <button class="manage-button">기본 정보 수정</button>
+                    <button class="manage-button">운영 정보 수정</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

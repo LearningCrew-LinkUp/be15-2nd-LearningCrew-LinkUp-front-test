@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>마이페이지</title>
+    <style>
+        html, body{
+            height: 100vh;
+        }
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f1f3fc;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .vertical-center-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            width: 400px;
+        }
+
+        .login-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background-color: #5790ff;
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #365ec9;
+        }
+
+        .login-links {
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .login-links a {
+            text-decoration: none;
+            color: #5790ff;
+        }
+
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="vertical-center-container">
+    <h1 class="login-title">로그인</h1>
+    <form>
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" required />
+        </div>
+
+        <button type="submit" class="login-button">로그인</button>
+    </form>
+
+    <div class="login-links">
+        <div>
+            <a href="#">비밀번호 찾기</a>
+            <a href="#" style="margin-left: 10px; color:#afafaf">계정 복구 신청</a>
+        </div>
+        <a href="#">회원가입</a>
+    </div>
+</div>
+</body>
+</html>

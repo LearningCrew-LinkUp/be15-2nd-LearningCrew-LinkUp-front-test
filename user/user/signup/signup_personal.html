@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>회원가입 - 1단계</title>
+    <link rel="stylesheet" href="signup_personal_style.css" />
+</head>
+<body>
+<main class="signup-page">
+    <div class="signup-container">
+        <div class="signup-step-indicator">
+            <span class="step active">1</span>
+            <span class="step-line"></span>
+            <span class="step">2</span>
+        </div>
+
+        <h1 class="signup-title">계정 정보를 입력해주세요</h1>
+
+        <form>
+            <div class="form-group">
+                <label for="email">이메일 <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="example@email.com" required />
+            </div>
+
+            <div class="form-group">
+                <label for="password">비밀번호 <span class="required">*</span></label>
+                <input type="password" id="password" name="password" placeholder="영문, 숫자, 특수문자 포함 8~20자" required />
+            </div>
+
+            <div class="form-group">
+                <label for="contact">전화번호</label>
+                <input type="tel" id="contact" name="contact" placeholder="010-0000-0000" />
+            </div>
+
+            <button type="submit" class="signup-button">다음 단계로</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

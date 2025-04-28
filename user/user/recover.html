@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>마이페이지</title>
+    <style>
+        html, body{
+            height: 100vh;
+        }
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f1f3fc;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .vertical-center-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            width: 400px;
+        }
+
+        .login-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+
+        .login-links a {
+            text-decoration: none;
+            color: #5790ff;
+        }
+
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #5790ff;
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #365ec9;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #5790ff;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="vertical-center-container">
+    <h1 class="recovery-title">계정 복구 신청</h1>
+    <p class="recovery-desc">
+        계정을 복구하시려면<br /> 이메일과 비밀번호를 입력해주세요.
+    </p>
+
+    <form>
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" required />
+        </div>
+
+        <button type="submit" class="submit-btn">계정 복구하기</button>
+    </form>
+
+    <div class="back-link">
+        <a href="#">← 로그인 페이지로 돌아가기</a>
+    </div>
+</div>
+</body>
+</html>

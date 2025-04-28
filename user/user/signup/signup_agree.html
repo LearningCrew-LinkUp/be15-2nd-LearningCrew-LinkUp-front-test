@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 - 약관 동의</title>
+    <link rel="stylesheet" href="signup_agree_style.css" />
+</head>
+<body>
+<main class="agreement-page">
+    <div class="agreement-container">
+        <h1 class="agreement-title">회원가입을 위해 약관에 동의해주세요</h1>
+
+        <form>
+            <div class="agreement-all">
+                <label>
+                    <input type="checkbox" id="agree-all" />
+                    <strong>전체 약관에 동의합니다</strong>
+                </label>
+            </div>
+
+            <hr />
+
+            <div class="agreement-item">
+                <label>
+                    <input type="checkbox" name="terms" required />
+                    <span>[필수] 이용약관 동의</span>
+                    <a href="#">보기</a>
+                </label>
+            </div>
+
+            <div class="agreement-item">
+                <label>
+                    <input type="checkbox" name="privacy" required />
+                    <span>[필수] 개인정보 수집 및 이용 동의</span>
+                    <a href="#">보기</a>
+                </label>
+            </div>
+
+            <div class="agreement-item">
+                <label>
+                    <input type="checkbox" name="marketing" />
+                    <span>[선택] 마케팅 정보 수신 동의</span>
+                    <a href="#">보기</a>
+                </label>
+            </div>
+
+            <button type="submit" class="agreement-button">다음으로</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

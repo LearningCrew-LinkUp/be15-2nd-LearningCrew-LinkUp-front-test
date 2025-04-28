@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>마이페이지</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f1f3fc;
+        }
+
+        .mypage-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .mypage-sidebar {
+            width: 280px;
+            background-color: #ffffff;
+            border-right: 1px solid #e6e6e6;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .edit-profile-btn {
+            background-color: #5790ff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .status-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        /* 공통 카드 스타일 */
+        .status-card {
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-card .label {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .status-card .value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a1a1a;
+        }
+
+        .status-card.manner {
+            background-color: #f3f3f3;
+        }
+
+        .status-card.manner .icon {
+            font-size: 1.6rem;
+        }
+
+        /* 포인트 카드 */
+        .status-card.point {
+            background-color: #fff5f2;
+        }
+
+        .charge-btn {
+            margin-top: 8px;
+            padding: 10px 16px;
+            background-color: #ffdd00;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            min-width: 200px;
+        }
+
+        .charge-btn:hover {
+            background-color: #fcd800;
+        }
+
+        .mypage-nav ul {
+            list-style: none;
+            padding: 12px;
+            margin-top: 32px;
+        }
+
+        .mypage-nav li {
+            margin-bottom: 16px;
+        }
+
+        .mypage-nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mypage-nav a:hover {
+            color: #5790ff;
+        }
+
+        /* 로그아웃 버튼 */
+        .logout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #feb5a1; /* warning.default */
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .logout-btn:hover {
+            background-color: #ff9280;
+        }
+
+        /* Main Content */
+        .mypage-content {
+            flex: 1;
+            padding: 40px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        .meeting-history {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .meeting-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .meeting-info .title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #365ec9;
+        }
+
+        .meeting-info .details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-btn {
+            background-color: #ffdd00;
+            border: none;
+            padding: 10px 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .review-btn:hover {
+            background-color: #fcd800;
+        }
+
+        .review-completed {
+            font-size: 0.95rem;
+            color: #6b7280;
+            background-color: #f3f3f3;
+            padding: 8px 14px;
+            border-radius: 6px;
+        }
+
+        .point-history-page {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .point-history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .transaction-item {
+            background-color: #ffffff;
+            border: 1px solid #e6e6e6;
+            padding: 16px 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .transaction-item .info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .transaction-item .label {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .transaction-item .date {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .transaction-item .amount {
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+
+        /* 상태별 색상 구분 */
+        .transaction-item.charge .amount {
+            color: #5790ff;
+        }
+
+        .transaction-item.payment .amount {
+            color: #ff5757;
+        }
+
+        .transaction-item.refund .amount {
+            color: #00aa55;
+        }body {
+             margin: 0;
+             font-family: 'Pretendard', sans-serif;
+             background-color: #f1f3fc;
+         }
+
+        .mypage-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .mypage-sidebar {
+            width: 280px;
+            background-color: #ffffff;
+            border-right: 1px solid #e6e6e6;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .edit-profile-btn {
+            background-color: #5790ff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .status-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        /* 공통 카드 스타일 */
+        .status-card {
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-card .label {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .status-card .value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a1a1a;
+        }
+
+        .status-card.manner {
+            background-color: #f3f3f3;
+        }
+
+        .status-card.manner .icon {
+            font-size: 1.6rem;
+        }
+
+        /* 포인트 카드 */
+        .status-card.point {
+            background-color: #fff5f2;
+        }
+
+        .charge-btn {
+            margin-top: 8px;
+            padding: 10px 16px;
+            background-color: #ffdd00;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            min-width: 200px;
+        }
+
+        .charge-btn:hover {
+            background-color: #fcd800;
+        }
+
+        .mypage-nav ul {
+            list-style: none;
+            padding: 12px;
+            margin-top: 32px;
+        }
+
+        .mypage-nav li {
+            margin-bottom: 16px;
+        }
+
+        .mypage-nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mypage-nav a:hover {
+            color: #5790ff;
+        }
+
+        /* 로그아웃 버튼 */
+        .logout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #feb5a1; /* warning.default */
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .logout-btn:hover {
+            background-color: #ff9280;
+        }
+
+        /* Main Content */
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 32px;
+        }
+
+        .friend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .friend-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e6e6e6;
+        }
+
+        .friend-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .friend-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .friend-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .friend-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .friend-nickname {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .friend-remove {
+            padding: 8px 14px;
+            background-color: #feb5a1; /* warning.default */
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .friend-remove:hover {
+            background-color: #ff9280;
+        }
+
+        @media (max-width: 480px) {
+            .mypage-container {
+                flex-direction: column;
+            }
+
+            .mypage-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e6e6e6;
+                padding: 24px 16px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .mypage-nav {
+                margin-top: 24px;
+            }
+
+            .mypage-nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .mypage-nav li {
+                margin-bottom: 0;
+            }
+
+            .mypage-nav a {
+                padding: 8px 16px;
+            }
+
+            .status-boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .status-card {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .charge-btn {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .logout-btn {
+                margin-top: 24px;
+            }
+
+            .mypage-content {
+                padding: 24px 16px;
+            }
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 32px;
+        }
+
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .comment-card {
+            padding: 20px 24px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e6e6e6;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.3s;
+        }
+
+        .comment-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .comment-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+
+        .comment-content {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+
+        @media (max-width: 480px) {
+            .mypage-container {
+                flex-direction: column;
+            }
+
+            .mypage-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e6e6e6;
+                padding: 24px 16px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .mypage-nav {
+                margin-top: 24px;
+            }
+
+            .mypage-nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .mypage-nav li {
+                margin-bottom: 0;
+            }
+
+            .mypage-nav a {
+                padding: 8px 16px;
+            }
+
+            .status-boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .status-card {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .charge-btn {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .logout-btn {
+                margin-top: 24px;
+            }
+
+            .mypage-content {
+                padding: 24px 16px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="mypage-container">
+    <!-- Sidebar -->
+    <aside class="mypage-sidebar">
+        <div class="profile-section">
+            <img src="https://cdn.pixabay.com/photo/2014/08/29/03/02/horses-430441_1280.jpg" alt="프로필 이미지" class="profile-img" />
+            <div class="profile-name">홍길동</div>
+            <button class="edit-profile-btn">프로필 수정</button>
+
+            <div class="status-boxes">
+                <!-- 매너온도 -->
+                <div class="status-card manner">
+                    <div class="label">매너 온도</div>
+                    <div class="value">
+                        <span class="icon">😎</span> <span class="number">93.5°</span>
+                    </div>
+                </div>
+
+                <!-- 포인트 -->
+                <div class="status-card point">
+                    <div class="label">나의 포인트</div>
+                    <div class="value">12,500P</div>
+                    <button class="charge-btn">충전하기</button>
+                </div>
+            </div>
+        </div>
+        <nav class="mypage-nav">
+            <ul>
+                <li><a href="#">참가 모임 이력</a></li>
+                <li><a href="#">포인트 내역</a></li>
+                <li><a href="#">작성한 게시글</a></li>
+                <li><a href="#">작성한 댓글</a></li>
+                <li><a href="#">친구 목록</a></li>
+                <li><a href="#">친구 개설 모임</a></li>
+                <li><a href="#">비밀번호 변경</a></li>
+            </ul>
+        </nav>
+        <button class="logout-btn">로그아웃</button>
+    </aside>
+
+    <main class="mypage-content">
+        <h2 class="section-title">친구 목록</h2>
+
+        <div class="friend-list">
+            <!-- 친구 카드 1 -->
+            <div class="friend-card">
+                <div class="friend-info">
+                    <img class="friend-avatar" src="https://i.pravatar.cc/100?img=1" alt="친구 프로필">
+                    <div class="friend-text">
+                        <div class="friend-name">이민호</div>
+                        <div class="friend-nickname">@minho</div>
+                    </div>
+                </div>
+                <button class="friend-remove">삭제</button>
+            </div>
+
+            <!-- 친구 카드 2 -->
+            <div class="friend-card">
+                <div class="friend-info">
+                    <img class="friend-avatar" src="https://i.pravatar.cc/100?img=2" alt="친구 프로필">
+                    <div class="friend-text">
+                        <div class="friend-name">김지수</div>
+                        <div class="friend-nickname">@jisu_94</div>
+                    </div>
+                </div>
+                <button class="friend-remove">삭제</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>모임 개설 - 1단계</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f1f3fc;
+            color: #1a1a1a;
+        }
+
+        .create-meeting-page {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .step {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #6b7280;
+            position: relative;
+        }
+
+        .step.active {
+            color: #5790ff;
+        }
+
+        .line {
+            flex-grow: 1;
+            height: 2px;
+            background-color: #e6e6e6;
+            margin: 0 8px;
+        }
+
+        .form-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .form-section {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .group-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #6b7280;
+        }
+
+        .selected-place {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .place-price {
+            margin-top: 4px;
+            font-size: 0.9rem;
+            color: #5790ff;
+            font-weight: 500;
+        }
+
+        .calendar-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .time-select-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        /* 여기부터 수정된 예약 시간 스타일 */
+        .time-selection {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .time-slot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ebf6ff;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #252525;
+            cursor: pointer;
+        }
+
+
+        .time-slot.active {
+            background-color: #5790ff;
+            color: #ffffff;
+        }
+
+        .time-slot.active .price {
+            color: #ffffff;
+        }
+        /* 여기까지 수정 */
+
+        .form-group-inline {
+            display: flex;
+            gap: 36px;
+            margin-top: 24px;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .price-per-person {
+            margin-top: 48px;
+            font-size: 1.7rem;
+            font-weight: 700;
+            text-align: right;
+            color: #365ec9;
+        }
+
+        .price-per-person .per-person {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: 4px;
+            color: #6b7280;
+        }
+
+        .next-btn {
+            margin-top: 12px;
+            width: 100%;
+            background-color: #5790ff;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .next-btn:hover {
+            background-color: #365ec9;
+        }
+    </style>
+</head>
+<body>
+<main class="create-meeting-page">
+    <div class="step-indicator">
+        <div class="step active">1. 장소 및 인원 선택</div>
+        <div class="line"></div>
+        <div class="step">2. 모임 정보 작성</div>
+        <div class="line"></div>
+        <div class="step">3. 상세 조건 설정</div>
+    </div>
+
+    <section class="form-section">
+        <h1 class="form-title">장소 및 인원 선택</h1>
+
+        <div class="form-group">
+            <label class="group-label">선택된 장소</label>
+            <div class="selected-place">[신촌 풋살 센터]</div>
+            <div class="place-price">예약 가격: ₩130,000</div>
+        </div>
+
+        <div class="form-group">
+            <label class="group-label">날짜 선택</label>
+            <input type="date" class="calendar-input" />
+        </div>
+
+        <!-- 시간 선택 -->
+        <section class="time-select-section">
+            <h2 class="section-title">예약 시간 선택</h2>
+            <div class="time-selection">
+                <button type="button" class="time-slot">12:00 ~ 14:00</button>
+                <button type="button" class="time-slot">14:00 ~ 16:00 </button>
+                <button type="button" class="time-slot">16:00 ~ 18:00 </button>
+                <button type="button" class="time-slot">18:00 ~ 20:00 </button>
+                <button type="button" class="time-slot">22:00 ~ 00:00 </button>
+            </div>
+        </section>
+
+        <div class="form-group-inline">
+            <div>
+                <label class="group-label">최소 인원</label>
+                <input type="number" class="input-box" value="6" min="1" />
+            </div>
+            <div>
+                <label class="group-label">최대 인원</label>
+                <input type="number" class="input-box" value="10" max="10" />
+            </div>
+        </div>
+
+        <div class="price-per-person">
+            ₩13,000<span class="per-person">/인당</span>
+        </div>
+
+        <button class="next-btn">다음 단계로</button>
+    </section>
+</main>
+<script>
+    const timeSlots = document.querySelectorAll('.time-slot');
+
+    timeSlots.forEach(slot => {
+        slot.addEventListener('click', () => {
+            timeSlots.forEach(s => s.classList.remove('active'));
+            slot.classList.add('active');
+        });
+    });
+</script>
+</script>
+</body>
+</html>

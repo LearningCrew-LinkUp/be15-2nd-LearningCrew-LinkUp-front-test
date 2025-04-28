@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>포인트 환불 신청</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f1f3fc;
+        }
+
+        header {
+            height: 100px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e6e6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        main {
+            padding: 40px;
+            min-height: calc(100vh - 100px);
+            background-color: #f1f3fc;
+        }
+
+        .main-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 32px;
+        }
+
+        h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .refund-amount {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            color: #5790ff;
+        }
+
+        .refund-input {
+            margin-bottom: 8px;
+        }
+
+        .refund-input input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            background-color: #f9fafb;
+        }
+
+        .refund-warning {
+            font-size: 0.85rem;
+            color: #ff5a5a;
+            margin-bottom: 24px;
+        }
+
+        .method-selection {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .method-card {
+            flex: 1;
+            padding: 16px;
+            background-color: #f9fafb;
+            border: 2px solid #e6e6e6;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1a1a1a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .method-card.active {
+            background-color: #e8ecff;
+            border-color: #5790ff;
+            color: #365ec9;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #5790ff;
+            color: #ffffff;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background-color: #f3f6f9;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #1a1a1a;
+        }
+
+        input, select {
+            padding: 12px;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            background-color: #f9fafb;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            margin-top: 8px;
+            width: 100%;
+            background-color: #5790ff;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #365ec9;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    포인트 환불
+</header>
+
+<main>
+    <div class="main-wrapper">
+        <h1>포인트 환불 신청</h1>
+
+        <div class="refund-amount">
+            환불 가능 금액: ₩12,500
+        </div>
+
+        <div class="refund-input">
+            <input type="number" id="refundAmount" placeholder="환불할 금액을 입력하세요" min="3000" required />
+        </div>
+
+        <div class="refund-warning">
+            * 최소 환불 금액은 3,000원 이상이어야 합니다.
+        </div>
+
+        <!-- 결제 방법 선택 -->
+        <div class="method-selection">
+            <div class="method-card active">
+                <div class="badge-new">New</div>
+                퀵계좌이체
+            </div>
+            <div class="method-card">
+                가상계좌
+            </div>
+        </div>
+
+        <!-- 안내 메시지 -->
+        <div class="info-box">
+            <strong>퀵계좌이체 안내</strong><br/>
+            최초 1회만 등록이 필요해요.<br/>
+            이후 비밀번호만 입력하면 10초 이내 빠른 환불이 가능합니다.
+        </div>
+
+        <!-- 환불 폼 -->
+        <form onsubmit="return validateRefund()">
+
+            <button type="submit" class="submit-btn">환불 신청하기</button>
+        </form>
+
+    </div>
+</main>
+
+<script>
+    function validateRefund() {
+        const refundAmount = document.getElementById('refundAmount').value;
+        if (refundAmount < 3000) {
+            alert('최소 환불 금액은 3,000원 이상이어야 합니다.');
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</body>
+</html>

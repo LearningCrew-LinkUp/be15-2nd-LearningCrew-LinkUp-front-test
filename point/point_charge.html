@@ -5,127 +5,168 @@
     <title>포인트 충전</title>
     <style>
         body {
-            font-family: 'Pretendard', sans-serif;
             margin: 0;
-            padding: 40px;
+            font-family: 'Pretendard', sans-serif;
             background-color: #f1f3fc;
         }
 
-        .charge-container {
-            max-width: 480px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        .point-charge-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            min-height: 100vh;
         }
 
-        .charge-title {
-            font-size: 1.5rem;
+        .charge-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+            max-width: 420px;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 1.875rem;
             font-weight: 700;
             margin-bottom: 32px;
+            color: #1a1a1a;
             text-align: center;
         }
 
-        .charge-balance {
-            text-align: center;
+        .charge-form .form-group {
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #1a1a1a;
+        }
+
+        .form-group input[type="number"],
+        .form-group select {
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            background-color: #f9fafb;
+        }
+
+        .form-group input[type="number"]:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #5790ff;
+        }
+
+        /* 고정 금액 버튼 스타일 */
+        .fixed-amount-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
             margin-bottom: 24px;
         }
 
-        .label {
-            font-size: 0.9rem;
-            color: #6b7280;
-        }
-
-        .balance {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #365ec9;
-        }
-
-        .charge-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .input-label {
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        input[type="number"] {
-            padding: 12px 16px;
+        .amount-btn {
+            padding: 12px 0;
+            background-color: #f3f3f3;
+            border: 1px solid #e6e6e6;
             border-radius: 8px;
-            border: 1px solid #dcdcdc;
             font-size: 1rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .quick-amounts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .quick-btn {
-            flex: 1 1 calc(50% - 6px);
-            padding: 10px 0;
-            border: 1px solid #dcdcdc;
-            border-radius: 8px;
             font-weight: 500;
-            background-color: #f9f9f9;
+            color: #1a1a1a;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, border-color 0.2s;
         }
 
-        .quick-btn:hover {
+        .amount-btn:hover {
             background-color: #e8ecff;
+            border-color: #5790ff;
         }
 
-        .charge-btn {
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .charge-button {
+            width: 100%;
             padding: 14px;
             background-color: #ffdd00;
             color: #1a1a1a;
             font-weight: bold;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 12px;
-            transition: background 0.2s;
+            transition: background 0.3s;
+            font-size: 1.1rem;
         }
 
-        .charge-btn:hover {
+        .charge-button:hover {
             background-color: #fcd800;
         }
 
     </style>
 </head>
 <body>
-<main class="charge-container">
-    <h1 class="charge-title">포인트 충전</h1>
+<main class="point-charge-page">
+    <section class="charge-container">
+        <h1 class="page-title">포인트 충전</h1>
 
-    <div class="charge-balance">
-        <p class="label">현재 포인트</p>
-        <p class="balance">12,500P</p>
-    </div>
+        <form class="charge-form">
+            <!-- 금액 입력 -->
+            <div class="form-group">
+                <label for="amount">충전 금액 입력</label>
+                <input type="number" id="amount" name="amount" placeholder="직접 입력" />
+            </div>
 
-    <form class="charge-form">
-        <label for="amount" class="input-label">충전 금액 입력</label>
-        <input type="number" id="amount" placeholder="충전할 금액을 입력하세요" />
+            <!-- 고정 금액 버튼 -->
+            <div class="fixed-amount-buttons">
+                <button type="button" class="amount-btn">3,000원</button>
+                <button type="button" class="amount-btn">5,000원</button>
+                <button type="button" class="amount-btn">8,000원</button>
+                <button type="button" class="amount-btn">10,000원</button>
+                <button type="button" class="amount-btn">15,000원</button>
+                <button type="button" class="amount-btn">20,000원</button>
+                <button type="button" class="amount-btn">30,000원</button>
+                <button type="button" class="amount-btn">50,000원</button>
+                <button type="button" class="amount-btn">80,000원</button>
+                <button type="button" class="amount-btn">100,000원</button>
+            </div>
 
-        <div class="quick-amounts">
-            <button type="button" class="quick-btn">1,000원</button>
-            <button type="button" class="quick-btn">5,000원</button>
-            <button type="button" class="quick-btn">10,000원</button>
-            <button type="button" class="quick-btn">50,000원</button>
-        </div>
+            <!-- 결제 방법 선택 -->
+            <div class="form-group">
+                <label for="payment-method">결제 방법</label>
+                <select id="payment-method" name="paymentMethod" required>
+                    <option value="">결제 방법 선택</option>
+                    <option value="card">신용/체크카드</option>
+                    <option value="kakaopay">카카오페이</option>
+                    <option value="naverpay">네이버페이</option>
+                    <option value="bank">계좌이체</option>
+                </select>
+            </div>
 
-        <button type="submit" class="charge-btn">충전하기</button>
-    </form>
+            <!-- 약관 동의 -->
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" id="terms" name="terms" required />
+                    결제 서비스 이용약관에 동의합니다.
+                </label>
+            </div>
+
+            <!-- 충전 신청 버튼 -->
+            <button type="submit" class="charge-button">충전 신청</button>
+        </form>
+    </section>
 </main>
 </body>
 </html>
