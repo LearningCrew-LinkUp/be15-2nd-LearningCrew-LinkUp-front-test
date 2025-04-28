@@ -1,0 +1,219 @@
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 40px 0;
+}
+
+.form-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.form-row, .form-row-inline {
+    margin-bottom: 20px;
+}
+
+.form-row label,
+.form-row-inline label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #5a67d8;
+    outline: none;
+}
+
+.form-row-inline {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row-inline > div {
+    flex: 1;
+}
+
+.time-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #5790FF;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #434190;
+}
+/* 이하 추가된 내용 */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.top-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.top-buttons button {
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+
+/* 참가자, 신청자 */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.applicant-list {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.applicant {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.applicant-info {
+    flex: 1;
+}
+
+.applicant-info p {
+    margin: 4px 0;
+    color: #333;
+}
+
+.applicant-photo {
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.applicant-photo img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 별 */
+.star-rating {
+    display: inline-flex;
+    flex-direction: row;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #939DC1
+}
+
+.star {
+    font-size: 2rem;
+    color: white;
+    padding: 4px;
+    /*stroke: #FFF200;*/
+    /*border: 1px solid;*/
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star.selected {
+    color: #FFF200;
+}
+
+/*!* 체크 박스용 *!*/
+/*.multi-selector {*/
+/*    background: white;*/
+/*    padding: 20px;*/
+/*    border-radius: 12px;*/
+/*    border: 1px solid #ddd;*/
+/*    font-family: sans-serif;*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    gap: 12px;*/
+/*}*/
+
+/*.multi-selector h3 {*/
+/*    font-size: 18px;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+
+/*.multi-selector label {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 16px;*/
+/*    cursor: pointer;*/
+/*    min-width: 100px;*/
+/*}*/
+
+/*.multi-selector input[type="checkbox"] {*/
+/*    appearance: none;*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    border: 2px solid #999;*/
+/*    border-radius: 4px;*/
+/*    margin-right: 10px;*/
+/*    position: relative;*/
+/*    transition: all 0.2s ease;*/
+/*}*/
+
+/*.multi-selector input[type="checkbox"]:checked {*/
+/*    border-color: #333;*/
+/*    background-color: #333;*/
+/*}*/
+
+/*.multi-selector input[type="checkbox"]:checked::after {*/
+/*    content: '✔';*/
+/*    color: white;*/
+/*    font-size: 14px;*/
+/*    position: absolute;*/
+/*    top: 1px;*/
+/*    left: 4px;*/
+/*}*/
