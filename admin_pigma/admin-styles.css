@@ -434,3 +434,38 @@ a {
 .report-detail-grid div {
     line-height: 1.5;
 }
+
+
+
+/* 날짜 스타일 */
+.date-input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.date-input {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    color: #666;
+    width: 150px;
+    height: 40px;
+}
+
+/* input 안에 기본적으로 연-월-일 가짜 플레이스홀더처럼 보여주기 */
+.date-input:invalid::before {
+    content: "연도 - 월 - 일";
+    color: #bbb;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* 사용자가 선택하면 가짜 플레이스홀더 숨기기 */
+.date-input:focus:invalid::before {
+    content: "";
+}
