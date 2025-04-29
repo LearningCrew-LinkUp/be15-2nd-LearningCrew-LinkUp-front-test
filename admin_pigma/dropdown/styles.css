@@ -1,0 +1,271 @@
+.user-dropdown {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 24px 20px; /* 패딩 키움 */
+    width: 200px; /* 약간 너비 줄임 */
+    font-family: 'Pretendard', sans-serif;
+}
+
+.user-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px; /* 헤더랑 리스트 사이 간격 더 줌 */
+    color: #333;
+}
+
+.user-dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-dropdown-menu li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
+    padding: 12px 0; /* 리스트 간 padding 키움 */
+    border-top: 1px solid #f0f0f0; /* 구분선 추가 */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* 첫 번째 아이템은 구분선 없게 */
+.user-dropdown-menu li:first-child {
+    border-top: none;
+}
+
+.user-dropdown-menu li:hover {
+    background: #f8f9fb;
+    border-radius: 8px;
+}
+
+.material-symbols-outlined {
+    font-size: 20px;
+    color: #5790FF;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.delete-btn {
+    background-color: #ffffff;
+    color: #111111;
+}
+
+.delete-btn:hover {
+    background-color: #ffd6d6;
+}
+
+.report-btn {
+    background-color: #ffffff;
+    color: #111111;
+}
+
+.report-btn:hover {
+    background-color: #ffe2c7;
+}
+
+.material-symbols-outlined {
+    font-size: 20px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    width: 480px;
+    max-width: 90%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    font-family: 'Pretendard', sans-serif;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.sports-grid, .level-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.sports-item, .level-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8f9fb;
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.sports-item:hover, .level-item:hover {
+    background: #e2e6f1;
+}
+
+.material-symbols-outlined {
+    font-size: 24px;
+    color: #5790FF;
+}
+
+.modal-close {
+    margin-top: 12px;
+    width: 100%;
+    padding: 12px;
+    background: #5790FF;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #3b69d1;
+}
+
+
+
+
+/* footer */
+.business-footer {
+    background-color: #f8f9fb;
+    padding: 40px 20px;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    color: #666;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.footer-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.footer-links a {
+    margin-left: 16px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #5790FF;
+}
+
+.footer-info {
+    line-height: 1.8;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.footer-bottom {
+    font-size: 12px;
+    color: #bbb;
+    text-align: center;
+}
+
+.business-footer-dark {
+    background-color: #222;
+    padding: 40px 20px;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 13px;
+    color: #bbb;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    margin-bottom: 16px;
+}
+
+.footer-links a {
+    color: #bbb;
+    margin: 0 8px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: #5790FF;
+}
+
+.footer-links .divider {
+    color: #555;
+    font-size: 13px;
+}
+
+.footer-info p {
+    margin: 4px 0;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.footer-info {
+    margin-bottom: 16px;
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: #777;
+    margin-top: 12px;
+}

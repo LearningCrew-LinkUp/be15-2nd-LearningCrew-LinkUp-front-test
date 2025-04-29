@@ -6,7 +6,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Apple SD Gothic Neo', sans-serif;
+      font-family: 'Pretendard', sans-serif;
       background-color: #f7f8fa;
     }
     .page {
@@ -169,6 +169,14 @@
       color: #555;
       line-height: 1.5;
     }
+    .comment-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+      font-size: 13px;
+      color: #666;
+      cursor: pointer;
+    }
     .comment-form {
       display: flex;
       flex-direction: column;
@@ -193,59 +201,6 @@
       font-size: 14px;
       cursor: pointer;
     }
-    .modal-backdrop {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .modal {
-      background: white;
-      border-radius: 12px;
-      padding: 30px;
-      width: 400px;
-      max-width: 90%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-    .modal h2 {
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-    .modal label {
-      font-size: 14px;
-      font-weight: bold;
-    }
-    .modal select, .modal textarea {
-      width: 100%;
-      margin: 10px 0 20px;
-      padding: 10px;
-      font-size: 14px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    .modal-footer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-    .modal-footer button {
-      padding: 8px 14px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .btn-cancel {
-      background: #ddd;
-    }
-    .btn-submit {
-      background: #4763f3;
-      color: white;
-    }
   </style>
 </head>
 <body>
@@ -263,8 +218,7 @@
   <div class="detail-container">
     <div class="content">
       <div class="back-button-container">
-        <!-- onclick 이벤트 수정 할 것 -->
-        <button class="back-button" onclick="location.href=''">← 목록으로</button>
+        <button class="back-button" onclick="location.href='community-list.html'">← 목록으로</button>
       </div>
       <div class="title-section">
         <div class="title">하늘을 보며 잠깐 멈추었던 순간</div>
@@ -296,12 +250,17 @@
 
     <div class="comments">
       <h3>댓글</h3>
+
       <div class="comment">
         <img class="profile-img" src="https://cdn.pixabay.com/photo/2021/01/01/12/59/whale-5878491_640.jpg" alt="하린" />
         <div class="comment-content">
           <div class="comment-header">
             <span class="author">하린</span>
-            <button class="comment-report-btn" onclick="openReportModal('댓글')">신고</button>
+            <div class="comment-actions">
+              <div onclick="toggleCommentLike(this)">❤️ <span>3</span></div>
+              <div onclick="deleteComment(this)">🗑 삭제</div>
+              <div onclick="openReportModal('댓글')">🚨 신고</div>
+            </div>
           </div>
           <div class="text">글 너무 공감돼요. 요즘 저도 그런 기분 자주 느껴요.</div>
         </div>
@@ -312,7 +271,11 @@
         <div class="comment-content">
           <div class="comment-header">
             <span class="author">민수</span>
-            <button class="comment-report-btn" onclick="openReportModal('댓글')">신고</button>
+            <div class="comment-actions">
+              <div onclick="toggleCommentLike(this)">❤️ <span>5</span></div>
+              <div onclick="deleteComment(this)">🗑 삭제</div>
+              <div onclick="openReportModal('댓글')">🚨 신고</div>
+            </div>
           </div>
           <div class="text">하늘이 감정을 정리해주는 것 같죠. 잘 보고 갑니다 😊</div>
         </div>
@@ -324,67 +287,101 @@
       </form>
     </div>
   </div>
+</div>
 
-  <div id="modalBackdrop" class="modal-backdrop">
-    <div class="modal">
-      <h2 id="modalTitle">신고하기</h2>
-      <label for="reason">신고 사유</label>
-      <select id="reason">
-        <option value="">-- 사유를 선택하세요 --</option>
-        <option value="욕설/비방">욕설/비방</option>
-        <option value="음란물">음란물</option>
-        <option value="광고/도배">광고/도배</option>
-        <option value="기타">기타</option>
-      </select>
-      <label for="detail">상세 설명 (선택)</label>
-      <textarea id="detail" placeholder="자세한 내용을 적어주세요..."></textarea>
-      <div class="modal-footer">
-        <button class="btn-cancel" onclick="closeReportModal()">취소</button>
-        <button class="btn-submit" onclick="submitReport()">신고하기</button>
-      </div>
+<!-- 🚨 신고 모달창 추가 -->
+<div id="modalBackdrop" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+">
+  <div style="
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  ">
+    <h2 id="modalTitle" style="font-size: 20px; margin-bottom: 8px;">신고하기</h2>
+
+    <label for="reason">신고 사유</label>
+    <select id="reason" style="padding: 8px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc;">
+      <option value="">선택하세요</option>
+      <option value="부적절한 내용">부적절한 내용</option>
+      <option value="스팸">스팸</option>
+      <option value="욕설 또는 비방">욕설 또는 비방</option>
+      <option value="기타">기타</option>
+    </select>
+
+    <label for="detail">상세 내용 (선택)</label>
+    <textarea id="detail" placeholder="상세 내용을 입력하세요..." style="padding: 8px; font-size: 14px; resize: vertical; height: 80px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px;">
+      <button onclick="closeReportModal()" style="background: #ccc; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">취소</button>
+      <button onclick="submitReport()" style="background: #4763f3; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">신고하기</button>
     </div>
   </div>
-
-  <script>
-    let currentTargetType = "";
-
-    function openReportModal(type) {
-      currentTargetType = type;
-      document.getElementById("modalTitle").innerText = `${type} 신고하기`;
-      document.getElementById("modalBackdrop").style.display = "flex";
-    }
-
-    function closeReportModal() {
-      document.getElementById("modalBackdrop").style.display = "none";
-      document.getElementById("reason").value = "";
-      document.getElementById("detail").value = "";
-    }
-
-    function submitReport() {
-      const reason = document.getElementById("reason").value;
-      if (!reason) {
-        alert("신고 사유를 선택해주세요.");
-        return;
-      }
-      alert(`${currentTargetType}이(가) 신고되었습니다.\n사유: ${reason}`);
-      closeReportModal();
-    }
-
-    function toggleLike() {
-      const likeCount = document.getElementById("likeCount");
-      likeCount.innerText = parseInt(likeCount.innerText) + 1;
-    }
-
-    function editPost() {
-      alert("게시글 수정 화면으로 이동합니다.");
-    }
-
-    function deletePost() {
-      if (confirm("정말 삭제하시겠습니까?")) {
-        alert("게시글이 삭제되었습니다.");
-      }
-    }
-  </script>
 </div>
+
+<script>
+  let currentTargetType = "";
+
+  function openReportModal(type) {
+    currentTargetType = type;
+    document.getElementById("modalTitle").innerText = `${type} 신고하기`;
+    document.getElementById("modalBackdrop").style.display = "flex";
+  }
+
+  function closeReportModal() {
+    document.getElementById("modalBackdrop").style.display = "none";
+    document.getElementById("reason").value = "";
+    document.getElementById("detail").value = "";
+  }
+
+  function submitReport() {
+    const reason = document.getElementById("reason").value;
+    if (!reason) {
+      alert("신고 사유를 선택해주세요.");
+      return;
+    }
+    alert(`${currentTargetType}이(가) 신고되었습니다.\n사유: ${reason}`);
+    closeReportModal();
+  }
+
+  function toggleLike() {
+    const likeCount = document.getElementById("likeCount");
+    likeCount.innerText = parseInt(likeCount.innerText) + 1;
+  }
+
+  function toggleCommentLike(button) {
+    const likeSpan = button.querySelector('span');
+    likeSpan.innerText = parseInt(likeSpan.innerText) + 1;
+  }
+
+  function editPost() {
+    alert("게시글 수정 화면으로 이동합니다.");
+  }
+
+  function deletePost() {
+    if (confirm("정말 삭제하시겠습니까?")) {
+      alert("게시글이 삭제되었습니다.");
+    }
+  }
+
+  function deleteComment(button) {
+    if (confirm("댓글을 삭제하시겠습니까?")) {
+      const comment = button.closest('.comment');
+      comment.remove();
+    }
+  }
+</script>
 </body>
 </html>

@@ -128,7 +128,7 @@
       background-color: #4763f3;
       color: white;
       padding: 20px 123px;
-      font-size: 18px;
+      font-size: 16px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -269,17 +269,21 @@
         </label>
       </div>
 
-      <input type="text" id="title" placeholder="제목을 입력하세요." required value="기존 제목" />
+      <input type="text" id="title" placeholder="제목을 입력하세요." required value="하늘을 보며 잠깐 멈추었던 순간" />
 
       <div class="input-group">
         <label for="body">내용</label>
       </div>
-      <textarea id="body" placeholder=" 내용을 입력하세요." required>기존 내용</textarea>
+      <textarea id="body" placeholder=" 내용을 입력하세요." required>
+하루종일 정신없이 바쁘다가 퇴근길에 우연히 올려다본 하늘이 너무 예뻐서 그 자리에 멈춰 한참을 서 있었어요.
+이런 작은 순간이 참 소중하다는 걸 새삼 느꼈던 날이었어요.
+      </textarea>
 
       <div class="image-upload">
         <label for="image">이미지 업로드(선택)</label>
         <input type="file" id="image" accept="image/*" multiple onchange="previewImages(event)" />
         <div id="preview" class="image-preview"></div>
+
       </div>
 
       <div class="button-group">
