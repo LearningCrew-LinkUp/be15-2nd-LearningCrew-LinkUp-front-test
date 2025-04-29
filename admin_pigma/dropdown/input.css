@@ -1,0 +1,112 @@
+/* ---------------- 기본 설정 ---------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px;
+    gap: 24px;
+}
+
+/* ---------------- 인풋 그룹 ---------------- */
+.input-group {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+/* ---------------- 인풋 & 셀렉트 ---------------- */
+.input-box,
+.select-box {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.input-box:focus,
+.select-box:focus {
+    outline: none;
+    border-color: #7d6fb3;
+    box-shadow: 0 0 0 2px rgba(125, 111, 179, 0.2);
+}
+
+/* ---------------- 셀렉트박스 화살표 직접 넣기 ---------------- */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-box {
+    width: 100%;
+    padding: 10px 40px 10px 14px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" stroke="%23999" fill="none"><polyline points="6 8 10 12 14 8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.select-box:focus {
+    outline: none;
+    border-color: #7d6fb3;
+    box-shadow: 0 0 0 2px rgba(125, 111, 179, 0.15);
+}
+
+
+
+
+/* ---------------- 버튼 ---------------- */
+.submit-button {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 14px;
+    background-color: #b7a6e4;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #a494d4;
+}
+

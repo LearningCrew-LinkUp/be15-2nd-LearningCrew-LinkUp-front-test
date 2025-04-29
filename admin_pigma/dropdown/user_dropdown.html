@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사용자 드롭다운</title>
+
+  <!-- 폰트 Pretendard -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- Flatpickr (달력 플러그인) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- 네가 만든 styles.css -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<div class="dropdown-container">
+  <!-- 사용자 드롭다운 -->
+  <div class="user-dropdown">
+    <div class="user-dropdown-header">
+      <span class="material-symbols-outlined">account_circle</span>
+      <span class="user-role">사용자</span>
+    </div>
+    <ul class="user-dropdown-menu">
+      <li><span class="material-symbols-outlined">person</span> 마이페이지</li>
+      <li><span class="material-symbols-outlined">notifications</span> 알림</li>
+      <li><span class="material-symbols-outlined">favorite</span> 모임찜</li>
+      <li><span class="material-symbols-outlined">logout</span> 로그아웃</li>
+    </ul>
+  </div>
+
+  <!-- 관리자 드롭다운 -->
+  <div class="user-dropdown">
+    <div class="user-dropdown-header">
+      <span class="material-symbols-outlined">admin_panel_settings</span>
+      <span class="user-role">관리자</span>
+    </div>
+    <ul class="user-dropdown-menu">
+      <li><span class="material-symbols-outlined">person</span> 마이페이지</li>
+      <li><span class="material-symbols-outlined">settings</span> 서비스 관리</li>
+      <li><span class="material-symbols-outlined">logout</span> 로그아웃</li>
+    </ul>
+  </div>
+</div>
+
+<div class="button-group">
+  <button class="btn delete-btn">
+    <span class="material-symbols-outlined">delete</span> 삭제
+  </button>
+  <button class="btn report-btn">
+    <span class="material-symbols-outlined">report</span> 신고
+  </button>
+</div>
+
+<div class="button-group">
+  <button class="btn delete-btn-strong">
+    <span class="material-symbols-outlined">delete_forever</span> 삭제
+  </button>
+  <button class="btn report-btn-strong">
+    <span class="material-symbols-outlined">report_problem</span> 신고
+  </button>
+</div>
+
+<button class="btn report-btn">
+  <span class="material-symbols-outlined">gavel</span> 신고
+</button>
+
+<button class="btn report-btn">
+  <span class="material-symbols-outlined">emergency</span> 신고
+</button>
+
+<button class="btn report-btn">
+  <span class="material-symbols-outlined">notification_important</span> 신고
+</button>
+
+<div class="profile-button">
+  <span class="material-symbols-outlined">account_circle</span> 프로필
+</div>
+
+<div class="profile-button">
+  <span class="material-symbols-outlined">manage_accounts</span> 프로필 수정
+</div>
+
+<!-- 모달 배경 -->
+<div class="modal-overlay" id="sportsModal" style="display: flex;">
+  <div class="modal-content">
+    <h2>운동 종류 선택</h2>
+    <div class="sports-grid">
+      <div class="sports-item"><span class="material-symbols-outlined">sports_tennis</span> 테니스</div>
+      <div class="sports-item"><span class="material-symbols-outlined">sports_bowling</span> 볼링</div>
+      <div class="sports-item"><span class="material-symbols-outlined">sports_table_tennis</span> 탁구</div>
+      <div class="sports-item"><span class="material-symbols-outlined">sports_basketball</span> 농구</div>
+      <div class="sports-item"><span class="material-symbols-outlined">sports_golf</span> 골프</div>
+      <div class="sports-item"><span class="material-symbols-outlined">sports_soccer</span> 풋살</div>
+      <div class="sports-item"><span class="material-symbols-outlined">sports_tennis</span> 배드민턴</div>
+      <div class="sports-item"><span class="material-symbols-outlined">more_horiz</span> 기타</div>
+    </div>
+
+    <h2>난이도 선택</h2>
+    <div class="level-grid">
+      <div class="level-item"><span class="material-symbols-outlined">flag</span> 초보자</div>
+      <div class="level-item"><span class="material-symbols-outlined">directions_run</span> 중급자</div>
+      <div class="level-item"><span class="material-symbols-outlined">military_tech</span> 숙련자</div>
+    </div>
+
+    <button class="modal-close" onclick="closeSportsModal()">닫기</button>
+  </div>
+</div>
+
+
+
+</body>
+</html>
