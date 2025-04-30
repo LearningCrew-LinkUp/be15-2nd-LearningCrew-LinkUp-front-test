@@ -240,9 +240,12 @@ a {
 }
 
 /* 테이블 특정 컬럼 넓이 */
-.user-authority-reason,
-.user-comment-content {
+.user-authority-reason {
     width: 42%;
+}
+
+.user-comment-content {
+    width: 30%;
 }
 
 .place-address {
