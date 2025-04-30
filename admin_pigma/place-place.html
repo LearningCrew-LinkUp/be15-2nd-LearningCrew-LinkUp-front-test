@@ -49,6 +49,13 @@
         <label class="filter-label place-filter-label">사업자 ID :
           <input type="text" class="select-box id-input" placeholder="ID ">
         </label>
+        <label class="filter-label user-member-filter-label">활성화 상태 :
+          <select id="status" name="status" class="select-box user-member-status-select">
+            <option value="">전체</option>
+            <option value="active">활성화</option>
+            <option value="inactive">비활성화</option>
+          </select>
+        </label>
         <button class="btn btn-primary place-search-btn">검색</button>
       </div>
     </div>
@@ -63,27 +70,28 @@
         <th class="table-cell place-owner-name">사업자 이름</th>
         <th class="table-cell place-sport">운동 종목</th>
         <th class="table-cell place-rating">평점</th>
+        <th class="table-cell place-rating">삭제 여부</th>
         <th class="table-cell place-detail-view">상세 보기</th>
       </tr>
       </thead>
       <tbody>
-        <tr><td>24</td><td>배드존 신대방</td><td>서울 동작구 신대방2길 5</td><td>18</td><td>김사장</td><td>배드민턴</td><td>4.2</td><td><a href="#">보기</a></td></tr>
-        <tr><td>25</td><td>테니스파크 강남</td><td>서울 강남구 역삼로 111</td><td>21</td><td>박테니스</td><td>테니스</td><td>4.5</td><td><a href="#">보기</a></td></tr>
-        <tr><td>26</td><td>러닝스팟 한강</td><td>서울 영등포구 여의동 200</td><td>14</td><td>최러너</td><td>런닝</td><td>3.9</td><td><a href="#">보기</a></td></tr>
-        <tr><td>27</td><td>푸릇 볼링장</td><td>서울 강서구 등촌로 89</td><td>14</td><td>이볼링</td><td>볼링</td><td>3.7</td><td><a href="#">보기</a></td></tr>
-        <tr><td>28</td><td>마포 풋살경기장</td><td>서울 마포구 월드컵북로 100</td><td>12</td><td>정축구</td><td>풋살</td><td>4.3</td><td><a href="#">보기</a></td></tr>
-        <tr><td>29</td><td>종로 런센터</td><td>서울 종로구 대학로 88</td><td>19</td><td>윤스피드</td><td>런닝</td><td>3.8</td><td><a href="#">보기</a></td></tr>
-        <tr><td>30</td><td>수지 배드민턴장</td><td>경기 용인시 수지구 동천로 20</td><td>15</td><td>이민턴</td><td>배드민턴</td><td>3.6</td><td><a href="#">보기</a></td></tr>
-        <tr><td>31</td><td>테니스하우스 홍대</td><td>서울 마포구 와우산로 31</td><td>16</td><td>홍스매시</td><td>테니스</td><td>4.4</td><td><a href="#">보기</a></td></tr>
-        <tr><td>32</td><td>런앤헌 여의도</td><td>서울 영등포구 국제금융로 10</td><td>17</td><td>신빠른</td><td>런닝</td><td>3.5</td><td><a href="#">보기</a></td></tr>
-        <tr><td>33</td><td>불암산 볼링센터</td><td>서울 노원구 학림로 620</td><td>15</td><td>장핀맨</td><td>볼링</td><td>4.0</td><td><a href="#">보기</a></td></tr>
-        <tr><td>34</td><td>해피풋살 송파</td><td>서울 송파구 위례성대로 73</td><td>18</td><td>최패스</td><td>풋살</td><td>4.1</td><td><a href="#">보기</a></td></tr>
-        <tr><td>35</td><td>센터볼 테니스장</td><td>서울 서초구 방배로 55</td><td>20</td><td>류테니스</td><td>테니스</td><td>4.6</td><td><a href="#">보기</a></td></tr>
-        <tr><td>36</td><td>은평 러닝존</td><td>서울 은평구 연서로 180</td><td>19</td><td>박러너</td><td>런닝</td><td>3.9</td><td><a href="#">보기</a></td></tr>
-        <tr><td>37</td><td>금천볼링존</td><td>서울 금천구 가산디지털로 98</td><td>17</td><td>남볼링</td><td>볼링</td><td>3.9</td><td><a href="#">보기</a></td></tr>
-        <tr><td>38</td><td>잠실 배드존</td><td>서울 송파구 올림픽로 25</td><td>22</td><td>정배드</td><td>배드민턴</td><td>4.0</td><td><a href="#">보기</a></td></tr>
-        <tr><td>39</td><td>송파 테니스클럽</td><td>서울 송파구 위례동로 45</td><td>23</td><td>이서브</td><td>테니스</td><td>4.5</td><td><a href="#">보기</a></td></tr>
-        <tr><td>40</td><td>광진 풋살필드</td><td>서울 광진구 자양로 103</td><td>24</td><td>유포워드</td><td>풋살</td><td>4.2</td><td><a href="#">보기</a></td></tr>
+        <tr><td>24</td><td>배드존 신대방</td><td>서울 동작구 신대방2길 5</td><td>18</td><td>김사장</td><td>배드민턴</td><td>4.2</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>25</td><td>테니스파크 강남</td><td>서울 강남구 역삼로 111</td><td>21</td><td>박테니스</td><td>테니스</td><td>4.5</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>26</td><td>러닝스팟 한강</td><td>서울 영등포구 여의동 200</td><td>14</td><td>최러너</td><td>런닝</td><td>3.9</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>27</td><td>푸릇 볼링장</td><td>서울 강서구 등촌로 89</td><td>14</td><td>이볼링</td><td>볼링</td><td>3.7</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>28</td><td>마포 풋살경기장</td><td>서울 마포구 월드컵북로 100</td><td>12</td><td>정축구</td><td>풋살</td><td>4.3</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>29</td><td>종로 런센터</td><td>서울 종로구 대학로 88</td><td>19</td><td>윤스피드</td><td>런닝</td><td>3.8</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>30</td><td>수지 배드민턴장</td><td>경기 용인시 수지구 동천로 20</td><td>15</td><td>이민턴</td><td>배드민턴</td><td>3.6</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>31</td><td>테니스하우스 홍대</td><td>서울 마포구 와우산로 31</td><td>16</td><td>홍스매시</td><td>테니스</td><td>4.4</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>32</td><td>런앤헌 여의도</td><td>서울 영등포구 국제금융로 10</td><td>17</td><td>신빠른</td><td>런닝</td><td>3.5</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>33</td><td>불암산 볼링센터</td><td>서울 노원구 학림로 620</td><td>15</td><td>장핀맨</td><td>볼링</td><td>4.0</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>34</td><td>해피풋살 송파</td><td>서울 송파구 위례성대로 73</td><td>18</td><td>최패스</td><td>풋살</td><td>4.1</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>35</td><td>센터볼 테니스장</td><td>서울 서초구 방배로 55</td><td>20</td><td>류테니스</td><td>테니스</td><td>4.6</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>36</td><td>은평 러닝존</td><td>서울 은평구 연서로 180</td><td>19</td><td>박러너</td><td>런닝</td><td>3.9</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>37</td><td>금천볼링존</td><td>서울 금천구 가산디지털로 98</td><td>17</td><td>남볼링</td><td>볼링</td><td>3.9</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>38</td><td>잠실 배드존</td><td>서울 송파구 올림픽로 25</td><td>22</td><td>정배드</td><td>배드민턴</td><td>4.0</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>39</td><td>송파 테니스클럽</td><td>서울 송파구 위례동로 45</td><td>23</td><td>이서브</td><td>테니스</td><td>4.5</td><td>공개</td><td><a href="#">보기</a></td></tr>
+        <tr><td>40</td><td>광진 풋살필드</td><td>서울 광진구 자양로 103</td><td>24</td><td>유포워드</td><td>풋살</td><td>4.2</td><td>공개</td><td><a href="#">보기</a></td></tr>
       </tbody>
     </table>
 
