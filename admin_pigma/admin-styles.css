@@ -96,6 +96,40 @@ a {
     font-weight: 600;
 }
 
+.admin-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: #f9f8fb;
+    padding: 20px 16px;
+    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.return-link {
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.return-link:hover {
+    color: #333;
+}
+
+
 /* ---------------- 필터 ---------------- */
 .filter-box {
     display: flex;

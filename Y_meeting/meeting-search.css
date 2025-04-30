@@ -471,9 +471,10 @@ a {
 .assignment-modal {
     position: fixed;
     top: 160px; /* 정확히 두 번째 버튼과 정렬 */
-    right: 84px; /* 버튼 오른쪽 여백 기준 */
-    width: 30%; /* 모달 너비 확장 */
-    max-width: 800px; /* 최대 너비 설정 */
+    right: 90px; /* 버튼 오른쪽 여백 기준 */
+    width: 27%; /* 모달 너비 확장 */
+    min-width: 500px; /* 최소 너비 설정 */
+    max-width: 600px; /* 최대 너비 설정 */
     background-color: #ffffff;
     border-radius: 24px;
     padding: 40px;
@@ -722,4 +723,68 @@ h2 {
 
 .modal-close:hover {
     background: #3b69d1;
+}
+
+/* ---------------- 운동 필터 바 (가로 스크롤) ---------------- */
+/* 운동 필터 바 */
+.sport-filter-bar {
+    background: #f8f9fb;
+    padding: 14px 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid #e0e0e0;
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #d0d7de transparent; /* Firefox */
+}
+
+.sport-filter-bar::-webkit-scrollbar {
+    height: 6px;
+}
+
+.sport-filter-bar::-webkit-scrollbar-thumb {
+    background: #d0d7de;
+    border-radius: 3px;
+}
+
+.sport-filter-bar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sport-filter-group {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.sport-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1.5px solid #ccc;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.sport-filter:hover {
+    background-color: #e3ebff;
+    border-color: #5790FF;
+    color: #5790FF;
+}
+
+.sport-filter.active {
+    background-color: #5790FF;
+    color: #fff;
+    border-color: #5790FF;
+}
+
+.sport-icon {
+    font-size: 18px;
+    color: inherit;
 }

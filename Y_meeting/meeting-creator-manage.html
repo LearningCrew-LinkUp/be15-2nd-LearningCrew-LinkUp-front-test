@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>개설자 참가자 관리</title>
+    <link rel="stylesheet" href="meeting-search.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+        /* ---------------- 참가자 관리 모달 ---------------- */
+        .participant-modal {
+            position: fixed;
+            top: 160px; /* assignment-modal과 같은 높이 */
+            right: calc(84px + 480px + 35px); /* assignment-modal 오른쪽 끝 + 여유 24px */
+            width: 32%;
+            min-width: 400px;
+            max-width: 500px;
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .participant-modal h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .participant-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        .participant-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .participant-modal-content {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .participant-modal-header .emoji {
+            font-size: 24px;
+            color: #5790FF;
+        }
+
+        .participant-modal-button {
+            padding: 6px 12px;
+            display: block;
+        }
+
+        .divider {
+             border: none;
+             border-top: 1px solid #e5e7eb;
+             margin: 10px 0; /* 여유 있는 구분선 */
+         }
+
+
+        /* 참가자 카드 스타일 */
+        .participant-card {
+            background: #f4f6fb;
+            border-radius: 16px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            margin-bottom: 10px;
+        }
+
+        .participant-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #e0e0e0;
+        }
+
+        .participant-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .participant-nickname {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .participant-subinfo {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        /* 버튼 영역 */
+        .participant-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .participant-btn {
+            padding: 6px 10px;
+            font-size: 13px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+        }
+
+        .participant-btn.accept {
+            background-color: #5790FF;
+            color: #fff;
+        }
+
+        .participant-btn.accept:hover {
+            background-color: #3b69d1;
+        }
+
+        .participant-btn.reject {
+            background-color: #E64980;
+            color: #fff;
+        }
+
+        .participant-btn.reject:hover {
+            background-color: #cc3a6a;
+        }
+
+        .applicant-card {
+            background: #f8f9fb;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-family: 'Pretendard', sans-serif;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .applicant-profile {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            background-color: #e0e0e0;
+        }
+
+
+        .applicant-profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #e0e0e0;
+            flex-shrink: 0;
+        }
+
+        .applicant-info {
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .applicant-info p {
+            margin: 2px 0;
+        }
+
+        .applicant-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 6px 10px;
+            font-size: 13px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn.accept {
+            background-color: #5790FF;
+            color: #fff;
+        }
+
+        .btn.accept:hover {
+            background-color: #3a6edc;
+        }
+
+        .btn.reject {
+            background-color: #FEB5A1;
+            color: #fff;
+        }
+
+        .btn.reject:hover {
+            background-color: #E64980;
+        }
+
+
+        .btn.cancel {
+            background-color: #939DC1;
+            color: #fff;
+            width: 100%;
+        }
+
+        .btn.cancel:hover {
+            background-color: #939DC1;
+        }
+
+
+
+
+    </style>
+
+</head>
+<body>
+
+<!-- 헤더 -->
+<header class="main-header">
+    <div class="logo">
+        <img src="../img/learning_crew_logo.webp" alt="로고" />
+    </div>
+    <nav class="nav-menu">
+        <a href="#">커뮤니티</a>
+        <a href="meeting-search.html">모임</a>
+        <a href="../place/place-search.html">장소</a>
+        <a href="#">사용자</a>
+    </nav>
+</header>
+
+<!-- 본문 -->
+<div class="container">
+
+    <!-- 왼쪽: 모임 목록 + 지도 -->
+    <div class="main-content">
+        <!-- 모임 카드 리스트 -->
+        <section class="meeting-list">
+            <div class="filter-toggle-wrap">
+                <button class="filter-toggle-btn" onclick="location.href='meeting-search.html'">
+                    <span class="material-symbols-outlined card">tune</span> 필터
+                </button>
+            </div>
+
+            <!-- 예시 카드 -->
+            <div class="meeting-card">
+                <img src="../img/place_img1.png" alt="모임 이미지" class="meeting-img" />
+                <div class="meeting-info">
+                    <div class="meeting-meta">
+            <span class="date">
+              <span class="material-symbols-outlined card">event</span> 2025.04.26 (토)
+            </span>
+                        <button class="bookmark">
+                            <span class="material-symbols-outlined filled">favorite</span>
+                        </button>
+                    </div>
+                    <h3 class="title">이태원 한강 러닝 모임</h3>
+                    <p class="location"><span class="material-symbols-outlined card">location_on</span> 서울 용산구 이태원로 100</p>
+                    <p class="likes"><span class="material-symbols-outlined card">favorite</span> 45명 찜</p>
+                    <p class="price"><span class="material-symbols-outlined card">attach_money</span> <strong>무료</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 지도 -->
+        <main class="map-section">
+            <img src="../img/map_img.png" alt="지도" class="map-image" />
+
+            <!-- 개설한 모임 목록 모달 -->
+            <div class="assignment-modal" id="assignmentModal">
+                <div class="assignment-header">
+                    <span class="material-symbols-outlined">assignment</span>
+                    <h2>개설한 모임 목록</h2>
+                    <button class="assignment-close" onclick="closeAssignmentModal()">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <div class="assignment-list">
+                    <div class="assignment-card">
+                        <img src="../img/place_img1.png" alt="썸네일" class="assignment-thumb" />
+                        <div class="assignment-content">
+                            <div class="assignment-title">초보 환영, 풋살 한판!</div>
+                            <div class="assignment-address">서울 마포구 독막로 12</div>
+                        </div>
+                        <div class="assignment-status 모집중">모집중</div>
+                    </div>
+
+                    <div class="assignment-card">
+                        <img src="../img/place_img1.png" alt="썸네일" class="assignment-thumb" />
+                        <div class="assignment-content">
+                            <div class="assignment-title">여의도 러닝크루</div>
+                            <div class="assignment-address">서울 영등포구 여의서로 36</div>
+                        </div>
+                        <div class="assignment-status 진행완료">최소 모집 완료</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 왼쪽 플로팅 사이드바 -->
+    <div class="floating-nav">
+        <div class="nav-section">
+            <div class="nav-btn" title="모임 개설" onclick="location.href='meeting-create-select.html'">
+                <span class="material-symbols-outlined">edit_note</span>
+            </div>
+        </div>
+        <hr />
+        <div class="nav-section">
+            <div class="nav-btn" title="개설 모임 관리" onclick="location.href='meeting_assignment.html'">
+                <span class="material-symbols-outlined">assignment</span>
+            </div>
+            <div class="nav-btn" title="참가 모임 관리">
+                <span class="material-symbols-outlined" onclick="location.href='meeting-emoji_people.html'">emoji_people</span>
+            </div>
+            <div class="nav-btn" title="찜 목록">
+                <span class="material-symbols-outlined active" onclick="location.href='meeting-favorite.html'">favorite</span>
+            </div>
+        </div>
+        <hr />
+        <div class="nav-section">
+            <div class="nav-btn" title="알림">
+                <span class="material-symbols-outlined" onclick="location.href='meeting_float_bar.html'">settings</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 참가자 관리 모달 -->
+<div class="participant-modal" id="participantModal">
+    <button class="participant-close" onclick="closeParticipantModal()">&times;</button>
+
+    <div class="participant-modal-header">
+        <span class="material-symbols-outlined emoji">group</span>
+        <h2>참가자 관리</h2>
+    </div>
+    <hr class="divider" />
+
+    <div class="participant-modal-content">
+        <h2>참가자 목록</h2>
+        <div class="participant-card">
+            <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=linkup" alt="프로필" class="participant-thumb" />
+
+            <div class="participant-content">
+                <div class="participant-nickname">방구석메시</div>
+                <div class="participant-subinfo">매너온도 38°C</div>
+            </div>
+            <div class="participant-actions">
+                <button class="participant-btn accept">권한 위임</button>
+            </div>
+        </div>
+        <div class="participant-card">
+            <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=linkup" alt="프로필" class="participant-thumb" />
+            <div class="participant-content">
+                <div class="participant-nickname">방구석메시</div>
+                <div class="participant-subinfo">매너온도 38°C</div>
+            </div>
+            <div class="participant-actions">
+                <button class="participant-btn accept">권한 위임</button>
+            </div>
+        </div>
+    </div>
+
+
+    <hr class="divider" />
+    <div class="participant-modal-content">
+        <h2>참가 신청 목록</h2>
+        <div class="applicant-card">
+            <div class="applicant-profile">
+                <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=linkup" alt="프로필" class="participant-thumb" />
+            </div>
+            <div class="applicant-info">
+                <p><strong>열정파워</strong> </p>
+                <p><strong>남자</strong> | <strong>30세</strong> | <strong>38°C</strong></p>
+                <p> 승부욕 강한 타입입니다.</p>
+            </div>
+            <div class="applicant-actions">
+                <button class="btn accept">수락</button>
+                <button class="btn reject">거절</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="participant-modal-button">
+        <button class="btn cancel">모임 취소</button>
+    </div>
+</div>
+
+<!-- 스크립트 -->
+<script>
+    flatpickr("#dateRange", {
+        mode: "range",
+        dateFormat: "Y-m-d",
+        locale: "ko"
+    });
+
+    function closeFavoriteModal() {
+        document.getElementById('favoriteModal').style.display = 'none';
+    }
+
+    function closeParticipationModal() {
+        document.getElementById('participationModal').style.display = 'none';
+    }
+
+    function openParticipantModal() {
+        document.getElementById('participationModal').style.display = 'none';
+        document.getElementById('participantModal').style.display = 'flex';
+    }
+
+    function closeParticipantModal() {
+        document.getElementById('participantModal').style.display = 'none';
+        document.getElementById('participationModal').style.display = 'block';
+    }
+
+</script>
+
+</body>
+</html>
