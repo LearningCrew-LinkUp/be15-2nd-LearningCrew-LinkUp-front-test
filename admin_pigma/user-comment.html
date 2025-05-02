@@ -29,6 +29,9 @@
       <li><a href="user-post.html" class="sidebar-link">게시글 내역 조회</a></li>
       <li><a href="user-comment.html" class="sidebar-link active">댓글 내역 조회</a></li>
     </ul>
+    <div class="sidebar-footer">
+      <a href="/" class="return-link">서비스로 돌아가기</a>
+    </div>
   </aside>
 
   <main class="admin-main">
@@ -51,25 +54,26 @@
         <th class="table-cell user-comment-writer-name">작성자 이름</th>
         <th class="table-cell user-comment-content">내용</th>
         <th class="table-cell user-comment-created-at">작성일</th>
-        <th class="table-cell user-comment-public">공개 여부</th>
+        <th class="table-cell user-comment-created-at">삭제일</th>
+        <th class="table-cell user-comment-public">삭제 여부</th>
       </tr>
       </thead>
       <tbody>
-        <tr><td>201</td><td>101</td><td>user_01</td><td>김진수</td><td>좋은 정보 감사합니다!</td><td>2025-04-21</td><td>공개</td></tr>
-        <tr><td>202</td><td>103</td><td>user_03</td><td>박현우</td><td>저도 그렇게 생각해요</td><td>2025-04-21</td><td>공개</td></tr>
-        <tr><td>203</td><td>104</td><td>user_07</td><td>한지민</td><td>문의는 어디로 하나요?</td><td>2025-04-22</td><td>비공개</td></tr>
-        <tr><td>204</td><td>105</td><td>user_02</td><td>이민지</td><td>후기 잘 봤어요!</td><td>2025-04-22</td><td>공개</td></tr>
-        <tr><td>205</td><td>106</td><td>user_05</td><td>윤서진</td><td>이번 주말 좋아요~</td><td>2025-04-23</td><td>공개</td></tr>
-        <tr><td>206</td><td>101</td><td>user_09</td><td>김유정</td><td>저도 참여할게요!</td><td>2025-04-23</td><td>비공개</td></tr>
-        <tr><td>207</td><td>108</td><td>user_08</td><td>이상훈</td><td>추천 감사합니다.</td><td>2025-04-24</td><td>공개</td></tr>
-        <tr><td>208</td><td>110</td><td>user_10</td><td>정해인</td><td>저도 외롭습니다 ㅠㅠ</td><td>2025-04-24</td><td>공개</td></tr>
-        <tr><td>209</td><td>112</td><td>user_11</td><td>최수민</td><td>이 루틴 좋아보여요</td><td>2025-04-25</td><td>비공개</td></tr>
-        <tr><td>210</td><td>113</td><td>user_13</td><td>강예린</td><td>식단 공유 감사합니다</td><td>2025-04-25</td><td>공개</td></tr>
-        <tr><td>211</td><td>115</td><td>user_15</td><td>배지훈</td><td>날씨 좋죠~ 운동각!</td><td>2025-04-25</td><td>공개</td></tr>
-        <tr><td>212</td><td>101</td><td>user_14</td><td>김태현</td><td>공감합니다!</td><td>2025-04-25</td><td>공개</td></tr>
-        <tr><td>213</td><td>102</td><td>user_06</td><td>배민호</td><td>좋은 아이디어네요</td><td>2025-04-25</td><td>공개</td></tr>
-        <tr><td>214</td><td>107</td><td>user_12</td><td>오세훈</td><td>후기 고마워요~</td><td>2025-04-25</td><td>공개</td></tr>
-        <tr><td>215</td><td>109</td><td>user_04</td><td>정다은</td><td>참여 신청 완료했습니다!</td><td>2025-04-25</td><td>비공개</td></tr>
+        <tr><td>201</td><td>101</td><td>user_01</td><td>김진수</td><td>좋은 정보 감사합니다!</td><td>2025-04-21</td><td></td><td>공개</td></tr>
+        <tr><td>202</td><td>103</td><td>user_03</td><td>박현우</td><td>저도 그렇게 생각해요</td><td>2025-04-21</td><td></td><td>공개</td></tr>
+        <tr><td>203</td><td>104</td><td>user_07</td><td>한지민</td><td>문의는 어디로 하나요?</td><td>2025-04-22</td><td>2025-04-25</td><td>비공개</td></tr>
+        <tr><td>204</td><td>105</td><td>user_02</td><td>이민지</td><td>후기 잘 봤어요!</td><td>2025-04-22</td><td></td><td>공개</td></tr>
+        <tr><td>205</td><td>106</td><td>user_05</td><td>윤서진</td><td>이번 주말 좋아요~</td><td>2025-04-23</td><td></td><td>공개</td></tr>
+        <tr><td>206</td><td>101</td><td>user_09</td><td>김유정</td><td>저도 참여할게요!</td><td>2025-04-23</td><td>2025-04-25</td><td>비공개</td></tr>
+        <tr><td>207</td><td>108</td><td>user_08</td><td>이상훈</td><td>추천 감사합니다.</td><td>2025-04-24</td><td></td><td>공개</td></tr>
+        <tr><td>208</td><td>110</td><td>user_10</td><td>정해인</td><td>저도 외롭습니다 ㅠㅠ</td><td>2025-04-24</td><td></td><td>공개</td></tr>
+        <tr><td>209</td><td>112</td><td>user_11</td><td>최수민</td><td>이 루틴 좋아보여요</td><td>2025-04-25</td><td></td><td>비공개</td></tr>
+        <tr><td>210</td><td>113</td><td>user_13</td><td>강예린</td><td>식단 공유 감사합니다</td><td>2025-04-25</td><td></td><td>공개</td></tr>
+        <tr><td>211</td><td>115</td><td>user_15</td><td>배지훈</td><td>날씨 좋죠~ 운동각!</td><td>2025-04-25</td><td></td><td>공개</td></tr>
+        <tr><td>212</td><td>101</td><td>user_14</td><td>김태현</td><td>공감합니다!</td><td>2025-04-25</td><td></td><td>공개</td></tr>
+        <tr><td>213</td><td>102</td><td>user_06</td><td>배민호</td><td>좋은 아이디어네요</td><td>2025-04-25</td><td></td><td>공개</td></tr>
+        <tr><td>214</td><td>107</td><td>user_12</td><td>오세훈</td><td>후기 고마워요~</td><td>2025-04-25</td><td></td><td>공개</td></tr>
+        <tr><td>215</td><td>109</td><td>user_04</td><td>정다은</td><td>참여 신청 완료했습니다!</td><td>2025-04-25</td><td>2025-04-25</td><td>비공개</td></tr>
       </tbody>
     </table>
 

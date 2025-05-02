@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>즐겨찾기 목록</title>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: #f8f9fa;
+            padding: 2rem;
+        }
+        .favorite-list {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        .favorite-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .favorite-item:last-child {
+            border-bottom: none;
+        }
+        .place-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .address {
+            color: #6c757d;
+            margin-top: 0.25rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+<section class="favorite-list" id="favoriteList">
+    <h2 style="text-align:center; margin-bottom:1.5rem;">즐겨찾기한 장소</h2>
+    <!-- 즐겨찾기 리스트가 여기 채워질 예정 -->
+</section>
+
+<script>
+    // (예시) 서버에서 받아온 FavoriteListResponse 데이터
+    const favoriteListResponse = {
+        favorites: [
+            { placeId: 1, placeName: '신촌 풋살 센터', address: '서울 서대문구 연세로 12' },
+            { placeId: 2, placeName: '홍대 풋살장', address: '서울 마포구 양화로 20' }
+        ],
+        pagination: {
+            totalPages: 1,
+            currentPage: 1,
+            totalItems: 2
+        }
+    };
+
+    const favoriteList = document.getElementById('favoriteList');
+
+    favoriteListResponse.favorites.forEach(fav => {
+        const item = document.createElement('div');
+        item.className = 'favorite-item';
+        item.innerHTML = `
+      <div class="place-name">${fav.placeName}</div>
+      <div class="address">${fav.address}</div>
+    `;
+        favoriteList.appendChild(item);
+    });
+</script>
+
+</body>
+</html>

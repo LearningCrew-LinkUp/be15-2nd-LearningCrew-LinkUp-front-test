@@ -96,6 +96,40 @@ a {
     font-weight: 600;
 }
 
+.admin-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: #f9f8fb;
+    padding: 20px 16px;
+    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.return-link {
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.return-link:hover {
+    color: #333;
+}
+
+
 /* ---------------- 필터 ---------------- */
 .filter-box {
     display: flex;
@@ -206,9 +240,12 @@ a {
 }
 
 /* 테이블 특정 컬럼 넓이 */
-.user-authority-reason,
-.user-comment-content {
+.user-authority-reason {
     width: 42%;
+}
+
+.user-comment-content {
+    width: 30%;
 }
 
 .place-address {
@@ -433,4 +470,39 @@ a {
 
 .report-detail-grid div {
     line-height: 1.5;
+}
+
+
+
+/* 날짜 스타일 */
+.date-input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.date-input {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    color: #666;
+    width: 150px;
+    height: 40px;
+}
+
+/* input 안에 기본적으로 연-월-일 가짜 플레이스홀더처럼 보여주기 */
+.date-input:invalid::before {
+    content: "연도 - 월 - 일";
+    color: #bbb;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* 사용자가 선택하면 가짜 플레이스홀더 숨기기 */
+.date-input:focus:invalid::before {
+    content: "";
 }
