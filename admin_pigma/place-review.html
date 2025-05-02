@@ -35,21 +35,21 @@
   <main class="admin-main">
     <div class="main-header">
       <h1 class="page-title">장소 후기 내역 조회</h1>
-      <label class="filter-label user-member-filter-label">활성화 상태 :
-        <select id="status" name="status" class="select-box user-member-status-select">
-          <option value="">전체</option>
-          <option value="active">활성화</option>
-          <option value="inactive">비활성화</option>
-        </select>
-      </label>
       <div class="filter-box">
+        <label class="filter-label user-member-filter-label">활성화 상태 :
+          <select id="status" name="status" class="select-box user-member-status-select">
+            <option value="">전체</option>
+            <option value="active">활성화</option>
+            <option value="inactive">비활성화</option>
+          </select>
+        </label>
         <label class="filter-label place-review-filter-label">검색 기준 :
           <select class="select-box place-review-search-standard">
             <option value="writerId">작성자 ID</option>
             <option value="placeId">장소 ID</option>
           </select>
+          <input type="text" class="select-box id-input" placeholder="ID">
         </label>
-        <input type="text" class="select-box id-input" placeholder="ID">
         <button class="btn btn-primary place-review-search-btn">검색</button>
       </div>
     </div>

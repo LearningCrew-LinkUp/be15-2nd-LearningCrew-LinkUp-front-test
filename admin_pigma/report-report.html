@@ -46,6 +46,11 @@
             <option>기각</option>
           </select>
         </label>
+        <label class="filter-label penalty-filter-label">신고 유형:
+          <select class="select-box">
+            <option value="">전체</option>
+          </select>
+        </label>
         <button class="btn btn-primary">검색</button>
       </div>
     </div>
@@ -58,7 +63,7 @@
         <th>신고자 이름</th>
         <th>피신고자 ID</th>
         <th>피신고자 이름</th>
-        <th>신고 사유</th>
+        <th>신고 유형</th>
         <th>상태</th>
         <th>신고 일시</th>
         <th>상세</th>
@@ -105,7 +110,10 @@
 
 <div id="reportModal" class="modal" style="display: flex;">
   <div class="modal-report">
-    <h2 class="modal-report-title">신고 상세 정보</h2>
+    <div>
+      <h2 class="modal-report-title">신고 상세 정보</h2>
+      <p class="sub-text">신고 대상과 사유를 확인하고 후속 조치를 진행할 수 있습니다.</p>
+    </div>
 
     <div class="modal-report-section">
       <div class="section-title">신고자 / 피신고자</div>
@@ -152,7 +160,7 @@
 
     <div class="modal-buttons report-buttons">
       <button class="btn btn-reject" onclick="alert('허위 신고 처리')">허위 신고</button>
-      <button class="btn btn-approve" onclick="alert('신고 처리 완료')">처리 완료</button>
+      <button class="btn btn-approve" onclick="alert('제재 처리 완료')">제재 처리</button>
       <button class="btn btn-secondary" onclick="closeReportModal()">닫기</button>
     </div>
   </div>

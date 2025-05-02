@@ -38,8 +38,21 @@
         <div class="main-header">
             <h1 class="page-title">신고 대상별 목록 조회</h1>
             <div class="filter-box">
-                <label class="filter-label">피신고자 ID :
-                    <input type="text" class="user-reporter-id-input select-box" placeholder="id">
+                <label class="filter-label user-member-filter-label">활성화 상태 :
+                    <select id="status" name="status" class="select-box user-member-status-select">
+                        <option value="">전체</option>
+                        <option value="active">활성화</option>
+                        <option value="inactive">비활성화</option>
+                    </select>
+                </label>
+                <label class="filter-label place-review-filter-label">검색 기준 :
+                    <select class="select-box place-review-search-standard">
+                        <option value="userId">전체</option>
+                        <option value="userId">사용자 ID</option>
+                        <option value="postId">게시글 ID</option>
+                        <option value="commentId">댓글 ID</option>
+                    </select>
+                    <input type="text" class="select-box id-input" placeholder="ID">
                 </label>
                 <button class="btn btn-primary">검색</button>
             </div>
@@ -129,7 +142,8 @@
             </tbody>
         </table>
 
-        <div class="modal-buttons">
+        <div class="modal-buttons report-buttons">
+            <button class="btn btn-reject" onclick="alert('제재 처리 완료')">제재 처리</button>
             <button class="btn btn-secondary" onclick="closeTargetModal()">닫기</button>
         </div>
     </div>
