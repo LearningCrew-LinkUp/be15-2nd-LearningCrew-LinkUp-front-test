@@ -38,7 +38,7 @@
       cursor: pointer;
     }
     .form-container {
-      max-width: 700px;
+      max-width: 600px;
       margin: 40px auto;
       background: #fff;
       border-radius: 16px;
@@ -74,6 +74,8 @@
       margin-bottom: 20px;
     }
 
+
+
     .input-group {
       display: flex;
       align-items: center;
@@ -98,22 +100,12 @@
       border: 1px solid #ccc;
     }
 
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-
-    .input-group textarea {
+       .input-group textarea {
       width: 100%;
       padding: 12px;
       font-size: 14px;
       border-radius: 8px;
       border: 1px solid #ccc;
-    }
-    .input-group textarea {
       resize: vertical;
       height: 150px;
     }
@@ -124,10 +116,14 @@
       margin-top: 24px;
       justify-content: center;
     }
+
+
+
     .button-group button {
-      background-color: #4763f3;
+      background-color: #5790FF;
       color: white;
-      padding: 20px 123px;
+      width: 540px;
+      height: 49px;
       font-size: 16px;
       border: none;
       border-radius: 8px;
@@ -138,59 +134,62 @@
       background-color: #3548d3;
     }
 
-    .image-upload {
-      margin-bottom: 20px;
+    .image-preview-wrapper {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
     }
-    .image-upload input[type="file"] {
-      display: none;
-    }
-    .image-upload label {
-      display: block;
-      padding: 20px;
-      background-color: #4763f3;
-      color: white;
-      font-size: 18px;
-      text-align: center;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 8px;
-      transition: background-color 0.3s ease;
-    }
-    .image-upload label:hover {
-      background-color: #ccc;
-    }
+
     .image-preview {
       display: flex;
+      gap: 22px;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
     }
-    .image-preview img {
+
+    .image-wrapper {
       width: 150px;
       height: 150px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: 8px;
     }
 
-    /* 파일 업로드 네모 박스 + 표시 */
-    .file-upload {
-      border: 2px dashed #ccc;
-      width: 150px;
-      height: 150px;
+    .delete-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
-      color: #999;
       cursor: pointer;
-      border-radius: 8px;
-      transition: border-color 0.3s, color 0.3s;
     }
 
-    .file-upload:hover {
-      border-color: #666;
-      color: #666;
+    .file-upload {
+      width: 150px;
+      height: 150px;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #aaa;
+      cursor: pointer;
     }
+
 
     /* 팝업 스타일 */
     .popup-overlay {
@@ -236,7 +235,7 @@
     }
 
     /* 게시글 등록 팝업 스타일 */
-    .post-popup-content {
+    .edit-popup-content {
       background: white;
       padding: 30px;
       border-radius: 12px;
@@ -245,6 +244,7 @@
     }
 
   </style>
+
 </head>
 <body>
 <div class="page">
@@ -260,13 +260,9 @@
 
   <div class="form-container">
     <h2>게시글 수정</h2>
-    <form id="post-form" onsubmit="event.preventDefault(); submitPost();">
+    <form id="post-form" onsubmit="event.preventDefault(); submitEdit();">
       <div class="input-group">
         <label for="title">제목</label>
-        <label class="checkbox-label">
-          <input type="checkbox" id="notice" style="margin-right: 6px;" />
-          공지사항 등록
-        </label>
       </div>
 
       <input type="text" id="title" placeholder="제목을 입력하세요." required value="하늘을 보며 잠깐 멈추었던 순간" />
@@ -279,104 +275,173 @@
 이런 작은 순간이 참 소중하다는 걸 새삼 느꼈던 날이었어요.
       </textarea>
 
-      <div class="image-upload">
-        <label for="image">이미지 업로드(선택)</label>
-        <input type="file" id="image" accept="image/*" multiple onchange="previewImages(event)" />
-        <div id="preview" class="image-preview"></div>
 
+      <div class="form-group">
+        <label for="title">대표 이미지</label>
+        <div class="image-preview-wrapper">
+          <div id="preview" class="image-preview"></div>
+
+          <!-- 업로드 박스 -->
+          <label for="image" class="file-upload">
+            +
+            <input type="file" id="image" accept="image/*" multiple onchange="previewImages(event)" hidden />
+          </label>
+        </div>
       </div>
+
 
       <div class="button-group">
         <button type="submit">수정하기</button>
-        <button type="button" onclick="openCancelPopup()">취소하기</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+    <!-- 게시글 수정 팝업 -->
+    <div id="edit-popup" class="popup-overlay">
+      <div class="edit-popup-content">
+        <h3>게시글이 수정되었습니다.</h3>
+        <div class="popup-buttons">
+          <button id="close-edit-popup" class="popup-btn">확인</button>
+        </div>
       </div>
-    </form>
-  </div>
-</div>
-
-<!-- 취소 확인 팝업 -->
-<div id="cancel-popup" class="popup-overlay">
-  <div class="popup-content">
-    <h3>정말로 취소하시겠습니까?</h3>
-    <p>작성 중인 내용은 저장되지 않습니다.</p>
-    <div class="popup-buttons">
-      <button id="confirm-cancel" class="popup-btn">네</button>
-      <button id="close-popup" class="popup-btn">아니오</button>
     </div>
-  </div>
-</div>
-
-<!-- 공지사항 수정 팝업 -->
-<div id="notice-popup" class="popup-overlay">
-  <div class="popup-content">
-    <h3>공지사항이 수정되었습니다.</h3>
-    <div class="popup-buttons">
-      <button id="close-notice-popup" class="popup-btn">확인</button>
-    </div>
-  </div>
-</div>
-
-<!-- 게시글 수정 팝업 -->
-<div id="post-popup" class="popup-overlay">
-  <div class="post-popup-content">
-    <h3>게시글이 수정되었습니다.</h3>
-    <div class="popup-buttons">
-      <button id="close-post-popup" class="popup-btn">확인</button>
-    </div>
-  </div>
-</div>
 
 <script>
-  function previewImages(event) {
-    const files = event.target.files;
-    const previewContainer = document.getElementById('preview');
-    previewContainer.innerHTML = ''; // Clear previous previews
 
-    Array.from(files).forEach(file => {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const imgElement = document.createElement('img');
-        imgElement.src = e.target.result;
-        previewContainer.appendChild(imgElement);
-      };
-      reader.readAsDataURL(file);
+  // 수정 팝업 닫기
+  document.getElementById('close-edit-popup').addEventListener('click', function() {
+    document.getElementById('edit-popup').style.display = 'none';
+  });
+
+  // 수정 함수 예시
+  function submitEdit() {
+    // 여기에 수정 로직 추가 (예: 서버 전송 등)
+    document.getElementById('edit-popup').style.display = 'flex';
+  }
+
+
+// 서버에서 받아온 기존 이미지 리스트 (URL 배열이라고 가정)
+const existingImages = [
+  'https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg',
+  'https://cdn.pixabay.com/photo/2022/02/13/17/22/cartoon-easter-bunny-7011655_1280.jpg'
+];
+
+// 새로 추가한 파일들 저장
+let uploadedFiles = [];
+
+// 대표 이미지 인덱스 저장
+let selectedMainImage = null;
+
+const previewContainer = document.getElementById('preview');
+
+// 초기 existing images 렌더링
+existingImages.forEach((src, index) => {
+  createImagePreview(src, 'existing', index);
+});
+
+function createImagePreview(src, type, index) {
+  const imgWrapper = document.createElement('div');
+  imgWrapper.className = 'image-wrapper';
+  imgWrapper.style.position = 'relative';
+  imgWrapper.style.cursor = 'pointer';
+
+  const imgElement = document.createElement('img');
+  imgElement.src = src;
+  imgElement.dataset.type = type;
+  imgElement.dataset.index = index;
+
+  // 삭제 버튼 추가
+  const deleteBtn = document.createElement('div');
+  deleteBtn.innerHTML = 'X';
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.onclick = function(e) {
+    e.stopPropagation(); // 클릭 이벤트 버블링 방지
+    deleteImage(type, index);
+  };
+
+  imgWrapper.appendChild(imgElement);
+  imgWrapper.appendChild(deleteBtn);
+  previewContainer.appendChild(imgWrapper);
+}
+
+function previewImages(event) {
+  const files = Array.from(event.target.files);
+
+  files.forEach((file) => {
+    uploadedFiles.push(file); // 새 파일 추가
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      createImagePreview(e.target.result, 'uploaded', uploadedFiles.length - 1);
+    };
+    reader.readAsDataURL(file);
+  });
+
+  event.target.value = '';
+}
+
+function selectMainImage(type, index) {
+  selectedMainImage = { type, index };
+  updateMainImageHighlight();
+}
+
+function updateMainImageHighlight() {
+  const wrappers = document.querySelectorAll('.image-wrapper');
+  wrappers.forEach(wrapper => {
+    wrapper.style.border = '3px solid transparent';
+  });
+
+  if (selectedMainImage) {
+    const target = [...wrappers].find(wrapper => {
+      const img = wrapper.querySelector('img');
+      return img.dataset.type === selectedMainImage.type && Number(img.dataset.index) === selectedMainImage.index;
     });
-  }
 
-  // 취소 팝업 열기
-  function openCancelPopup() {
-    document.getElementById('cancel-popup').style.display = 'flex';
-  }
-
-  // 취소 팝업에서 '네' 클릭 시
-  document.getElementById('confirm-cancel').addEventListener('click', function() {
-    window.location.href = '/'; // 홈 페이지로 이동
-  });
-
-  // 취소 팝업에서 '아니오' 클릭 시
-  document.getElementById('close-popup').addEventListener('click', function() {
-    document.getElementById('cancel-popup').style.display = 'none';
-  });
-
-  // 공지사항 팝업 닫기
-  document.getElementById('close-notice-popup').addEventListener('click', function() {
-    document.getElementById('notice-popup').style.display = 'none';
-  });
-
-  // 게시글 수정 팝업 닫기
-  document.getElementById('close-post-popup').addEventListener('click', function() {
-    document.getElementById('post-popup').style.display = 'none';
-  });
-
-  // 게시글 수정
-  function submitPost() {
-    const isNotice = document.getElementById('notice').checked;
-    if (isNotice) {
-      document.getElementById('notice-popup').style.display = 'flex'; // 공지사항 팝업 표시
-    } else {
-      document.getElementById('post-popup').style.display = 'flex'; // 게시글 수정 팝업 표시
+    if (target) {
+      target.style.border = '3px solid #4763f3';
     }
   }
+}
+
+function deleteImage(type, index) {
+  if (type === 'existing') {
+    existingImages.splice(index, 1);
+  } else if (type === 'uploaded') {
+    uploadedFiles.splice(index, 1);
+  }
+
+  // 대표 이미지가 삭제된 이미지였으면 초기화
+  if (selectedMainImage && selectedMainImage.type === type && selectedMainImage.index === index) {
+    selectedMainImage = null;
+  }
+
+  // 다시 렌더링
+  previewContainer.innerHTML = '';
+  existingImages.forEach((src, idx) => createImagePreview(src, 'existing', idx));
+  uploadedFiles.forEach((file, idx) => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      createImagePreview(e.target.result, 'uploaded', idx);
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // 다시 선택 표시 업데이트
+  updateMainImageHighlight();
+}
+
+// 게시글 수정
+function submitPost() {
+  const isEdit = document.getElementById('edit').checked;
+
+  console.log('대표 이미지 선택:', selectedMainImage);
+
+   document.getElementById('edit-popup').style.display = 'flex';
+
+}
+
 </script>
 </body>
 </html>
