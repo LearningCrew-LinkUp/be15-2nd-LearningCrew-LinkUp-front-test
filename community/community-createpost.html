@@ -38,7 +38,7 @@
       cursor: pointer;
     }
     .form-container {
-      max-width: 700px;
+      max-width: 600px;
       margin: 40px auto;
       background: #fff;
       border-radius: 16px;
@@ -124,19 +124,23 @@
       margin-top: 24px;
       justify-content:  center;
     }
+
     .button-group button {
-      background-color: #4763f3;
+      background-color: #5790FF;
       color: white;
-      padding: 20px 123px;
+      width: 540px;
+      height: 49px;
       font-size: 16px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     .button-group button:hover {
       background-color: #3548d3;
     }
+
     .image-upload {
       margin-bottom: 20px;
     }
@@ -278,44 +282,44 @@
       </div>
       <textarea id="body" placeholder=" 내용을 입력하세요." required></textarea>
 
-      <div class="image-upload">
-        <label for="image">이미지 업로드(선택)</label>
-        <input type="file" id="image" accept="image/*" multiple onchange="previewImages(event)" />
-        <div id="preview" class="image-preview"></div>
-      </div>
-
 
       <div class="form-group">
+        <label for="title">대표 이미지</label>
+        <div class="image-preview-wrapper">
+          <div id="preview" class="image-preview"></div>
 
-        <label for="image" class="file-upload">+</label>
-        <div id="preview" class="image-preview"></div>
+          <!-- 업로드 박스 -->
+          <label for="image" class="file-upload">
+            +
+            <input type="file" id="image" accept="image/*" multiple onchange="previewImages(event)" hidden />
+          </label>
+        </div>
       </div>
+
 
       <div class="button-group">
         <button type="submit">작성하기</button>
-        <button type="button" onclick="openCancelPopup()">취소하기</button>
       </div>
     </form>
   </div>
 </div>
 
-<!-- 취소 확인 팝업 -->
-<div id="cancel-popup" class="popup-overlay">
-  <div class="popup-content">
-    <h3>정말로 취소하시겠습니까?</h3>
-    <p>작성 중인 내용은 저장되지 않습니다.</p>
-    <div class="popup-buttons">
-      <button id="confirm-cancel" class="popup-btn">네</button>
-      <button id="close-popup" class="popup-btn">아니오</button>
-    </div>
-  </div>
-</div>
+<!--&lt;!&ndash; 취소 확인 팝업 &ndash;&gt;-->
+<!--<div id="cancel-popup" class="popup-overlay">-->
+<!--  <div class="popup-content">-->
+<!--    <h3>정말로 취소하시겠습니까?</h3>-->
+<!--    <p>작성 중인 내용은 저장되지 않습니다.</p>-->
+<!--    <div class="popup-buttons">-->
+<!--      <button id="confirm-cancel" class="popup-btn">네</button>-->
+<!--      <button id="close-popup" class="popup-btn">아니오</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!-- 공지사항 등록 팝업 -->
 <div id="notice-popup" class="popup-overlay">
   <div class="popup-content">
     <h3>공지사항이 등록되었습니다.</h3>
-    <p>게시글이 공지사항으로 등록되었습니다.</p>
     <div class="popup-buttons">
       <button id="close-notice-popup" class="popup-btn">확인</button>
     </div>
@@ -326,7 +330,6 @@
 <div id="post-popup" class="popup-overlay">
   <div class="post-popup-content">
     <h3>게시글이 등록되었습니다.</h3>
-    <p>게시글이 성공적으로 등록되었습니다.</p>
     <div class="popup-buttons">
       <button id="close-post-popup" class="popup-btn">확인</button>
     </div>
@@ -350,20 +353,20 @@
     });
   }
 
-  // 취소 팝업 열기
-  function openCancelPopup() {
-    document.getElementById('cancel-popup').style.display = 'flex';
-  }
-
-  // 취소 팝업에서 '네' 클릭 시
-  document.getElementById('confirm-cancel').addEventListener('click', function() {
-    window.location.href = '/'; // 홈 페이지로 이동
-  });
-
-  // 취소 팝업에서 '아니오' 클릭 시
-  document.getElementById('close-popup').addEventListener('click', function() {
-    document.getElementById('cancel-popup').style.display = 'none';
-  });
+  // // 취소 팝업 열기
+  // function openCancelPopup() {
+  //   document.getElementById('cancel-popup').style.display = 'flex';
+  // }
+  //
+  // // 취소 팝업에서 '네' 클릭 시
+  // document.getElementById('confirm-cancel').addEventListener('click', function() {
+  //   window.location.href = '/'; // 홈 페이지로 이동
+  // });
+  //
+  // // 취소 팝업에서 '아니오' 클릭 시
+  // document.getElementById('close-popup').addEventListener('click', function() {
+  //   document.getElementById('cancel-popup').style.display = 'none';
+  // });
 
   // 공지사항 팝업 닫기
   document.getElementById('close-notice-popup').addEventListener('click', function() {
