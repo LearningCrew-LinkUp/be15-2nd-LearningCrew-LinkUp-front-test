@@ -206,9 +206,7 @@ a {
 }
 
 /* ---------------- ID 입력칸 ---------------- */
-.id-input,
-.user-reporter-id-input,
-.penalty-objection-id-input {
+.id-input {
     width: 50px;
 }
 
@@ -348,6 +346,7 @@ a {
 
 .modal-select,
 .modal-input {
+    padding: 8px;
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ccc;
