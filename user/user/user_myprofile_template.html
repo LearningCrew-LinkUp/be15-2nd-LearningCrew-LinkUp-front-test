@@ -12,7 +12,8 @@
 
         .mypage-container {
             display: flex;
-            min-height: 100vh;
+            height: 100vh; /* 화면 전체를 채우기 */
+            overflow: hidden; /* 전체 스크롤 방지 */
         }
 
         /* Sidebar */
@@ -24,6 +25,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            flex-shrink: 0; /* 줄어들지 않게 고정 */
+            overflow-y: auto; /* 필요 시 자체 스크롤 */
         }
 
         .profile-section {
@@ -155,6 +158,7 @@
         .mypage-content {
             flex: 1;
             padding: 40px;
+            overflow-y: auto; /* 메인 영역만 스크롤 */
         }
         .profile-edit-wrapper {
             max-width: 600px;

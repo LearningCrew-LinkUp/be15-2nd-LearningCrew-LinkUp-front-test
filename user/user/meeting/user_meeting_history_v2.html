@@ -12,7 +12,8 @@
 
         .mypage-container {
             display: flex;
-            min-height: 100vh;
+            height: 100vh; /* 화면 전체를 채우기 */
+            overflow: hidden; /* 전체 스크롤 방지 */
         }
 
         /* Sidebar */
@@ -24,6 +25,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            flex-shrink: 0; /* 줄어들지 않게 고정 */
+            overflow-y: auto; /* 필요 시 자체 스크롤 */
         }
 
         .profile-section {
@@ -155,6 +158,7 @@
         .mypage-content {
             flex: 1;
             padding: 40px;
+            overflow-y: auto; /* 메인 영역만 스크롤 */
         }
         .profile-edit-wrapper {
             max-width: 600px;
@@ -165,119 +169,138 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .layout__main {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+
+        /* 메인 */
+        .main {
             flex-grow: 1;
             padding: 40px;
             overflow-y: auto;
         }
-        .main__wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-        }
 
-        /* Mypage History */
-        .mypage-history {}
-
-        .mypage-history__tabs {
+        .reservation-list {
             display: flex;
-            gap: 8px;
-            margin-bottom: 32px;
+            flex-direction: column;
+            gap: 16px;
         }
-        .mypage-history__tab {
-            flex: 1;
-            padding: 12px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s;
+
+        .reservation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
         }
-        .mypage-history__tab.is-active {
-            background: #222;
-            color: #fff;
+
+        .reservation-title {
+            font-size: 24px;
             font-weight: bold;
         }
 
-        .mypage-history__content {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+        .reservation-count {
+            font-size: 16px;
+            color: #666;
         }
 
-        .mypage-history__section {}
-        .mypage-history__list {
+        /* 예약 아이템 */
+        .reservation-item {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            list-style: none;
-            padding: 0;
-        }
-        .mypage-history__item {}
-
-        .history-card {
+            align-items: center;
             background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        .history-card__image-wrapper {
+            padding: 16px;
+            border-radius: 8px;
             width: 100%;
-            height: 180px;
-            overflow: hidden;
+            gap:8px
+
         }
-        .history-card__image {
-            width: 100%;
-            height: 100%;
+
+        .reservation-icon {
+            width: 40px;
+            height: 40px;
             object-fit: cover;
         }
-        .history-card__body {
-            padding: 20px;
+
+        .reservation-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .history-card__title {
-            font-size: 20px;
-            margin-bottom: 10px;
+
+        .reservation-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 16px;
         }
-        .history-card__date,
-        .history-card__location {
+
+        .reservation-date {
             font-size: 14px;
             color: #666;
-            margin-bottom: 4px;
+            margin-top: 4px;
         }
-        .history-card__badge {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 4px 8px;
+
+        .reservation-location {
             font-size: 12px;
-            color: #007bff;
-            background-color: #e6f0ff;
-            border-radius: 4px;
-        }
-        .history-card__badge.is-completed {
-            color: #28a745;
-            background-color: #e9f7ef;
-        }
-        .history-card__badge.is-cancelled {
-            color: #dc3545;
-            background-color: #f8d7da;
-        }
-
-        /* Empty state */
-        .mypage-history__empty {
-            text-align: center;
-            font-size: 18px;
             color: #999;
-            padding: 60px 0;
+            margin-top: 2px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .layout__main {
-                padding: 20px;
-            }
+        /* 버튼 */
+        .reservation-button {
+            background-color: #e6f0ff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            color: #007bff;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
         }
 
+        /* 뱃지 */
+        .badge {
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .recruiting {
+            background: #e6f7ff;
+            color: #007bff;
+        }
+
+        .recruited {
+            background: #e6ffe6;
+            color: #28a745;
+        }
+
+        /* 완료 모임 스타일 */
+        .completed {
+            opacity: 0.8;
+        }
+
+        /* 취소 모임 스타일 */
+        .cancelled {
+            background: #f5f5f5;
+        }
+
+        .cancel-label {
+            font-size: 12px;
+            color: #dc3545;
+            font-weight: bold;
+        }
 
 
 
@@ -394,78 +417,72 @@
     <!-- Main Content -->
     <main class="mypage-content">
         <div class="profile-edit-wrapper">
-            <main class="layout__main">
-                <div class="main__wrapper">
-                    <section class="mypage-history">
-
-                        <!-- 이용 예정 -->
-                        <section class="mypage-history__group">
-                            <h2 class="mypage-history__title">이용 예정</h2>
-                            <ul class="mypage-history__list">
-                                <li class="mypage-history__item">
-                                    <article class="history-card">
-                                        <div class="history-card__image-wrapper">
-                                            <img src="https://cdn.pixabay.com/photo/2014/10/14/20/24/football-488714_1280.jpg" alt="모임 이미지" class="history-card__image">
-                                        </div>
-                                        <div class="history-card__body">
-                                            <h3 class="history-card__title">한강 러닝 모임</h3>
-                                            <p class="history-card__date">2025.06.10 (월) 19:00</p>
-                                            <p class="history-card__location">서울 한강공원</p>
-                                            <span class="history-card__badge">예약 확정</span>
-                                        </div>
-                                    </article>
-                                </li>
-                                <!-- 추가 모임 카드 반복 -->
-                            </ul>
-                        </section>
-
-                        <!-- 이용 완료 -->
-                        <section class="mypage-history__group">
-                            <h2 class="mypage-history__title">이용 완료</h2>
-                            <ul class="mypage-history__list">
-                                <li class="mypage-history__item">
-                                    <article class="history-card">
-                                        <div class="history-card__image-wrapper">
-                                            <img src="https://cdn.pixabay.com/photo/2014/10/14/20/24/football-488714_1280.jpg" alt="모임 이미지" class="history-card__image">
-                                        </div>
-                                        <div class="history-card__body">
-                                            <h3 class="history-card__title">제주도 힐링 여행</h3>
-                                            <p class="history-card__date">2025.04.05 (토) 14:00</p>
-                                            <p class="history-card__location">제주 서귀포시</p>
-                                            <span class="history-card__badge is-completed">이용 완료</span>
-                                        </div>
-                                    </article>
-                                </li>
-                            </ul>
-                        </section>
-
-                        <!-- 취소된 예약 -->
-                        <section class="mypage-history__group">
-                            <h2 class="mypage-history__title">취소된 예약</h2>
-                            <ul class="mypage-history__list">
-                                <li class="mypage-history__item">
-                                    <article class="history-card">
-                                        <div class="history-card__image-wrapper">
-                                            <img src="https://cdn.pixabay.com/photo/2014/10/14/20/24/football-488714_1280.jpg" alt="모임 이미지" class="history-card__image">
-                                        </div>
-                                        <div class="history-card__body">
-                                            <h3 class="history-card__title">독서 모임 (취소)</h3>
-                                            <p class="history-card__date">2025.03.01 (금) 18:00</p>
-                                            <p class="history-card__location">서울 성수동</p>
-                                            <span class="history-card__badge is-cancelled">예약 취소</span>
-                                        </div>
-                                    </article>
-                                </li>
-                            </ul>
-                        </section>
-
-                    </section>
+            <main class="main">
+                <!-- 헤더 (참가 모임 이력 + 총 개수) -->
+                <div class="reservation-header">
+                    <h1 class="reservation-title">참가 모임 이력</h1>
+                    <span class="reservation-count">총 7개</span>
                 </div>
+
+                <div class="reservation-list">
+
+                    <!-- 예정 모임 (모집중) -->
+                    <div class="reservation-item upcoming">
+                        <img src="https://cdn-icons-png.flaticon.com/128/657/657648.png" alt="모임 아이콘" class="reservation-icon">
+                        <div class="reservation-info">
+                            <div class="reservation-title">
+                                <span>강남 러닝 모임</span>
+                                <span class="badge recruiting">모집중</span>
+                            </div>
+                            <div class="reservation-date">4월 30일 화요일 19:00</div>
+                            <div class="reservation-location">서울 강남구 · 6vs6 · 18/18명</div>
+                        </div>
+                        <button class="reservation-button">신청 내역</button>
+                    </div>
+
+                    <!-- 예정 모임 (모집완료) -->
+                    <div class="reservation-item upcoming">
+                        <img src="https://cdn-icons-png.flaticon.com/128/657/657648.png" alt="모임 아이콘" class="reservation-icon">
+                        <div class="reservation-info">
+                            <div class="reservation-title">
+                                <span>홍대 풋살 모임</span>
+                                <span class="badge recruited">모집완료</span>
+                            </div>
+                            <div class="reservation-date">5월 3일 금요일 18:00</div>
+                            <div class="reservation-location">서울 마포구 · 5vs5 · 10/10명</div>
+                        </div>
+                        <button class="reservation-button">신청 내역</button>
+                    </div>
+
+                    <!-- 완료 모임 -->
+                    <div class="reservation-item completed">
+                        <img src="https://cdn-icons-png.flaticon.com/128/657/657648.png" alt="모임 아이콘" class="reservation-icon">
+                        <div class="reservation-info">
+                            <div class="reservation-title">
+                                <span>여의도 산책 모임</span>
+                            </div>
+                            <div class="reservation-date">4월 15일 월요일 20:00</div>
+                            <div class="reservation-location">서울 영등포구 · 5vs5 · 완료</div>
+                        </div>
+                        <button class="reservation-button">신청 내역</button>
+                    </div>
+
+                    <!-- 취소 모임 -->
+                    <div class="reservation-item cancelled">
+                        <img src="https://cdn-icons-png.flaticon.com/128/657/657648.png" alt="모임 아이콘" class="reservation-icon">
+                        <div class="reservation-info">
+                            <div class="reservation-title">
+                                <span class="cancel-label">취소된 일정</span>
+                            </div>
+                            <div class="reservation-date">4월 10일 수요일 19:00</div>
+                            <div class="reservation-name">종로 북토크 모임</div>
+                            <div class="reservation-location">서울 종로구 · 5vs5</div>
+                        </div>
+                    </div>
+
+                </div>
+
             </main>
-
-
-
-
         </div>
     </main>
 </div>
