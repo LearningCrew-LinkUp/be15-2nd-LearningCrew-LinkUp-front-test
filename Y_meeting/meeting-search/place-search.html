@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>장소 목록 조회</title>
+  <link rel="stylesheet" href="search-unified.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+
+<!-- 헤더 -->
+<header class="main-header">
+  <div class="logo">
+    <img src="../img/learning_crew_logo.webp" alt="LinkUp 로고" />
+  </div>
+  <nav class="nav-menu">
+    <a href="#">커뮤니티</a>
+    <a href="../Y_meeting/meeting-search.html">모임</a>
+    <a href="place-search.html">장소</a>
+    <a href="#">사용자</a>
+  </nav>
+</header>
+
+<!-- 메인 컨테이너 -->
+<div class="container">
+  <div class="main-content">
+
+  <!-- 왼쪽 영역 -->
+  <aside class="sidebar">
+
+    <!-- 필터 -->
+    <div class="filter-box">
+      <div class="filter-row">
+
+        <!-- 지역 필터 -->
+        <div class="filter-item">
+          <label class="filter-label">지역 :</label>
+          <div class="region-selector">
+            <div class="region-buttons">
+              <button class="region-btn main-region-btn">전체</button>
+              <button class="region-btn sub-region-btn">전체</button>
+            </div>
+            <div class="region-dropdown" style="display: none;">
+              <div class="region-category-list"><ul></ul></div>
+              <div class="region-subcategory-list"><ul></ul></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 운동종류 필터 -->
+        <div class="filter-item">
+          <label class="filter-label">운동 :</label>
+          <select class="select-box">
+            <option>전체</option>
+            <option>풋볼</option>
+            <option>배드민턴</option>
+          </select>
+        </div>
+
+        <!-- 검색버튼 -->
+        <button class="search-btn">검색</button>
+      </div>
+    </div>
+
+    <!-- 장소 카드 리스트 -->
+    <div class="place-list">
+      <div class="place-card">
+        <img src="../img/place_img1.png" alt="신촌 풋살 센터" />
+        <div class="place-info">
+          <div class="place-title-row">
+            <h3>신촌 풋살 센터</h3>
+            <span class="material-symbols-outlined filled bookmark-icon active">favorite</span>
+          </div>
+          <p><span class="material-symbols-outlined card">location_on</span> 서울 서대문구 연세로 12</p>
+          <p><span class="material-symbols-outlined card">attach_money</span> 40,000원/시간</p>
+          <div class="rating">
+            <span class="material-symbols-outlined star-icon">grade</span> 4.5
+          </div>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <img src="../img/place_img1.png" alt="신촌 풋살 센터" />
+        <div class="place-info">
+          <div class="place-title-row">
+            <h3>신촌 풋살 센터</h3>
+            <span class="material-symbols-outlined not-filled bookmark-icon active">favorite</span>
+          </div>
+          <p><span class="material-symbols-outlined card">location_on</span> 서울 서대문구 연세로 12</p>
+          <p><span class="material-symbols-outlined card">attach_money</span> 40,000원/시간</p>
+          <div class="rating">
+            <span class="material-symbols-outlined star-icon">grade</span> 4.5
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 오른쪽 지도 -->
+    <main class="map-section">
+      <img src="../../img/map_img.png" alt="지도" class="map-image" />
+    </main>
+
+  </div>
+
+  <!-- 장소 등록 플로팅 버튼 -->
+  <div id="floatingNavMin" class="floating-add-btn" style="display: block;">
+    <div class="nav-section">
+      <div class="nav-btn" title="장소 등록" onclick="location.href='meeting-create-select.html'">
+        <span class="material-symbols-outlined">edit_note</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 스크립트 -->
+<script>
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => chip.classList.toggle('active'));
+  });
+
+  const areas = {
+    "서울": ["강남", "건대입구", "가양", "노원", "도곡", "신림", "영등포"],
+    "경기/인천": ["수원", "성남", "고양", "인천", "부천"],
+    "충청/대전": ["대전", "천안", "청주"],
+    "전라/광주": ["광주", "전주", "목포"],
+    "경북/대구": ["대구", "구미", "포항"],
+    "경남/부산/울산": ["부산", "울산", "창원"],
+    "강원": ["춘천", "강릉"],
+    "제주": ["제주시", "서귀포시"]
+  };
+
+  const mainBtn = document.querySelector('.main-region-btn');
+  const subBtn = document.querySelector('.sub-region-btn');
+  const dropdown = document.querySelector('.region-dropdown');
+  const categoryList = document.querySelector('.region-category-list ul');
+  const subcategoryList = document.querySelector('.region-subcategory-list ul');
+
+  mainBtn.addEventListener('click', () => {
+    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  function renderCategory() {
+    categoryList.innerHTML = Object.keys(areas).map(area => `<li>${area}</li>`).join('');
+  }
+
+  function renderSubcategory(selectedArea) {
+    const subs = areas[selectedArea] || [];
+    subcategoryList.innerHTML = subs.map(sub => `<li>${sub}</li>`).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCategory();
+    renderSubcategory(Object.keys(areas)[0]);
+
+    categoryList.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        document.querySelectorAll('.region-category-list li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+        mainBtn.textContent = e.target.textContent.trim();
+        renderSubcategory(e.target.textContent.trim());
+        subBtn.textContent = '전체';
+      }
+    });
+
+    subcategoryList.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        document.querySelectorAll('.region-subcategory-list li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+        subBtn.textContent = e.target.textContent.trim();
+        dropdown.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

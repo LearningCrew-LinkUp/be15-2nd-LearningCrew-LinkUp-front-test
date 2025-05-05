@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://localhost:5173/meetings/1 -->
+<html lang="" style="--vueuse-safe-area-top: env(safe-area-inset-top, 0px); --vueuse-safe-area-right: env(safe-area-inset-right, 0px); --vueuse-safe-area-bottom: env(safe-area-inset-bottom, 0px); --vueuse-safe-area-left: env(safe-area-inset-left, 0px);"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module" src="./meeting-details_files/virtual_vue-devtools-path_overlay.js.다운로드"></script>
+    <script type="module" src="./meeting-details_files/virtual_vue-inspector-path_load.js.다운로드"></script>
+
+    <script type="module" src="./meeting-details_files/client"></script>
+
+    
+    <link rel="icon" href="http://localhost:5173/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./meeting-details_files/devtools-overlay.css"><style type="text/css" data-vite-dev-id="D:/Hanhwa_Bootcamp_15th/projects/project03_learning-crew_LinkUp/repo/linkup/node_modules/vite-plugin-vue-inspector/src/Overlay.vue?vue&amp;type=style&amp;index=0&amp;scoped=31d1379f&amp;lang.css">
+.vue-inspector-container[data-v-31d1379f] {
+  cursor: pointer;
+  position: fixed;
+  text-align: center;
+  z-index: 2147483647;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.vue-inspector-card[data-v-31d1379f] {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px 8px;
+  border-radius: 4px;
+  text-align: left;
+  color:#e9e9e9;
+  font-size: 14px;
+  background-color:#42b883;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+.vue-inspector-card .tip[data-v-31d1379f] {
+  font-size: 11px;
+  opacity: 0.7;
+}
+.vue-inspector-banner[data-v-31d1379f] {
+  display: none;
+  position: absolute;
+  margin: 0;
+  width: 260px;
+  text-decoration: none;
+}
+.vue-inspector-container:hover .vue-inspector-banner[data-v-31d1379f] {
+  display: block;
+}
+.vue-inspector-container--disabled:hover .vue-inspector-banner[data-v-31d1379f] {
+  display: none;
+}
+.vue-inspector-floats[data-v-31d1379f] {
+  z-index: 2147483647;
+  position: fixed;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.vue-inspector-size-indicator[data-v-31d1379f] {
+  z-index: 2147483646;
+  position: fixed;
+  background-color:#42b88325;
+  border: 1px solid #42b88350;
+  border-radius: 5px;
+  pointer-events: none;
+}
+.vue-inspector-animated[data-v-31d1379f] {
+  transition: all 0.1s ease-in;
+}
+@media (prefers-reduced-motion) {
+.vue-inspector-animated[data-v-31d1379f] {
+    transition: none !important;
+}
+}
+</style><style type="text/css" data-vite-dev-id="D:/Hanhwa_Bootcamp_15th/projects/project03_learning-crew_LinkUp/repo/linkup/src/assets/css/index.css">*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}/*
+! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+*//*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: Pretendard, system-ui, sans-serif; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: Pretendard, monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+.container {
+  width: 100%;
+}
+@media (min-width: 320px) {
+
+  .container {
+    max-width: 320px;
+  }
+}
+@media (min-width: 480px) {
+
+  .container {
+    max-width: 480px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1440px) {
+
+  .container {
+    max-width: 1440px;
+  }
+}
+@media (min-width: 1920px) {
+
+  .container {
+    max-width: 1920px;
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.collapse {
+  visibility: collapse;
+}
+.absolute {
+  position: absolute;
+}
+.sticky {
+  position: sticky;
+}
+.mt-3 {
+  margin-top: 0.75rem;
+}
+.flex {
+  display: flex;
+}
+.table {
+  display: table;
+}
+.hidden {
+  display: none;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.border {
+  border-width: 1px;
+}
+.text-center {
+  text-align: center;
+}
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+</style><style type="text/css" data-vite-dev-id="D:/Hanhwa_Bootcamp_15th/projects/project03_learning-crew_LinkUp/repo/linkup/node_modules/pretendard/dist/web/static/pretendard.css">/*
+Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+https://github.com/orioncactus/pretendard
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+*/
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 900;
+	font-display: swap;
+	src: local('Pretendard Black'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-Black.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-Black.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 800;
+	font-display: swap;
+	src: local('Pretendard ExtraBold'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-ExtraBold.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-ExtraBold.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 700;
+	font-display: swap;
+	src: local('Pretendard Bold'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-Bold.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 600;
+	font-display: swap;
+	src: local('Pretendard SemiBold'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-SemiBold.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-SemiBold.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 500;
+	font-display: swap;
+	src: local('Pretendard Medium'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-Medium.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 400;
+	font-display: swap;
+	src: local('Pretendard Regular'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-Regular.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 300;
+	font-display: swap;
+	src: local('Pretendard Light'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-Light.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-Light.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 200;
+	font-display: swap;
+	src: local('Pretendard ExtraLight'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-ExtraLight.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-ExtraLight.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 100;
+	font-display: swap;
+	src: local('Pretendard Thin'), url(/node_modules/pretendard/dist/web/static/woff2/Pretendard-Thin.woff2) format('woff2'), url(/node_modules/pretendard/dist/web/static/woff/Pretendard-Thin.woff) format('woff');
+}
+</style><style type="text/css" data-vite-dev-id="D:/Hanhwa_Bootcamp_15th/projects/project03_learning-crew_LinkUp/repo/linkup/src/assets/css/init-styles.css">
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-main {
+    flex: 1;
+}
+
+.main-header {
+    height: 60px;
+    background: linear-gradient(to right, #e7f0ff, #f0e7ff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.main-header .logo img {
+    height: 36px;
+}
+
+.nav-menu a {
+    margin-left: 20px;
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+    color: #5b71f2;
+}
+
+.business-footer-dark {
+    background: linear-gradient(to right, #f2f3f9, #e8f2f7);
+    color: #1E1E1E;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    margin-bottom: 16px;
+}
+
+.footer-links a {
+    color: #1E1E1E;
+    margin: 0 8px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: #5790FF;
+}
+
+.footer-links .divider {
+    color: #555;
+    font-size: 13px;
+}
+
+.footer-info p {
+    margin: 4px 0;
+    font-size: 12px;
+    color: #555;
+}
+
+.footer-info {
+    margin-bottom: 16px;
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: #555;
+    margin-top: 12px;
+}
+</style><style type="text/css" data-vite-dev-id="D:/Hanhwa_Bootcamp_15th/projects/project03_learning-crew_LinkUp/repo/linkup/src/features/meeting/components/MeetingDetailLayout.vue?vue&amp;type=style&amp;index=0&amp;scoped=29e7f1be&amp;lang.css">
+/* 기존 스타일 그대로 유지 */
+.container[data-v-29e7f1be] {
+  max-width: 900px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.image[data-v-29e7f1be] {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.content[data-v-29e7f1be] {
+  padding: 24px;
+}
+h1[data-v-29e7f1be] {
+  margin: 0;
+  font-size: 26px;
+}
+.subinfo[data-v-29e7f1be] {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #888;
+}
+.desc[data-v-29e7f1be] {
+  margin: 20px 0;
+  font-size: 16px;
+  color: #333;
+}
+.button[data-v-29e7f1be] {
+  width: 100%;
+  margin-top: 30px;
+  padding: 15px;
+  background: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+hr[data-v-29e7f1be] {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
+}
+.section[data-v-29e7f1be] {
+  margin-top: 30px;
+}
+.section h2[data-v-29e7f1be] {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+</style><style type="text/css" data-vite-dev-id="D:/Hanhwa_Bootcamp_15th/projects/project03_learning-crew_LinkUp/repo/linkup/src/features/meeting/components/MeetingParticipants.vue?vue&amp;type=style&amp;index=0&amp;scoped=d468af29&amp;lang.css">
+.organizer-section[data-v-d468af29] {
+  margin-top: 30px;
+}
+.organizer-section h2[data-v-d468af29] {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.organizer-card[data-v-d468af29] {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #e9f0ff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.leader-img[data-v-d468af29] {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.nickname[data-v-d468af29] {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+.meta[data-v-d468af29] {
+  font-size: 14px;
+  color: #666;
+  margin: 6px 0;
+}
+.intro[data-v-d468af29] {
+  font-size: 14px;
+  color: #444;
+}
+
+</style><style type="text/css" data-vite-dev-id="D:/Hanhwa_Bootcamp_15th/projects/project03_learning-crew_LinkUp/repo/linkup/src/features/meeting/views/MeetingDetails.vue?vue&amp;type=style&amp;index=0&amp;scoped=04230f99&amp;lang.css">
+.section[data-v-04230f99] {
+  margin-top: 30px;
+}
+.section h2[data-v-04230f99] {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+</style></head>
+  <body>
+    <div id="app" data-v-app=""><div class="app-wrapper"><!-- 일반 사용자 헤더만 출력 --><header><div class="main-header" data-v-inspector="src/components/layout/Header.vue:15:5"><div class="logo" data-v-inspector="src/components/layout/Header.vue:16:7"><img src="./meeting-details_files/logo.svg" alt="로고" data-v-inspector="src/components/layout/Header.vue:17:9"></div><nav class="nav-menu" data-v-inspector="src/components/layout/Header.vue:19:7"><a href="http://localhost:5173/meetings/1#" data-v-inspector="src/components/layout/Header.vue:20:9">커뮤니티</a><a href="http://localhost:5173/meetings/1#" data-v-inspector="src/components/layout/Header.vue:21:9">모임</a><a href="http://localhost:5173/meetings/1#" data-v-inspector="src/components/layout/Header.vue:22:9">장소</a><a href="http://localhost:5173/meetings/1#" data-v-inspector="src/components/layout/Header.vue:23:9">사용자</a></nav></div></header><main class="app-main"><div data-v-29e7f1be="" data-v-04230f99="" class="container"><img data-v-29e7f1be="" src="./meeting-details_files/photo-1600585154340-be6161a56a0c" class="image"><main data-v-29e7f1be="" class="content"><header data-v-29e7f1be=""><h1 data-v-29e7f1be="">요즘 같은 선선한 날에 축구 한 판 어때요!</h1><p data-v-29e7f1be="" class="subinfo">서울 동작구 장승배기 223</p></header><section data-v-04230f99="" class="desc">평일 저녁 스트레스를 축구로 풀어보아요! 초보자도 환영이며, 경기 후 근처에서 가볍게 뒤풀이도 가능합니다. 운동화만 챙겨오시면 됩니다!</section><hr data-v-29e7f1be=""><section data-v-04230f99="" class="section"><h2 data-v-04230f99="">모임 일정</h2>2025-04-23 (화) 19:00 - 21:00</section><section data-v-04230f99="" class="section"><h2 data-v-04230f99="">종목</h2>축구</section><section data-v-04230f99="" class="section"><h2 data-v-04230f99="">모집 인원</h2>명/20명 (최소 인원: 10명)</section><section data-v-04230f99="" class="section"><h2 data-v-04230f99="">참가비</h2>5000원</section><section data-v-04230f99="" class="section"><h2 data-v-04230f99="">성별</h2>both</section><section data-v-04230f99="" class="section"><h2 data-v-04230f99="">실력</h2>LV1, LV2, LV3</section><section data-v-04230f99="" class="section"><h2 data-v-04230f99="">나이대</h2>20, 30</section><hr data-v-29e7f1be=""><section data-v-d468af29="" data-v-04230f99="" class="organizer-section"><h2 data-v-d468af29="">개설자 정보</h2><div data-v-d468af29="" class="organizer-card"><img data-v-d468af29="" src="./meeting-details_files/photo-1600585154340-be6161a56a0c" alt="개설자 이미지" class="leader-img"><div data-v-d468af29=""><p data-v-d468af29="" class="nickname">메시</p><p data-v-d468af29="" class="meta">남성 | 29세 | 92℃ </p><p data-v-d468af29="" class="intro">지금이 메시고</p></div></div></section></main><footer data-v-29e7f1be=""><button data-v-29e7f1be="" class="button">모임 신청하기</button></footer></div></main><footer class="business-footer-dark"><div class="footer-inner" data-v-inspector="src/components/layout/Footer.vue:9:5"><div class="footer-links" data-v-inspector="src/components/layout/Footer.vue:10:7"><a href="http://localhost:5173/meetings/1#" data-v-inspector="src/components/layout/Footer.vue:11:9">이용약관</a><span class="divider" data-v-inspector="src/components/layout/Footer.vue:12:9">|</span><a href="http://localhost:5173/meetings/1#" data-v-inspector="src/components/layout/Footer.vue:13:9">개인정보처리방침</a></div><div class="footer-info" data-v-inspector="src/components/layout/Footer.vue:16:7"><p data-v-inspector="src/components/layout/Footer.vue:17:9">상호명: 링크업 주식회사 | 대표자: 김여진 | 사업자등록번호: 123-45-67890</p><p data-v-inspector="src/components/layout/Footer.vue:18:9">통신판매업신고번호: 제2025-서울강남-01234호</p><p data-v-inspector="src/components/layout/Footer.vue:19:9">주소: 서울특별시 강남구 테헤란로 123, 10층</p><p data-v-inspector="src/components/layout/Footer.vue:20:9">고객센터: 02-1234-5678 (평일 09:00 ~ 18:00) | 이메일: support@linkup.com</p></div><div class="footer-copyright" data-v-inspector="src/components/layout/Footer.vue:23:7"> ⓒ 2025 LinkUp Inc. All rights reserved. </div></div></footer></div></div>
+    <script type="module" src="./meeting-details_files/main.js.다운로드"></script>
+  
+
+<script src="./meeting-details_files/devtools-overlay.mjs" type="module"></script><div id="__vue-devtools-container__" data-v-inspector-ignore="true" data-v-app=""><div data-v-640ec535="" class="vue-devtools__anchor reduce-motion dark" style="left: 1528px; top: 1384.5px; --vue-devtools-widget-bg: #121212; --vue-devtools-widget-fg: #F5F5F5; --vue-devtools-widget-border: #3336; --vue-devtools-widget-shadow: rgba(0,0,0,0.3);"><div data-v-640ec535="" class="vue-devtools__anchor--glowing" style=""></div><div data-v-640ec535="" class="vue-devtools__panel" style="transform: translate(-50%, -50%);"><div data-v-640ec535="" class="vue-devtools__anchor-btn panel-entry-btn" title="Toggle Vue DevTools" aria-label="Toggle devtools panel" style="filter: saturate(0);"><svg data-v-640ec535="" viewBox="0 0 256 198" fill="none" xmlns="http://www.w3.org/2000/svg"><path data-v-640ec535="" fill="#41B883" d="M204.8 0H256L128 220.8L0 0h97.92L128 51.2L157.44 0h47.36Z"></path><path data-v-640ec535="" fill="#41B883" d="m0 0l128 220.8L256 0h-51.2L128 132.48L50.56 0H0Z"></path><path data-v-640ec535="" fill="#35495E" d="M50.56 0L128 133.12L204.8 0h-47.36L128 51.2L97.92 0H50.56Z"></path></svg></div><div data-v-640ec535="" class="vue-devtools__panel-content vue-devtools__panel-divider"></div><div data-v-640ec535="" class="vue-devtools__anchor-btn vue-devtools__panel-content vue-devtools__inspector-button active" title="Toggle Component Inspector"><svg data-v-640ec535="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 1.1em; width: 1.1em; opacity: 1; color: rgb(0, 220, 130);"><g data-v-640ec535="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle data-v-640ec535="" cx="12" cy="12" r=".5" fill="currentColor"></circle><path data-v-640ec535="" d="M5 12a7 7 0 1 0 14 0a7 7 0 1 0-14 0m7-9v2m-9 7h2m7 7v2m7-9h2"></path></g></svg></div></div><div data-v-399f5059="" data-v-640ec535="" class="vue-devtools-frame" style="z-index: -1; pointer-events: auto; width: min(80vw, -47px + 100vw); height: min(57.5835vh, -47px + 100vh); left: 0px; transform: translate(-50%, 0px); bottom: 0px; display: none;"><div data-v-399f5059="" class="vue-devtools-resize vue-devtools-resize--horizontal" style="top: 0px;"></div><div data-v-399f5059="" class="vue-devtools-resize vue-devtools-resize--horizontal" style="bottom: 0px; display: none;"></div><div data-v-399f5059="" class="vue-devtools-resize vue-devtools-resize--vertical" style="left: 0px;"></div><div data-v-399f5059="" class="vue-devtools-resize vue-devtools-resize--vertical" style="right: 0px;"></div><div data-v-399f5059="" class="vue-devtools-resize vue-devtools-resize-corner" style="top: 0px; left: 0px; cursor: nwse-resize;"></div><div data-v-399f5059="" class="vue-devtools-resize vue-devtools-resize-corner" style="top: 0px; right: 0px; cursor: nesw-resize;"></div><div data-v-399f5059="" class="vue-devtools-resize vue-devtools-resize-corner" style="bottom: 0px; left: 0px; cursor: nesw-resize; display: none;"></div><div data-v-399f5059="" class="vue-devtools-resize vue-devtools-resize-corner" style="bottom: 0px; right: 0px; cursor: nwse-resize; display: none;"></div></div></div></div><div id="vue-inspector-container" data-v-app=""><div data-v-31d1379f="" data-v-inspector-ignore="true"><!--v-if--><!-- Overlay --><!--v-if--></div></div><div><div><div class="Vue-Toastification__container top-left"></div></div><div><div class="Vue-Toastification__container top-center"></div></div><div><div class="Vue-Toastification__container top-right"></div></div><div><div class="Vue-Toastification__container bottom-left"></div></div><div><div class="Vue-Toastification__container bottom-center"></div></div><div><div class="Vue-Toastification__container bottom-right"></div></div></div></body></html>
