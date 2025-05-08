@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신고 및 제재 흐름</title>
+    <link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background: linear-gradient(120deg, #f9fafe, #f5f5ff);
+            color: #222;
+            padding: 60px 20px 100px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 64px;
+            color: #2c2c40;
+        }
+
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            gap: 80px;
+            justify-content: center;
+            max-width: 1320px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .flow-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .column-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: transparent;
+            color: #444;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .column-title img {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #d8dfff;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+        }
+
+        .step {
+            background: #ffffff;
+            padding: 14px 24px;
+            margin-bottom: 14px;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e1e4f4;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .vertical-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+        }
+
+        .connector {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 2px;
+            background: #aaa;
+        }
+
+        .arrowhead {
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 60px);
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .flow-container {
+                grid-template-columns: 1fr;
+            }
+            .connector,
+            .arrowhead {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="title">신고 및 제재 흐름</div>
+<div class="flow-container">
+    <!-- 사용자/사업자 세로 그룹 -->
+    <div class="vertical-group">
+        <div class="flow-column">
+            <div class="column-title">
+                <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=User" alt="사용자">
+                사용자
+            </div>
+            <div class="step">신고 등록</div>
+        </div>
+
+        <div class="flow-column">
+            <div class="column-title">
+                <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=Business" alt="사업자">
+                사업자
+            </div>
+            <div class="step">제재 요청</div>
+        </div>
+
+        <div class="connector"></div>
+        <div class="arrowhead">→</div>
+    </div>
+
+    <!-- 관리자 제재 -->
+    <div class="flow-column">
+        <div class="column-title">
+            <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=Admin2" alt="관리자">
+            관리자
+        </div>
+        <div class="step">신고 접수</div>
+        <div class="step">제재 결정</div>
+    </div>
+
+    <!-- 이의 신청자 -->
+    <div class="flow-column">
+        <div class="column-title">
+            <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=Appeal" alt="이의 신청자">
+            제재 대상자
+        </div>
+        <div class="step">이의 신청</div>
+    </div>
+
+    <!-- 이의 수락/거절 -->
+    <div class="flow-column">
+        <div class="column-title">
+            <img src="https://api.dicebear.com/7.x/thumbs/svg?seed=Admin2" alt="관리자">
+            관리자
+        </div>
+        <div class="step">이의 검토</div>
+        <div class="step">수락 / 거절</div>
+    </div>
+</div>
+</body>
+</html>
